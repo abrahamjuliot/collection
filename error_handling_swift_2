@@ -1,0 +1,40 @@
+- a function can use throws to find errors
+- the enum must use the ErrorType protocol
+- optionals allow us to easily deal with domain errors
+
+`swift
+enum FriendError: ErrorType \\{
+ case InvalidData(String)
+\\}
+
+func createFriendFromJSON(dict: [String : String]) throws -> Friend \\{
+ gaurd let name = dict["name"] else \\{
+ // when you use a throw statement, you exit the current scope
+ throw FriendError.InvalidData("Name key fails")
+ \\}
+ 
+ gaurd let age = dict["age"] else \\{
+ throw FriendError.InvalidData("Age key fails")
+ \\}
+ 
+ let address = dict["address"]
+ return Friend(name: name, age: age, address: address)
+\\}
+
+let response = ["name": "Pasan", "age": "27", "address": "someAddress"]
+
+// return the error thrown
+let friend = try createFriendFromJSON(response)
+
+funct sendMessageToFriend(friend: Friend, message: String) -> () \\{\\}
+do \\{
+ let friend = try createFriendFromJSON(response)
+ sendMessageToFriend(friend, message: "")
+\\} catch FriendError.InvalidData(let key) \\{
+ print(key)
+\\}
+`
+- defer \\{ close(file) \\}
+- defer statments are executed as the scope is exited and can be used in errors or in functions in general
+- you can use more than one defer statement in a function. They are executed bottom to top
+- Swift has automatic propagation while Objective-c is manual with NSError
