@@ -1,0 +1,83 @@
+1. Getting Started
+- Rely on documentation for up to date content:
+https://docs.webplatform.org/wiki/css
+https://developer.mozilla.org/en-US/docs/Web/CSS
+http://www.w3.org/Style/CSS/Overview.en.html
+http://caniuse.com/
+- ways to implement styles: inline styles (style=" "), internal styles (), external styles sheet (), import (@import "style.css")
+
+2. Basic Selectors
+- selector { property: value; }
+- * { } // universal selector
+- p { } // type selector
+- #id { } // id selector
+-- an element can only have one ID and a page can only have one element with the same ID name
+-- ids can be used as anchor tags: href="#id"
+- .class // class selector
+- .class-1 . reusable-class-2 // mixing classes
+-- styles defined in an id selector will always carry more weight than styles declared in a class selector
+- header span { } // descendant selector
+- a:link { } // pseudo classes
+-- https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+- /* comments */ // remove with ctrl + / or command + /
+
+3. Understanding Values and Units
+- margin: auto // auto is a keyword datatype
+-- https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type
+- absolute length units: px, mm, cm, in, pt, pc
+- percentage length units: 50%
+- relative length units: em (relative to the parent font-size), rem (relative to the root html element)
+- color values: red, #ff0033, #f03, rgb(255, 169, 73), rgba(255, 169, 73, .4)
+- text styles: text-align, text-transform, text-decoration, font-weight, letter-spacing
+- Font properties: font-family, font-style, line-height
+-- http://www.cssfontstack.com/
+- font: font-weight, font-size/ line-height, font-family
+
+4. The Box Model
+- display: block, inline, inline-block, none
+- box model: content, padding, border, margin
+
+5. Basic Layout
+- * { box-sizing: border-box }
+- img { max-wdith: 100% }
+- background-image: url('../img') 
+-- background-repeat: no-repeat
+-- background-size: cover
+- -background--position: center
+- background: color url( ) no-repeat center / cover
+- if a block element contains floated children, its height will collapse
+- clear fix:
+.group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+- list-style-type: none
+
+6. Designing with the Latest Features
+- text-shadow: x-axis y-axis blur color
+- http://markdotto.com/playground/3d-text/
+- box-shadow: inset x-axis y-axis blur spread color
+-- multiple comma-seperated values can be added
+- border-radius: 50%
+- background-image: linear-gradient(shape size... at position, start-color, ..., last-color)
+- multiple comma-seperated backgrounds can be added (top, ..., bottom)
+-- linear-gradient(color, transparent 90%), linear-gradient(0deg, #fff, transparent)
+-@font-face {
+	font-family: 'My Webfont'; 
+	src: url('my-webfont.woff') format('woff'), 
+		url('my-webfont.ttf') format('truetype');
+}
+- @media (max-width: 960px) { body { } }
+- 
+
+7. Fundamental Concepts
+- The cascade follows 3 main steps to determine which properties get assigned to an element: Importance, Specificity, Source Order
+- Importance; User Agent styles, User styles, author styles
+- Specificity: higher specificity will override lesser specificity
+-- #id selectors have a higher specificity than .class and element selectors
+-- inline styles have a higher specificity than #id selectors
+- children inherit styles from their parent; this is called inheritance
+- setting a value to initial will set it to the browsers initial value
+- be an active learner: build a foundation of activities that will help you practice and communicate what you're learning
+- work on small project, engage in forum threads, code reviews with other students, write a blog post
