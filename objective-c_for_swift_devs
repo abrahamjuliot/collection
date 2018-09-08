@@ -1,0 +1,66 @@
+1. Moving from Swift to Objective-C
+- there are no var or let keywords
+- types come before the name
+- there are no imlicit types
+- all statements end with semi-colons
+- [ ] denote sending a message to an object
+- conditional and loop block must have parentheses
+- method with no parameters can exclude the parentheses
+- @ is used to create string literals or array literals
+- @property, @interface, @implementation denote that we are using objective-c keywords. the @ ensures no conflict with similar c keywords
+- NS object are from the Next Step programming language: NSArray, NSNumber, NSString
+- when you create an object, you use a pointer *
+- there are no optionals in objective-c (? !)
+- all variables can be set to nil unless they are marked as non nil
+- objective-c only offers c structs, which ar eno t first class types
+- enums are not first class types, value can only be tied to integers, not strings or doubles
+- switches must be based on exact enum or int values, no strings or ranges of values
+- no tuples, if you want to return multiple values you will have to wrap them in an array, dictionary or class
+- protocols do exist, but not often. Inheritancce is favored over composition
+- no robust style generics
+- classes are defined using two files: a header file (.h) and an implementation file (.m). In the .h file, you delcare your properties and methods and conform to protocols and then spell out the implementation in the associate .m file
+
+2. Basic Types, Structures and Syntax
+- NSArrays hold objects, not literals
+- You can't perform math on an NSNumber or an NSInteger
+- NSStrings are mutable
+- NSString interpolation %@ // string, %i // int, %.2f // double, // then list vriables
+- NSLog // print to the console
+- NSMutableDictionary *bostonDict = [[NSMutableDictionary alloc] initWithObjectAndKeys:@"Boston", @"City", @"USA", @"Country", nil];
+NSString *beantown = [bostonDict valueDorKey:@"City"];
+[bostonDict setValue:@"Brazil" forKey:@"Country"]
+- object need t be declared with aloc and init unless the value is literal
+
+3. The Objective-C Mindset
+- an objective c class:
+@interface Animal : NSObject
+@property (nonatomic, strong) NSString *name;
+@end
+- to use the class:
+Animal *liger = [[Animal alloc]init];
+- methods (class methods begin with +):
+-(void)eat:(NSString*)food \\{ \\}
+- methods must be defined in the implemenation and declared in the interface, like so:
+-(void)eat:(NSString*)food;
+- [liger eat:@"nachos"]; to call the method // [object method: args]
+
+4. Intermediate Topics in Objective-C
+- you can use categories to add methods to say Foundation classes
+- protocols may be added to classes within <>
+- protocols can also define optional methods
+- ^\\{ // block closure \\}
+- void (^myBlock) (void) = ^\\{ \\}; // a block variable
+- NSException and NSError are important to use
+- errors are expected events
+- @try \\{ \\} @catch \\{ \\} @finally \\{ \\}
+- wow, this course is scatter brained
+
+5. Objective-C in Action
+- NS, CA, UI are apple framework classes
+- your own classes should begin with 3 letter prefix: DISClass
+- classes should begin cap
+- you can combine Swift and Objective-C classes using a building header
+- you can also combine frameworks
+- ways to access methods
+[myObject myMethod: arg1 namedArg: arg2] // Objective-c
+myObject.myMethod(arg1 namedArg: arg2) // Swift
