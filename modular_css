@@ -1,0 +1,201 @@
+1. Getting Modular with Mixins ad Functions
+- Start with a sass config file
+$font-url-google: '' // lato for example
+$font-family--primary: ''
+$font-family--secondary: '' // helvetica neue for example
+$font-weight--thin: 100 // 100-900 // thin, light, meduium, bold, ultra-bold
+$white: #fff
+$black: #0b0b0b
+$grey: #797e83
+$emerald: #5ece7f
+$primary-color: $emerald
+$base__font-size: 16px
+$base__line-height: 24px
+// import url only if it exists - if block
+@if variable-exists(font-url--google) // dont include the dollar sign on the parameter variable
+ @import url(font-url--google)
+// calc ems function
+@function em(target, $context: $base__font) // base font default is passed
+ @return ($target / $context) * 1em // padding: em(10px)
+- create a map for your colors
+- values are retrieved from maps with key value pairs
+$ui-colors: (
+	default: $fountain-blue,
+	success: $emerald,
+	error: $sunglol
+);
+
+// theme and color variables represent the key value pairs in the ui-colors map
+// for each theme and color in the ui-colors map, create the class selector and assign its value to bg color
+// use a mixin for modularity, so you call this on different maps
+@mixin bg-colors($map) {
+	@each $theme, $color in $map {
+		&--#($theme) {
+			background-color: $color;
+		}
+	}
+}
+.btn {
+	@include bg-colors($ui-colors);
+}
+- note, you can also nest maps within map
+-map-get() returns values from a map
+-@if ... or ... { } @else {@error "invalid!";} // an error message will show on the page output
+2. Sass and BEM
+- Block Element Modifier
+- Write your css as Block classes, element classes, and modifier classes (parent, child, variation)
+- .block__element // block descendent
+- .block--modifier // modifer on a block
+- think of block elements as module wrappers
+- double underscore scopes child elements to a block module, and should always be written before an element
+- double heiphen scopes a modifier to a block module or a child element
+- .list, .list__item, .list__item--highlight
+- not all elements need bem naming, site-logo for example
+- .nav, .nav__item, .nav__item--current
+- avoid nesting and insteaad use parent selectors (&), anchors (a) are an exception
+.nav {
+	&__item {
+	
+	}
+		a {
+
+		}
+		&--current {
+
+		}
+}
+- BEM mixin
+@mixin elem($element) {
+	&__#{$element} {
+		@content
+	}
+}
+
+@mixin mod($modifier) {
+	&--#{$modifier} {
+ 	@content
+	}
+}
+
+.nav {
+	@include elem(item) {
+		@extend %nav-item-disp
+		a { 
+			@extend %nav-item-link
+		}
+		@include mod(current) {	
+			@extend %nav-item-on
+		}
+	}
+}
+- BEM extends - extend willl make the html mark up less with BEM
+%nav-item-disp {
+	display: inline-block;
+	margin: 0 em(12px);
+}
+
+%nav-item-link {
+	// etc.
+}
+%nav-item-on {
+		// etc.
+}
+
+.nav {
+
+}
+- Bem forms
+- .form__label, .form__input, .form__button
+- 
+3. SMACSS and Sass
+- Scalable and Modular Architecture for CSS (smacss.com)
+- divide your styles into 5 catagories: base, layout, modules, states, themes
+- base rules define what elements look like by default (resets, normalize)
+-- base rules should stick with element selectors and not classes or ids
+- layout rules define styles for major sections of a page (header, footer, or a main content section)
+- module rules is where styles are written for each module as stand-alone reusable components, which make up the majority of our code
+-- modules should not depend on their parent container
+- state rules is where we define styles for element states (active, expand, collapse, etc.)
+- theme rules define different colors and images to present a different theme, which is optional
+- you may alos want to include a utilities folder for configs, functions, helpers, mixins, and index to import all (import the global files first)
+- Our rule sets should only inherit and add to previous rules
+- We should need to undo properties
+4. Sass Grid System
+- declare column variables 
+$g-col-width: 65px
+$g-gutter-width: 20px
+$g-col-count: 12px
+$g-cont-max-w: 1050px
+@function g-context($g-col-width, $g-col-count, $g-gutter-width){
+	$g-context: ($g-col-width * $g-col-count) * ($g-gutter-width * ($col-count - 1));
+	@return $g-context; 
+}
+@for $i from 1 through $g-col-count {
+	$context: g-context($g-col-width, $g-col-count, $g-gutter-width);
+	$target: ($g-col-width * $i) * ($g-gutter-width * ($i - 1))
+	.grid__col--#{$i} {
+		width: percentage($target / $context)
+	}
+}
+- simplified version:
+$cols : 10;
+$width : 50px;
+$gutter : 15px;
+$context : ($width * $cols) + ($gutter * ($cols - 1));
+
+@for $i from 1 through $cols {
+	$target: ($width * $i) + ($gutter * ($i - 1));
+ 	.grid__col--#{$i} {
+		width: percentage($target / $context);
+	}
+}
+- grid container
+.grid {
+	@extend %clearfix;
+	@extend .centered;
+	width: 90%;		
+}
+5. Modular Media Queries
+- variables and mixin
+$breakpoint-sm : 1px
+$breakpoint-md : 768px
+$breakpoint-lg : 1100px
+
+@mixin mq($break) {
+	@if $break == "small" {
+		@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+			@content;	
+		}
+	}
+	@else if $break == "medium" {
+		@media (min-width: $breakpoint-md + 1) {
+			@content;	
+		}
+	}
+	@else if $break == "large" {
+		@media (min-width: $breakpoint-lg) {
+			@content;
+		}
+	}
+	@else { @error "'#{$break}' is an invalid value."}
+}
+- mixin call
+.grid {
+	@include mq(large) {
+		max-width: $g-cont-max-w;
+	}
+}
+- states can occur through media queries or js events, such as toggle
+- element state selectors are usually prefixed with "is"
+.is-collapsed-mobile {
+	@include mq(small) { // styles}
+}
+- the @at-root directive lets us nest a sass rule without nesting the output
+@media (min-width: 769px) { 
+ display: block;
+ @at-root (without: media) { 
+ .is-hidden-mobile { 
+ display: none; 
+ } 
+ } 
+}
