@@ -1,0 +1,29 @@
+1. What is npm
+- http://npmjs.com/
+- for javascript
+- bundle software
+
+2. Installing Packages with npm
+- npm -h // help for a command
+- npm install express
+- npm install http-server -g // global package installation for packages you intend to use on every project
+- npm init // to create package.json file to manage dependencies
+- npm install colors --save // saves this package to your dependencies
+- .gitignore // type in that file "node_modules/" to ignore that file on runtime // then, type npm install to install the packages in the dependencies
+- npm install mocha --save-dev // saves this package to your devDependencies // then, type npm install to install and the files will show
+- NODE_ENV=production npm install // to run npm in production environment
+
+3. Updating and Uninstalling Packages with npm
+- http://semver.org/
+- ^ install all version releases up to new major release (2.0)
+- ~ install all patch releases up to new minor release (2.1)
+- npm update // installs the latest version
+- npm outdated // shows outdated packages
+- npm updated http-server -g // updates a global package
+- npm updated npm -g // updates the npm global package
+- npm uninstall colors // uninstall from the node modules folder
+- npm uninstall colors --save // uninstall from the package.json file
+- npm uninstall mocha --save-dev // uninstall from dev dependencies
+- npm uninstall http-server -g // uninstall global pacage from local machine
+- npm // show all commands
+- npm help // show help for a particular command
