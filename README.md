@@ -18,10 +18,13 @@ A collection of my personal course notes
 - HTMLS Tables
 - PHP Basics
 - Node.js Basics
+- Excel 2010: Macros | Projects
+- Programming Foundations: Fundamentals
 
 ## 2015
 > "We believe that coding should be a required language in all schools." -Tim Cook
 CEO, Apple
+- Time Management Fundamentals
 - Interactive Web Pages with Javascript
 - JavaScript Loops, Arrays and Objects
 - Responsive Layouts
@@ -37,6 +40,21 @@ CEO, Apple
 - CSS to Sass
 - Angular Basics
 - Mongo Basics
+- Responsive Web Design Fundamentals
+- JavaScript Road Trip 1-2
+- Try jQuery
+- Blasting Off with Bootstrap
+- Communication Foundations (2013)
+- JavaScript and JSON: Integration Techniques
+- Fundamentals of Design
+- Communicate Ideas through Story
+- JavaScript: Templating
+- Adventures in Web Animations
+- JavaScript Best Practices
+- CoffeeScript
+- ES2015: The Shape of JavaScript to Come
+- Real time Web with Node.js
+
 
 ## 2016
 > "I think that great programming is not all that dissimilar to great art. Once you start thinking in concepts of programming it makes you a better person...as does learning a foreign language, as does learning math, as does learning how to read." -Jack Dorsey Creator, Twitter
@@ -73,6 +91,10 @@ CEO, Apple
 - Error Handling: Error Handling in Swift 2.0
 - Object Oriented Objective C
 - Ruby Basics
+- HTML5: Structure, Syntax, and Semantics
+- You, Me & SVG
+- Accelerating Through Angular 2
+- Shaping Up With Angular.js
 
 ## 2017
 > "Everybody in this country should learn to program a computer, because it teaches you how to think” -Steve Jobs
