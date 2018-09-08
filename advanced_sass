@@ -1,0 +1,187 @@
+1. Getting Started
+- sassmeister.com
+- keeping good comments is essential
+- be carefull of over nesting. Does this selector really require this much specification
+- @include mixins and @extend should be placed first in the casecade of a selector rule
+- us partials to make your code modular. a partial is any file with an underscore preceding the name
+- when sass sees partials, it will not process them into css
+- a partial requires that it be imported to another file in order for it to be precessed into css
+- partials should be imported tot he app file in this order: variables, functions, mixins, reset, base, modules, state, layout, and theme
+- Manifests: you can import sub folders: @import 'mixins/manifest' // where manifest contain imports of various mxin files within the subfolder
+- Globbing: gem install sass-globbing: @import 'mixins/*' // the star will import all sub files within the folder
+- sass-r sass-globbing --watch sass:css // watch for sass-globbing
+- be aware that sass globbing imports in a-z order, and libb sass does not support sass globbing
+- Source Maps: dev tool settings - enable css source maps and auto reload..., console - sass --sourcemap app.sass:style.css
+- with source maps, you can debug and edit the source files in the browser eith dev tools workspaces
+2. Variables, Mixins, Functions, Placeholders
+- all variables ddeclared outside aof mixin or function will have a global scope and can be referenced in other impoorted Sass files."
+- $text-color: red !global; // makes the variable global regardless of the scope // works in sass 3.3
+- $default-var: yellow !default; // default this variables assignment to yellow if the variable is not yet assigned
+- A common way to assign variables:
+// establish a core color
+$core-grey: #333
+// assign core color to semantic variable
+$inpute-disabled-color: $core-grey
+// use semantic variable as assigned to additional semantics
+$input-disabled-background: lighten($input-disabled-color, 75%)
+$input-disabled-border: lighten($input-disabled-color, 50%)
+$input-disabled-text: lighten($input-disabled-color, 5%)
+- This works better in a variable map:
+$input: (
+	disabled-background lighten($input-disabled-color, 75%),
+	disabled- border etc,
+	etc.
+)
+input[disabled] {
+	background-color map-get($input, disabled-background); // map--get(key, value)
+}
+- you can also nest key values in a variable map:
+$input: (
+	key value,
+	key (
+		key value
+	)
+)
+- list maps is not yet available in libsass, but it can be imported s a library: list maps provides the map-get-z() function, which allows us to traverse into nested maps:
+$input: (
+	disabled (
+		background lighten($input-disabled-color, 75%),
+		border lighten($input-disabled-color, 50%),
+		text lighten($input-disabled-color, 5%)
+	)
+)
+input[disabled] {
+	background-color map-get-z($input, disabled, background);
+}
+- while variables allow you to reuse values, mixins allow you to reuse blocks of code
+- when using mixins that take arguments, it is a best practice to always specify a default value for those arguments
+- if you have a common value, make it a default, and it can also be a null value if null is the common value
+- it is good practice to use variables as your default values: namely variables with !default
+- you also use !default on variable maps if your default variables are defined in a map
+- when an argument is null, you can set the value in the mixin call: @include foo($height: 100%)
+- unlike mixins, functions do not return a set of rules, but rather a value based on logic and expressions
+- functions are like little programs or helpers:
+@function percent-to-number($val) {
+	@return $val / 100;
+}
+
+@function set-opacity($color) {
+	$lighten: lightness($color);
+	$lightness-number: percent-to-number($lightness);
+	$trans-value: transparentize($color, $lightness-number);
+	@return $trans-value;
+}
+.block {
+	background-color: set-opacity(#ccc);
+}
+- notice you can use functions within functions
+- logic should go in functions and not mixins
+@function grid-width($count, $gutter, $width) {
+	$grid-width: ($count - 1) * $gutter * ($count * $width);
+	@return $grid-width;
+}
+
+@function context-width($context, $width, $gutter) {
+	$context-width: $context * ($width * $gutter);
+	@return $context-width;
+}
+
+@mixin the-grid($count, $context: 12, $width: 60, $gutter: 20) {
+	$grid-width: $grid-width($count, $gutter, $width);
+	$context-width: $context-width($context, $width, $gutter);
+	width: percentage($grid-width / $context-width);
+}
+
+.block {@include the-grid(6);}
+- @extend or selector inheritance
+- though you can extend selectors, it is best pratice to use palceholder selectors for extends
+- a placeholder selector is much like a regular selector, except it is invisible until it's called into another selector using the @extend directive:
+%base-heading
+h1 {@extend %base-heading}
+- wherever you place the extend declaration, there sass will output the selector inheritance in the casecade
+- generally, it is best to not nest placeholder selectors
+- 1. Avoid extending base elements 2. Use placeholders as much as you can 3. Keep the nesting of selectors to two levels or less
+- & is the parent selector
+.box
+	&:hover
+.box
+	.no-touch & //.box is now the child of .no-touch
+- Sass 3.3 supports BEM
+.header-search__input--selected // sass 3.2
+.header
+	&-search
+		&__input
+			&--selected // sass 3.3
+3. Advanced Functions
+http://sass-lang.com/documentation/Sass/Script/Functions.html
+- Sass color functions can create every color pssible with a simple color pallete
+- darken($color, 10%) // darkens the color
+- grayscale()
+- transparentize()
+- adjust_hue()
+- saturate()
+- color functions can be chained within another
+- Custom em value function:
+@function em($target, $context: $font-size) {@return ($target / $context) * 1em;}
+- $myString: length($mylist) // returns the number of chars within a given string
+- length()
+- str-length()
+- nth()
+- random()
+- to-upper-case(), to-lower-case()
+- str-insert()
+- string-index
+- @for $i from 1 through 30 { }
+- With sass we can test if a variables exits, if a global exists, if a function exists, if a mixin exists
+- we can inspect for value type, the unit(s) of a number, if units can be operated on
+- @if global-variable-exists() {}
+- @if variable-exists() {}
+- @if function-exists()
+- @if type-of($arg) == number {}
+- @id comparable($arg1, $arg2) {}
+
+4. Advanced Directives
+- @each is a sass directive
+- $icon-names: (strategy '\e002') (twitter '\e003') // sass object list
+- nth() function example:
+- @each $icon-name in $icon-names {
+	.icon-#{$icon-name}:after {
+		@extend %ico-font-base;
+		content: nth($icon-name, 2);
+	}
+}
+- list maps example:
+- @each $name, $pua in $icon-names {
+	.icon-#{$name}:after {
+		@extend %ico-font-base;
+		content: $pua;
+	}
+}
+- advanced example:
+$teams: (GreenBay Packers green yellow) (Seattle Seahawks blue green) (Chicago Bears blue orange);
+
+@each $city, $team, $color-1, $color-2 in $teams {
+ .#{to-lower-case($city)} {
+ background-color: $color-1;
+ border: 1px solid $color-2;
+ &:after {
+ content: 'Your' + ' ' + $city + ' ' + $team;
+ color: $color-2;
+ }
+ }
+}
+- @mixin spans($cols) {
+	$col-val: length($cols);
+	@for $i from 1 through $col-val {
+		.span-#{nth($cols, $i)} {
+			width: percentage((1 / $col-val) * $i);
+		}
+	}
+}
+@include spans (one two three four)
+
+- you can reverse the order by writing $col-val through 1
+- @content is used for passing an optional block of css rules to a mixin
+- https://robots.thoughtbot.com/sasss-content-directive
+- @at-root directive allows us to nest a series of rules within a module, but the CSS output will be at the root level of the document. This works great with keyframes
+- http://sassbreak.com/getting-back-to-our-roots/
