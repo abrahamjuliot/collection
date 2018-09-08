@@ -1,0 +1,38 @@
+`
+/* object literal */
+let objectLit = \\{
+	status: 'on',
+	live: true,
+	list: [],
+	obj: \\{\\},
+	amount: 100,
+	walk: () => \\{
+		// do something
+	\\}
+\\};
+/* constructor function | prototypal inheritance */
+function MainConstructorFn(customProp) \\{
+	this.customProp = customProp;
+	this.defaultProp = 'default';	
+\\}
+
+ParentConstructorFn.prototype.method = () => \\{
+	// do something
+\\};
+
+function ChildConstructorFn(customProp) \\{
+	let privateProp = 'private';
+	
+	// inherit from ParentConstructorFn
+	ParentConstructorFn.call(this, customProp);
+	
+	return this;
+\\}
+
+// Prototype chain: inherit ParentConstructorFn methods/properties
+ChildConstructorFn.prototype = Object.create(ParentConstructorFn.prototype);
+
+// new instance of ChildConstructorFn
+let anIstanceOfObject = new ChildConstructorFn('custom');
+
+`
