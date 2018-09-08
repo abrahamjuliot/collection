@@ -1,0 +1,369 @@
+1. Introduction to Enumerations
+- enum names should be singular and must begin uppercase
+- switch statements are made to go with enums
+- alot of app crashing errors are casue by strings, so use enums when possible
+`swift
+enum Day \\{
+	case Monday
+	case Tuesday
+	case Wednesday
+	case Thursday
+	case Friday
+	case Saturday
+	case Sunday
+\\}
+
+enum DayType \\{
+ case Weekday, Weekend // dont need to write case for each
+\\}
+
+func weekdayOrWeekend(day: Day) -> DayType \\{
+	switch day \\{
+ case .Saturday, .Sunday: // you could write Day.Saturday
+ return .Weekend
+ default: return .Weekday
+ // a default case is not required if you list the enum exhaustively
+	\\}
+\\}
+
+func muteNotification(dayType: DayType) -> Bool \\{
+ switch dayType \\{
+ case .Weekend: return true
+ case .Weekday: return false
+ \\}
+\\}
+
+let dayType = weekdayOrWeekend(.Friday) // or Day.Friday // returns Weekday
+let isWeekend = muteNotification(dayType) // returns false
+`
+- enums are objects which have some of the functionality that structs and classes have, such as instance methods, though not stored properties
+
+`swift
+// Associated Enums - ex. 1
+import UIKit // for type CGFloat and UIColor
+enum ColorComponents \\{
+ case RGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+ case HSB(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
+ 
+ func color() -> UIColor \\{
+ switch self \\{
+ case .RGB(let redValue, let greenValue, let blueValue, let alphaValue):
+ return UIColor(red: redValue/255.0, green: greenValue/255.0, blue: blueValue/255.0, alpha: alphaValue)
+ case .HSB(let hueValue, let saturationValue, let brightnessValue, let alphaValue):
+ return UIColor(hue: hueValue/360.0, saturation: satruationValue/100.0, brightness: brightnessValue/100.0, alpha: CGFloat)
+ \\}
+ \\}
+\\}
+
+ColorComponents.RGB(red: 61.0, green: 120.0, blue: 198.0, alpha: 1.0).color()
+
+
+// Associated Enums - ex. 2
+enum MobilePhone \\{
+ case iPhone(String)
+ case Android(String)
+ case Blackberry(String)
+ case WindowsPhone(String)
+\\}
+
+let iPhone: MobilePhone = .iPhone("6S")
+`
+
+2. Introduction to Optionals
+- any type or custom type can be an optional type
+- the bang operator (!) force unwraps optionals, but try to avoid using it
+
+`swift
+struct Person \\{
+ let firstName: String
+ let middleName: String? // optional String or nil
+ let lastName: String
+\\}
+
+let me = Person(firstName: "Abraham", middleName: nil, lastName: "Juliot")
+`
+`swift
+struct Person \\{
+ let firstName: String
+ let middleName: String? // optional String or nil
+ let lastName: String
+ 
+ func getFullName() -> String \\{
+ // never ever ever do this (force unwrapping)
+ if middleName == nil \\{
+ return "(firstName) (lastName)" 
+ \\} else \\{
+ return "(firstName) (middleName!) (lastName)"
+ \\}
+ 
+ \\}
+\\}
+
+let me = Person(firstName: "Abraham", middleName: nil, lastName: "Juliot")
+
+me.getFullName()
+
+//the right way to use optionals
+let movieDictionary = ["Spectre": ["cast": ["Daniel Craig", "Christoph Waltz", "Léa Seydoux", "Ralph Fiennes", "Monica Bellucci", "Naomie Harris"]]]
+
+var leadActor: String = ""
+
+if let movie = movieDictionary["Spectre"], let cast = movie["cast"]\\{
+ leadActor = cast[0]
+\\} 
+
+`
+`swift
+struct Friend \\{
+ let name: String
+ let age: String
+ let address: String?
+\\}
+
+func createFriend(dict: [String : String]) -> Friend \\{
+ let name = dict["name"]
+ if name == nil \\{
+ return nil
+ \\}
+ 
+ let age = dict["age"]
+ if age == nil \\{
+ return nil
+ \\}
+ 
+ let address = dict["address"]
+ return Friend(name: name!, age: age!, address: address)
+\\}
+`
+`swift
+// gaurd is used for an early return or exit from a function
+guard let someValue = someOptionalExpression else \\{
+ return nil
+\\}
+print(someValue)
+
+// example of gaurd
+
+func createFriend(dict: [String : String]) -> Friend? \\{
+ gaurd let name = dict["name"], age = dict["age"] else \\{
+ return nil
+ \\}
+ 
+ let address = dict["address"]
+ return Friend(name: name, age: age, address: address)
+\\}
+`
+
+- if you dont check for nil in objective-c your app can crash
+- in swift optional values can be nil
+- use an if let statement to check for a value (the constant is scoped to the if block)
+- if the value is nil, then we go back to our regular path
+if let someValue = someOptionalExpression \\{
+ print(someValue)
+\\}
+- if let statements allow to check multiple expressions
+if let someValue1 = someOptionalExpression1,
+ let someValue2 = someOptionalExpression2 \\{
+ print(someValue1 + someValue2)
+\\}
+- nested if let statements can lead to yramid code, so it may be best to use a guard statement within a function
+gaurd let someValue = someOptionalExpression else \\{
+ return nil
+\\}
+print(someValue)
+- try to avoid force unwrapping
+
+`swift
+struct Book \\{
+ let title: String
+ let author: String
+ let price: String?
+ let pubDate: String?
+ 
+ init? (dict: [String: String]) \\{
+ guard let title = dict["title"], author = dict["author"] else \\{
+ return nil
+ \\}
+ self.title = title
+ self.author = author
+ self.price = dict["price"]
+ self.pubDate = dict["pubDate"]
+ \\}
+ 
+\\}
+`
+
+3. Objects and Optionals
+- Enum members can be populated with default values (Raw values)
+- use raw values when you always an enum to have a default value
+- associated values are different, being set when we create the enum and can be different for every instance
+- raw values cannot be custom types
+- Int rawValues are auto increment. if you specify the first as 1, the next wil automatically be 2
+- raw value by default are a String of the case name
+
+`swift
+// example 1
+enum Coin: Double \\{
+ case Penny = 0.01
+ case Nickel = 0.05
+ case Dime = 0.10
+ case Quarter = 0.25
+\\}
+
+let coins: [Coin] = [.Penny, .Nickel, .Dime, .Dime, .Quarter, .Quarter, .Quarter]
+
+func totalValue(coins: [Coin]) -> Double \\{
+ var total: Double = 0
+ for coin in coins \\{
+ total += coin.rawValue // assigns each raw value
+ \\}
+ return total
+\\}
+
+totalValue(coins)
+
+//example 2
+enum HTTPMethod \\{
+ case POST, GET, PUT, DELETE
+\\}
+HTTPMethod.GET.rawValue // returns "GET"
+
+enum HTTPStatusCodes: Int \\{
+ case Continue = 100
+ case Success = 200
+ case Unauthorized = 401
+ case Forbidden = 403
+ case NotFound = 401
+\\}
+
+let statusCode = 200
+// the intilizer for enums with raw values is type optional
+let HttpCode = HTTPStatusCodes(rawValue: statusCode) // if it matches a case a value is returned
+// nil is returned if the value is not a case
+// write like this instead
+if let HttpCode = = HTTPStatusCodes(rawValue: statusCode) \\{
+ print(HttpCode)
+\\} 
+`
+`swift
+enum Compass: Int \\{
+ case North = 1
+ case South
+ case East
+ case West
+\\}
+
+let direction = Compass(rawValue: 2) // assigns raw value for South (int 2)
+`
+- optional stored variable (not constant) properties in a class do not require an init method
+- the property values are initialy initialized to nil
+
+`swift
+class Address \\{
+ var streetName: String?
+ var buildingNumber: String?
+ var apartmentNumber: String?
+\\}
+
+class Residence \\{
+ var address: Address?
+\\}
+
+class Person \\{
+ var residence: Residence?
+\\}
+
+let susan = Person()
+
+let address = Address()
+address.streetName = "whatever"
+address.buildingNumber = "whatever"
+address.apartmentNumber = "whatever"
+
+let residence = Residence()
+residence.address = address
+susan.residence = residence
+
+// one method of checking
+if let home = susan.residence,
+let postalAddress = home.address,
+let apartmentNumber = postalAddress.apartmentNumber,
+let convertedNumber = Int(apartmentNumber) \\{
+ print(convertedNumber)
+\\}
+
+// a better method of checking (optional chaining)
+if let apartmentNumber = susan.residence?.address?.apartmentNumber \\{
+ print(apartmentNumber)
+\\}
+`
+
+`swift
+// pattern matching
+enum Coin: Double \\{
+ case Penny = 0.01
+ case Nickel = 0.05
+ case Dime = 0.10
+ case Quarter = 0.25
+\\}
+
+let callet: [Coin] = [.Penny, .Nickel, .Dime, .Dime, .Quarter, .Quarter, .Quarter, .Penny, .Nickel, .Dime, .Penny, .Nickel, .Quarter, .Quarter, .Penny]
+
+
+// one method
+var count: Int = 0
+for coin in wallet \\{
+ switch coin \\{
+ case .Quarter: count +=1
+ default: continue
+ \\}
+\\}
+
+// better method - for case loop
+for case .Quarter in wallet \\{
+ count += 1
+\\}
+
+// another useful method - if case condition
+for coin in wallet \\{
+ if case .Nickel = coin \\{
+ print("Not so much money!") 
+ \\} else if case .Dime = coin \\{
+ print("Eh, I uess it's some money")
+ \\}
+\\}
+
+// method useing otptional
+let someOptional: Int? = 42
+
+// the .Some case is part of optional enums
+// its better to use if let, however this is what if let is doing behind the scenes
+if case .Some(let x) = someOptional \\{
+ print(x)
+\\}
+`
+`swift
+// Nil Coalescing operator
+
+// if the otional a contains a value than
+// we unwrap it and use it, otherwise use b
+a ?? b // a must be an optional
+
+let firstName: String? = "Abraham"
+let username = "4brahmJ"
+
+// one method
+var displayName: String
+if firstName != nil \\{
+ displayName = firstName!
+\\} else \\{
+ displayName = username
+\\}
+// similar method
+displayName = firstName != nil ? firstName! : username
+
+// better method using the nil coalescing operator
+displayName = firstName ?? username // if not nil then firstName else username
+`
+- enums and optionals are some of swift's best features
+- by very familiar with if let and guard
