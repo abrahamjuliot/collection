@@ -1,0 +1,86 @@
+TRANSITIONS
+1. Transitioning Color
+- animations are for call to action
+- transition: property duration, property duration
+- transition: all duration
+- all that needs to be specified is the duration, the rest will have defaults
+2. Transitioning Positions
+- position absolute means position me relative to my nearest positioned parent or document
+- transition positions of elements or spans of text using top and bottom margins
+- make sure to make overflow hidden
+3. Transitioning Visibility
+- When transitioning visibility, use both opacity and visibility instead of display none
+- opacity: 0, visibility: hidden
+- opacity hides element, though the element still takes up space; visibility hidden makes element transparent to click events; display none removes element from the DOM (not a transitional property)
+- Be sure to check if a property can transition as properties are updated for the web
+- You can make the transition occur when a class is added rather than a hover state
+- transition: all 0.7s 0.5s // the 2nd time is for delay
+TRANSFORMS
+1. Transforming Rotate
+- transforms let you modify elements in their coordinate space (rotate[spin], translate[move], skew[resize])
+- to class: transition 4s
+- on class hover: transform: rotate(360deg) // or (1turn)
+- timing functions: ease linear ease-in ease-out initial inherit ease-in-out cubic-bezier
+- ease out transitions slower at the end; try extending the time and you will notice the difference
+- the default value is ease
+2. Transforming Scale and Translate
+- transform: scale(2) // your box will grow double the size on height and width
+- scale(4, 2) horizontally by 4 and vertically by 2
+- transform: scaleX(4) // same
+- transform: scaleY(2) // same
+- transform: scale(0.8) // shrinks 80%
+- When scaling an element transform: scale();, it will still maintain its original box model, although appearing scaled
+- transform-origin: center left // center is the y and left is the x origin
+- transform-origin will default to center
+- transform: translateX(3px) // move right
+- transform: translateY(-3px) // move up
+- transform: translate(3px) // move right-down (diagonal)
+- transform: translateY(-40px) scale(0.8) // combined
+- You can trigger an animation on form :focus
+-- .form-input:focus + .form-label // adjacent selector, selects the label for this input
+KEYFRAMES
+1. Creating and Reusing Keyframes
+- keyframes are a list of what should happen over the course of the animation: which properties should change, how and when.
+- [1] create the animation [2] assign the animation
+@keyframes {
+	 {: }
+	 {: }
+}
+#idname {
+	animation: 2s 0s infinite ease
+}
+- steps can be written as 0% and 100% or from and to
+@keyframes swing {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(-10deg);}
+}
+#left-arm {
+	transform-origin: top center;
+	animation: swing 2s infinite
+}
+2. Multi-step Keyframes
+@keyframes swing {
+	0%, 50%, 100% {transform: rotate(0deg);}
+	25% {transform: rotate(-10deg);}
+	75% {transform: rotate(10deg);}
+}
+- consider altering the timing of an animation before creating a whole new keyframes animation
+3. More Advanced Keyframe Animations
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.class {
+	animation: fadeIn .25s forwards;
+}
+- cubicbezier.com
+- all timing functions are cubic-bezier at heart
+SVG
+1. Animating SVGs With CSS
+- SVG has some unique css properties that can be animated: see SVG properties on MDN
