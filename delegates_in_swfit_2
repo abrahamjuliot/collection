@@ -1,0 +1,91 @@
+1. Introduction to Delegates
+- Delegation is not finished code per se, but a design pattern.
+- a delegate works to carry out a set of tasks for antoher object
+- 1. Create a delegate protocol
+- 2. Add a delegate property specifying the type as the protocol (as an optional)
+- 3. Assign any object that conforms to the protocol as a delaegate
+
+`swift
+// Protocol
+protocol RaceDelegate \\{
+ func raceDidStart()
+ func raceStatus(lapNumber: Int, first: AnyObject)
+ func raceDidEnd(winner: AnyObject)
+\\}
+
+// Participants
+class Horse \\{
+ func giddyUp() \\{\\}
+\\}
+
+class Car \\{
+ func vroomVroom() \\{\\}
+\\}
+
+class RaceCar \\{
+ func readySetGo() \\{\\}
+\\}
+
+// Races
+class Race \\{
+ var laps: Int = 0
+ var delegate: RaceDelegate? // race delegate
+ 
+ func start() \\{
+ // some set up
+ \\}
+ 
+ func updateProgress() \\{
+ // some set up
+ \\}
+ 
+ func end() \\{
+ // some tear down
+ \\}
+\\}
+
+class HorseRace: Race \\{
+ let participants: [Horse]
+ 
+ init(laps: Int, horses: [Horse]) \\{
+ self.participants = horses
+ super.init()
+ self.laps = laps
+ \\}
+ 
+ override func start() \\{
+ delegate?.raceDidStart() // call out to the delegate
+ \\}
+ override func updateProgress() \\{
+ laps += 1
+ delegate?.raceStatus(laps, first: Horse())
+ \\}
+ override func end() \\{
+ delegate?.raceDidEnd(Horse()) // call out to the delegate
+ \\}
+\\}
+
+// Tracker
+class Traker: RaceDelegate \\{
+ func raceDidStart() \\{
+ print("Race started")
+ \\}
+ func raceStatus(lapNumber: Int, first: AnyObject) \\{
+ print("Race status updated. Lap: (lap). First place: (first)")
+ \\}
+ func raceDidEnd(winner: AnyObject) \\{
+ print("Race started. Winner is (winner)")
+ \\}
+\\}
+
+//Usage
+
+let participants: [Horse] = [Horse(), Horse(), Horse()]
+let race = HorseRace(laps: 4, horses: participants)
+let tracker Tracker()
+race.delegate = tracker
+race.start()
+`
+
+2. Delegation in iOS
+- see video xcode videos
