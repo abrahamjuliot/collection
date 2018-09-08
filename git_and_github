@@ -1,0 +1,74 @@
+- https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+
+Unix Command Refresher
+nano file - edit file, ctrl-x to close, y, then enter o exit
+cd - think 'change directory:' change the current working directory. Remember that ~ is a special symbol that always represents your "home" directory.
+ls - think 'list:' shows a list of all files/folders in the current directory. With the -a flag, also shows hidden files and folders.
+mkdir - think 'make directory:' creates a new directory with the specified name.
+touch - updates the "last modified" timestamp on a file to now. Also creates an empty file if the filename specified doesn't exist.
+mv - think 'move:' moves a file or directory to a new location. This also makes it a convenient way to rename files and folders.
+rm - think 'remove:' deletes the file(s)/folder(s) specified. Use rm -fr .git to remove a git repository
+
+- git --version - returns version is installed if any
+- sudo apt-get install git - installs git
+- git init [project_name] - initializes a new repository. If project_name is provided, it creates a new project directory with that name. If not, it initializes a repository in the current directory.
+
+- git add - adds files to the repository so that Git knows to track their changes.
+- git commit - commits all added files to the repository as a change. With the -a flag, commits all changes to all tracked files. With the -m flag, allows you to specify a commit message directly on the command line instead of in your default editor.
+- git config - allows you to make configuration changes to Git. With the --global flag, makes these changes available across your entire system.
+
+- git status - show the current status of the git repository, including if there are any uncommitted changes and whether or not any of our changes have been put in the staging area.
+- git add - not a new command for this video, but we learned that it does something more than just add files to be tracked - it also adds changes to the staging area.
+- git commit - not a new command for this video, but we learned that without any arguments (or the -a flag) it will default to committing everything that's currently in the staging area.
+
+- git log - Show us a chronological log of all of our commits to the current repository.
+- git checkout - "check out" a different version of the code from the one you're currently looking at. Checkout the first 5 characters of the commit or master to return to latest version
+- git diff - create a "diff" view to demonstrate what has changed between two different versions of your repository.
+
+MERGING
+- git branch branchname - create a new branch named branchname.
+- git checkout branchname - switch to the branch named branchname.
+- git checkout -b branchname - create a new branch named branchname and switch to that branch.
+
+BASIC MERGING
+- git branch - list all branches in the current repository and indicate which branch you're currently in.
+- git branch -D branchname - delete the branch named branchname from the repository.
+- git merge branchname - merge the history from branchname into the current branch.
+
+MERGE CONFLICTS
+- git lets you handle merge conflict on your own by editing the file. Lastly, git add theFile and git commit
+
+CLONING
+- git clone - create a new repository that is a clone of a remote repository.
+- git remote - list all remote repositories associated with the current repository.
+- git remote add - add a new remote repository to the current repository.
+
+PUSHING AND PULLING
+- git push - push your latest changes to a remote repository. (git push origin name if its a clone)
+- git pull - pull the latest changes from a remote repository to your repository.
+
+PUSH PROJECT TO GITHUB
+- https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+- git init: initialize a git repository in your directory
+- git status: check the status of the repository
+- git add file_name: add one file
+- git add . : add all files
+- git commit -m “commit message”: commit your files along with a message
+- git remote add origin https://github.com/username/reponame.git - the remote url to your GitHub repo
+- git push origin master: push your files up to github on the master branch
+
+Quick sreps to push project
+git init
+git status
+git add .
+git commit -m “commit message”
+git remote add origin https...
+Note, use git status and git pull to check for and get the lastest version
+git push origin master
+
+CREATE A BRANCH
+- git branch: list out branches
+- git branch branch-name: create a new branch
+- git checkout branch-name: switch to the newly created branch
+- git checkout -b branch-name: shortcut! - use this command to create & switch to the new branch
+- git push origin branch-name: push branch & changes to github
