@@ -1,0 +1,16 @@
+- SVGs work best for images that have large flat areas of color
+- In general, JPEGs work best for photographs
+- Sending a high resolution image to all devices often results in wasted bandwidth
+- Srcset with Picturefill (a polyfill) - a polyfill [use async] allows it to work in all browsers
+- A polyfill is a piece of JavaScript that will implement specific features in browsers that don't support those features natively.
+- Browsers that support our HTML natively will work as intended, and browsers that don't will use the polyfill
+- The scrset attribute allows us to specify multiple files for a single image
+- When using the srcset attribute, it's up to browser vendors to make the most intelligent choice about which file to deliver.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset
+- test by refreshing in chrome while using dev tools, and make sure to disable cache
+- The sizes attribute tells the browser how much space an image should take up in the layout
+- example with the sizes attribute:
+- Art direction draws attention to the most important part of the image on differing devices
+- If we would like to choose the image ourselves, then we should use the picture element
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+- the picture behaves like an invisible span and therefore does not need css, but the child does
