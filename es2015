@@ -1,0 +1,323 @@
+
+https://github.com/azat-co/cheatsheets/tree/master/es6
+https://babeljs.io/learn-es2015/
+http://ricostacruz.com/cheatsheets/es6.html
+
+https://github.com/DrkSephy/es6-cheatsheet#var-versus-let--const
+http://putaindecode.io/en/articles/js/es2015/const-let-var/
+
+1. Declarations
+A. Using Let
+- prior to executing our code, javascript moves all var declarations to the top of the nearest function (the scope). This is called hoisting.
+- the let key word scopes variables to the nearest code block, and not function scope
+- let num = 2 instead of var num = 2
+- Variables declared with let can be reassigned, but cannot be redeclared within the same scope
+- There is no reason to use var unless you intend your variable(s) to be hoisted
+B. Using let in for Loops
+- let will allow the callback version of i receive its own version of i:
+for(let i in userNames) {
+	_fetchProfile("/users/" + userNames[i], function() {
+		console.log("Fetched for ", userNames[i]);
+	});
+}
+C. Using Const
+- using plain numbers can lead to bad code. These are called magic number. It's better to assign number to variables and give them meaning as to why they are needed
+- The const keyword creates read-only named constants // const MAX_USERS = 3
+- constants must be assigned an initial value and they cannot be reassigned
+- similar to let, constants are blocked scope, which means they are not hoisted
+- use let when variables could or should be reassigned new values
+- use const when new variables should not be reassigned new values
+
+2. Functions
+A. Function Defaults
+- Unexpected arguments might cause errors during function execution (example: undefined)
+- Default parameter values help move default values from the function body to the function signature. When no argument or undefined is passed, the default value will be assigned // function load(names = [ ] ) {}
+- The options object is a widely used pattern that allows user-defined settings to be passed to a function in the form of properties on an object // function load(name, options = { }) {}
+- Assign from properties to local variables // let face = options.face, eyes = options.eyes;
+- Having practiced the above, there is a better way to use options: Using named parameters for optional settings makes it easier to understand how a function should be invoked // function load(name, { face, eyes }) {} 
+- each option will already be available in the function body as a local variable
+- function call example: load("Me", {face: true, eyes: false});
+- It is not safe to omit the options argument altogether when invoking a function with named parameters when no default value is set for them
+- Setting a default value for the entire options argument allows this parameter to be omitted during function calls // function load(name, { face, eyes } = { }) {}
+- Example code:
+function loadProfiles(userNames = [], { profilesClass, reverseSort } = { }) {
+  profilesClass = profilesClass || ".user-profile";
+  reverseSort   = reverseSort   || false;
+}
+B. Rest Params, Spread Op, Arrow Func
+- Variatic functions can accept any number of arguments
+- The arguments object is a built in, Array-like object that corresponds to the arguments of a function. Relying on this object to read arguments is not ideal as it is hard to tell which parameters this function expects to be called with.
+- The new rest parameter syntax allows us to represent an indefinite number of arguments as an Array. This way, changes to function signatures are less likely to break code.
+- function displayTags(...tags) { } // These 3 dots make tags a rest parameter and all arguments passed into the function will be grouped into an array
+- rest params must be the last argument in the function parameter
+- a rest param is useful for receiving a list of hash tags, for example
+- it is worth noting that the function call must send a list of the arguments and not array, so if you have an array to send, you will need to convert it to individual arguments; the spread operator does exactly that.
+- The spread operator, used in the function call, allows us to split an array argument into individual elements
+- displayTags(...tags); // the function will now receive individual arguments, not an array
+- though they look the same, rest params are used in function definition and spread operators are used in function invocation
+- Javascript object can help us with the encapsulation, organization, and testability of our code
+- Arrow functions uses the => instead of the function keyword, and operate similar to coffee script
+- Example code:
+function ActiveUsersComponent(target, topicId){
+  this.targetElement = target;
+  this.topicId       = topicId;
+}
+
+ActiveUsersComponent.prototype.render = function(){
+  getActiveUsers(this.topicId, (data) => {
+    let userNameDivs = appendUserNames(...data.userNames);
+    appendToSidebar(this.targetElement, userNameDivs);
+  });
+};
+// Create new component below
+let component = new ActiveUsersComponent(".active-users", 17);
+component.render();
+
+3. Objects, Strings, and Object.assign
+A. Objects and Strings
+- object initializer: we can remove duplicate variable names from object properties when those properties have the same name as the variables being assigned to them
+- write your object as {one, two} instead of {one: one, two: two}
+- objects like this can be created any where
+- object destructuring: we can use shorthand to assign properties from objects to local variables with the same name: let {one, two} = { one, two} // one and two will be declared and assigned as local variables
+- Not all properties have to be destructured all the time. We can explicitly select the ones we want: let {one} = { one, two}
+- In previous versions of JavaScript, adding a function to an objet required specifying the property name and then the full function definition (including the function keyword): instead of myfunc: function () {}, we can write myfunc() {}
+- Template strings are string literals allowing embedded expressions. This allows for a much better way to do string interpolation: wrap the text in back tag, not single quotes: `Hi ${first} ${last}` // any text that needs to be evaluated is wrapped in ${ }
+- Any newline charater within this string will be preserved (no need for \n)
+
+B. Object.assign
+- For functions which need to be used across different applications, it's okay to accept an options object instead of using named parameters
+- Some options might not be specified by the caller, so we need to have default values. // function countdownTimer(target, timeLeft, options = { } ) {}
+- Using a local object to group default values for user options is a common practice and can help write more idiomatic JavaScript // let defaults = { container: ".timer", etc. }
+- The Object.assign method copies properties from one or more source objects to a target object specified as the very first argument // let settings = Object.assign({ }, defaults, options); // or merge directly to the defaults object by calling Object.assign(defaults, options);
+- Preserving the original default values gives us the ability to compare them with the options passed and act accordingly when necessary.
+- In case of duplicate properties on source objects, the value from the last object on the chain always prevails
+
+4. Arrays, Maps, and Sets
+A. Arrays
+- We typically access array elements by their index, but doing so for more than just a couple of elements can quickly turn into a repetitive task
+- We can use destructuring to assign multiple values from an array to local variables:
+let users = ["sam", "jane", "tim"];
+let [a, b, c] = users;
+console.log(a, b, c);
+- values can be discarded: let [a, , b] = users // "jane" will be discarded
+- we can combine destructuring with rest parameters to group values into other arrays:
+let users = ["sam", "jane", "tim"];
+let [ first, ...rest ] = users; // groups remaining arguments in an array
+console.log( first, rest); // sam["jane", "tim"]
+- when returning arrays from functions, we can assign to multiple  variables at once:
+let [a, b, c] = activeUsers(); // when activeUsers returns an array
+- The for...of statement iterates over property values, and it's better way to loop over arrays and other iterable objects:
+for(let name of names) {
+	console.log( name );
+}
+- The for...of statement cannot be used to iterate over properties in plain JavaScript objects out-of-the-box
+- In order to work with for...of, objects need a special function assigned to the Symbol iterator property. The presence of this property allows us to know whether an object is iterable.
+- no function assigned to the Symbol.iterator property means the object is not iterable:
+console.log( typeof post[Symbol.iterator] );
+- Array.find returns the first element in the array that satisfies a provided testing function
+- myArray.find("admin");
+- myArrayOfObjects.find( (myObject) => { return myObject.prop }); // returns first object which myObject.prop is true
+- note, you can shorten the arrow function: myArrayOfObjects.find( myObject => myObject.prop)
+
+B. Maps
+- maps are a data structure composed of a collection of key/ value pairs. They re very useful to store simple data, such as property values.
+- when using Objects as maps, its keys are always converted to strings, so you should not use objects as maps
+- The Map object is a simple key/ value data structure. Any value may be used as either a key or a value, and objects are not converted to strings:
+let user1 = { name: "Sam"},
+user2 = { name: "Tyler"},
+
+totalReplies = new Map();
+
+totalReplies.set( user1, 5);
+totalReplies.set( user2, 42);
+
+console.log( totalReplies.get( user1) );
+console.log( totalReplies.set( user2) );
+
+- we use the get() and set() methods to access values in Maps
+- Maps are iterable, so they can be used in a for...of loop. Each run of the loop returns a [key, value] pair for an entry in the Map:
+for(let [key, value] of mapSettings) {
+	console.log(`${key}` = ${value});
+}
+- The WeakMap is a type of Map where only objects can be passed as keys. Primitive data types - such as strings, numbers, booleans, etc - are not allowed.
+- All available methods on a WeakMap require access to an object used as a key
+- WeakMaps are not iterable, therefore they can't be used with for...of
+- WeakMaps are better with memory: individual entries in a WeakMap can be garbage collected while the WeakMap itself still exists
+
+C. Sets
+-  Arrays don't enforce uniqueness of items. Duplicate entries are allowed. In order to prevent this, we can use sets.
+- The Set object stores unique values of any type, whether primitive values ("myString") or object references ({ versions: "2015"})
+- Duplicate entries are ignore
+- We use the add() method to add elements to a Set:
+let tags = new Set();
+tags.add("web");
+tags.add("web"); // ignored
+- Set objects are iterable, which means they can be used with for...of and destructuring:
+for(let tag of tags) {console.log(tag);} // for of
+let [a, b, c] = tags; // destructuring
+- The WeakSet is a type of Set where only objects are allowed to be stored: 
+let weakTags = new WeakSet();
+weakTags.add({ name: "JavaScript"}); // only objects can be added
+- weakTags.has(iOS); // checks if an object is part of the set 
+- weakTags.delete(iOS) // removes object from the set
+- WeakSets cannot be used with for...of and they offer no methods for reading values from it
+- We can use WeakSets to create special groups from existing objects without mutating them. Favoring immutable objects allows for much simpler code with no unexpected side effects
+- to indicate a change to the object,  add an object to a WeakSet and use the WeakSet to review those changes without needing to access the original object
+
+5. Classes and Modules
+A. Classes
+- a common approach to encapsulation in JavaScript is using a constructor function:
+function SponsorWidget(name, description, url) {
+	this.name = name;
+	this.description = description;
+	this.url = url;
+}
+SponsorWidget.prototype.render = function () { 
+	//
+}
+let sponsorWidget = new SponsorWidget(name, description, url);
+sponsorWidget.render();
+- To define a class, we use the class keyword followed by the name of the class. The body of a class is the part between curly braces:
+class SponsorWidget {
+	
+	constructor() {
+		this.name = name;
+		this.description = description;
+		this.url = url;
+	}
+
+	render() {
+		let link = this._buildlink(this.url);
+		//...
+	}
+}
+let sponsorWidget = new SponsorWidget(name, description, url);
+sponsorWidget.render();
+- Instance variables set on the constructor method can be accessed from all other instance methods in the class
+- Prefixing a method with an underscore is a convention for indicating that it should not be invoked from the public API
+- The class syntax is not introducing a new object model to JavaScript. It's just syntactical sugar over the existing prototype-based instance. It's just a sweeter way to write the same thing.
+- we can use class inheritance to reduce code repetition. Child classes inherit and specialize behavior defined in parent classes.
+- The extends keyword is used to create a  lass that inherits methods and properties from another class. The super method runs the constructor function from the parent class:
+class SponsorWidget extends Widget {}
+- Child classes can invoke methods from their parent classes via the super object: super.parse() or super()
+
+B. Modules (1)
+- The common solution for modularizing code relies on using global variables. This increases the chances of unexpected side effects and potential naming conflicts
+- export a function:
+export default function() {}; // in './flash-message'
+- import an exported function:
+import flashMessage from './flash-message';
+- To import modules we use the import keyword, specify a new local variable to hold ints content, and use the from keyword to tell the JavaScript engine where the module can be found.
+- because we are using the default export, the flashMessage variable can be named anything
+- modules still need to be imported via <script>, but no longer pollute the global namespace
+- The default type export limits the number of functions we can export from a module
+- In order to export multiple functions from a single module, we can use a named export:
+export function alertMessage() {}
+export function logMessage() {}
+- Functions from named exports must be assigned to variables with the same name enclosed in curly braces:
+import { alertMessage, logMessage } from './flash-message';
+- We can also import the entire module as an object and call each function as a property from this object:
+import * as flash from './flash-message';
+flash.alertMessage();
+flash.logMessage();
+- We can export multiple functions at once by passing them to export inside curly braces:
+function alertMessage() {}
+function logMessage() {}
+export { alertMessage, logMessage }
+import { alertMessage, logMessage } from './flash-message';
+
+C. Modules (2)
+- Redefining constants across our application is unnecessary repetition and can lead to bugs
+- Placing constants on their own module allows them to be reused across other modules and hides implementation details (a.k.a., encapsulation):
+const MAX_USERS = 3, MAX_REPLIES = 3;
+export { MAX_USERS, MAX_REPLIES };
+import {  MAX_USERS, MAX_REPLIES } from './constants';
+- We can now import and use our constants from other places in our application
+- Classes can also be exported from modules using the same syntax as functions. Instead of 2 individual functions, we now have 2 instance methods that are part of a class:
+export default class FlashMessage { }
+import FlashMessage from './flash-message';
+let flash = new FlashMessage("Hello");
+- Imported classes are assigned to a variable using import and can then be used to create new instances.
+- Another way to export classes is to first define them, and then use the export statement with the class name inside curly braces.
+
+6. Promises, Iterators, and Generators
+A. Promises
+- It's very important to understand how to work with javascript single-thread model. Otherwise, we might accidentally freeze the entire app, to the determent of user experience.
+- Once the browser blocks executing a script, it stops running other scripts, rendering elements, and responding to user events like keyboard and mouse interactions.
+- Synchronous style functions wait for return values:
+let results = getPollResultsFromServer("Sass vs. LESS"); // the page will freeze until a value is returned from this function
+ui.renderSidebar(results); 
+- In order to avoid blocking the main thread of execution, we write non-blocking code like this:
+getPollResultsFromServer("Sass vs. LESS", function(results) {
+	ui.renderSidebar(results);
+}); // Asynchronous style functions pass callbacks
+- this is passing callbacks to continue execution, also known as continuation-passing style (CPS) async programming
+- In continuation-passing style (CPS) async programming, we tell a function how to continue execution by passing callbacks. It can grow to complicated nested code, because we have to check for errors on every single callback
+- A promise is a new abstraction that allows us to write async code in an easier way.
+- The Promise constructor function takes an anonymous function with 2 callback arguments known as handlers; hanlders are responsible for resolving or rejecting the promise
+- Creating a new Promise automatically sets it to the pending state. Then, it can do 1 of 2 things: become fulfilled or rejected
+- new Promise();
+- resolve(value);
+- reject(value);
+- A promise represents a future value, such as a the eventual result of an asynchronous operation
+- We can use the then() method to read results from the Promise once it's removed. This method takes a function that will only be invoked once the Promise is resolved.
+- We can also chain multiple calls to then() - the return value from 1 call is passed as an argument to the next
+- We'll call the reject() handler for unsuccessful status codes and also when the onerror event is triggered on our request object. Both move the Promise to a rejected state.
+- We can make our code more succinct by passing function arguments to then, instead of using anonymous functions:
+function filterResults(results) {//...}
+let ui = {
+	renderSidebar(filterResults) {//...}
+};
+getPollResultsFromServer("Sass vs. LESS")
+	.then(filterResults)
+	.then(ui.renderSidebar)
+	.catch(function(error) {
+		console.log("Error: ", error);
+	});
+- Example Code:
+export default function getReplies(topicId){
+  return new Promise(function(resolve, reject){
+    _getRepliesForTopic(topicId, function(data){
+      let replies = data.replies;
+      if(replies){
+        resolve(replies);
+      }else{
+        let error = new Error("An error occurred");
+        reject(error);
+      }
+    });
+  });
+}
+
+import getReplies from "./get-replies";
+
+let topicId = 27;
+let getReplies = getReplies(topicId);
+getReplies.then(function(replies){
+  console.log( replies );
+});
+
+B. Iterators
+- Arrays are iterable objects, which means we can use them with for...of
+- Plain JavaScript objects are not iterable, so they do not work with for...of out-of-the-box.
+- Iterables return an iterator object. This object knows how to access items form a collection 1 at a time, while keeping track of its current position within the sequence:
+let iterator = names[Symbol.iterator]();
+let name = iterator.next();
+- Each time next() is called, it returns an object with 2 specific properties: done and value
+- done will be false if the iterator is able to return a value from the collection, and true if the iterator is past the end of the collection
+- any value is returned by the iterator. When done is true, this returns undefined
+- An iterator is an object with a next property, returned by the result of calling the Symbol.iterator method
+- We can use Object.keys to build an array with property names for our object. We'll also use a counter (count) and a boolean flag (isDone) to help us navigate our collection; we use count to keep track of the sequence and also to fetch values from the properties array
+
+C. Generators
+- The function *declaration defines generator functions. These are special functions from which we can use the yield keyword to return iterator objects:
+function *nameList() {
+	yield "Same";
+	yield "Tyler";
+}
+- Generator functions return objects that provide the same method expected by for...of, the spread operator, and the destructuring assignment.
+- calling the function returns a generator object:
+for(let name of nameList()) {
+	console.log( name );
+}
+- Knowing how to manually craft an iterator object is important but there's a shorter syntax.
