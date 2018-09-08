@@ -1,0 +1,47 @@
+- Sections and subsections, like an outline
+- Each heading tag creates the outline
+- article, aside, nav, section // for sections
+- footer, header, main // for grouping content
+- // !doctype is needed for old browsers
+	html(lang="en")
+		head
+			meta(charset="utf-8")
+			title
+		body
+- html5.js // google script for }
+- Primary and Secondary content
+- Primary - begins with an initial outline
+- Create comments for each section in the HTML body
+- articles are stand-alone content that is sufficient in an RSS feed
+- sections group themed content that relates to each other
+- aside elements relate to the page content but are not part of that content
+- footer is for content like contact, copyright, etc.
+- header is for page title and nav elements
+- main is for the main content
+- h tags actually create new sections
+- h tags are all about indicating sections and sub-sections of your document
+- nav can be inside or outside of the header
+- wrap your nav items in a ul list
+- introductory content and navigation belongs in the header
+- you can have more than one header on a page, like for an article introduction
+- footers contain information about a section and you can have multiple footers on a page
+- HTML5 outliner exension
+- 
+- figure is used to define content that illustrates the content it is related to
+- fig caption describes the figure
+- for example, figures are used for images, video, graph, code examples, and any type of content that illustrates.
+- asides should be placed as children of the parents they relate to
+- The div is a last resort element, though good for javascript controls and styling purposes, such as grouping elements for style or an extra measure of organization.
+- definition list definition term definition
+- attention stressed alternate voice
+- single contact information for article or document
+- fine print or disclaimer
+- - search result(s) or highlight(s)
+- January 17th, 2014 - see the specs (must be formatted in a valid date string) - allows the date to be read by machines (the browser)
+- rel attribute - adds semantic value and information to links (not required in all cases)
+- - for team members or your future self
+- 
+- class=" " and id=" " attributes - ids should be placed on unique elements - classes identify content that may or may nor repeat within a page
+- ARIA landmark roles - role="banner" for screen readers, accessibility, and functionality
+- microformats (http://microformats.org/) or schema.org - improve SEO
+- https://search.google.com/structured-data/testing-tool?hl=EN
