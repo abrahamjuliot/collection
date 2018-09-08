@@ -1,0 +1,32 @@
+1. Introduction
+- mobile-friendly, subtitles, contrast
+- accessibility is the right thing to do
+- accessibility leads to good practice
+- accessibility helps to avoid legal concerns
+- use ems instead of px to assist screen zooming
+- don't put text in images
+- view your site in html only (no css, img, or js) to see how a screen reader might see it
+- imgs should have an alt or a caption
+- try to provide transcripts for audio and subtitles for video. Youtube offers auto transcription
+- your site should not rely on audio to work
+- try to make all the functionality on your site keyboard accessible
+- don't rotate-hide content too fast
+
+2. Websites
+- organize information least detailed to most detailed, moving from broad items like titles to specific things like comparison
+- use large clickable areas to assist vision
+- use unordered list for navigation
+- be very descriptive of your img or the purpose of your img in your alt tags
+- give all your block elements descriptive ids
+- with css you can give your h1 heading a text-indent: -20000px and then use something else, like and background img url, to take its place as a header logo
+- :hover, :focus for a clickable element should be styled the same; because when elements are tabbed, the focus style will take effect
+- don't rely on the blue outline on focus, because its not in all browsers
+- use large font sizes for things that are very important
+
+3. Web Apps
+- tabindex="1" // place in form elements to decide the order they are each tabbed
+- use a caption tag for your tables and if necessary, a summary attribute
+- give your header cells a scope attribute to indicate if its a col or row header
+- don't rely on flash an images to present data
+- for attributes should correspond with an id
+- make sure your charts can be read by screen readers
