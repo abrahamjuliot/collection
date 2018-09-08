@@ -1,0 +1,12 @@
+- function hello() { echo ''Hello, World!"; }
+- hello();
+- $string; function add_some_extra() { global $string; } // pass arg by global
+- function add_some_extra(&$string) { } // pass arg by reference
+- function do_some_extra($string) { } // pass arg by value 
+- function greet($name = "friend") {} // default arg
+- function greet($time = Null) { if($time) { } else { } } // optional arg
+- hello(); $func = "hello"; $func(); // variable function (useful for callbacks)
+- $greet = function() { }; // anonymous function
+- $name = "friend"; $greet = function() use ($name) { echo "Hello there, $name"; }; // use keyword passes a value into a closure or an anonymous funciton
+- http://php.net/manual/en/functions.internal.php
+- start making things, use cook books, and study/ walk through the docs (work hard and have a little joy)
