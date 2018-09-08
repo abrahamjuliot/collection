@@ -1,0 +1,55 @@
+1. How Ruby Works
+- ruby -v runs ruby ad displays the version
+- irb opens an interactive ruby console
+- using irb puts "Hello World"
+- print will print to the console
+- puts (put string) will print a newline to the console
+- gets gets input from the console
+
+2. Ruby Strings
+- "#\\{interpolation\\}" must have double quotes or be within %Q() or %Q||, etc.
+- <<-MYNAME
+line one
+line 2
+MYNAME
+# strings can be multi lined and will print multi lines
+
+`ruby
+print "Please enter your name: "
+name = gets
+puts "Hello #\\{name\\}!"
+`
+`ruby
+greet = <<-GREET
+Hello #\\{name\\}
+GREET
+puts greet
+`
+- n t, s, etc work in ruby
+- str.upcase
+- str.downcase
+- str.reverse
+- str.reverse.upcase.downcase.reverse
+- http://ruby-doc.org/core-2.1.2/String.html
+- name.upcase! changes the variable
+
+3. Ruby Numbers
+- (1.2).class // returns the type (type of class), which is a float
+- 2 ** 3 // 2 to the 3rd power
+
+4. Ruby Methods
+- method names can contain ! and ?
+- def method_name
+end
+method_name #call
+
+`ruby
+# parentheses are optional
+def add(a, b)
+	puts "Adding #\\{a\\} and #\\{b\\}:"
+	return a + b
+end
+
+add(2, 4) # returns 6
+add(1, 7) # returns 8
+`
