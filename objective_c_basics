@@ -1,0 +1,293 @@
+1. Getting Oriented - Xcode and Learning to Code
+- Objective-C includes all of C
+
+2. Basic Data Types and Variables
+- NSString *firstName;
+firstName = @"Jaime";
+NSLog(@"firstName: %@", firstName); // %@ means print the value of the variable
+- %i for int, %f for float or double
+- int, float, double
+- BOOL hasLicense = true;
+
+3. Introduction to Operators and Conditionals
+- if () \\{ \\} else if \\{ \\} else \\{ \\}
+- enum popCornSizes \\{
+	kids = 1,
+	parents,
+	grandParents,
+\\}
+- switch (popCornSizes ) \\{
+	case kids : // statement(s);
+		break;
+	case parents: // statement(s);
+		break;
+	default: // statement(s);
+\\}
+
+4. More Operators!
+- &&, ||, !true, !false
+
+5. Scope and Loops
+- conditional blocks have their own scope and functions have their own scope
+- for (int i = 0; i < 10; i++) \\{ \\}
+- break, continue
+
+6. Practicing with Immersive Examples
+- arc4random()%6 // random number between 0 and 5
+
+1. Fundamentals of C
+- The C Programming Language (book)
+- basic program:
+#include 
+int main() {
+	// your code goes here
+	float myArray[ ] = {2, 3, 5, 7 }, // size is optional
+	int days_in_a_week = 7,
+	float cm_to_in = 2.54,
+	char the_w = 'W';
+	printf("%d days in a week.\n", days_in_a_week);
+	printf("%f cm per in.\n", cm_to_in);
+	printf("%c is a cool hotel.\n", the_w);
+	return 0;
+}
+
+2. Functional Programming in C
+- for () { }
+- while () { }
+- do { } while ();
+- if () { } else if () { } else { }
+- switch (myVar) {
+	case 'a':
+		// do something
+		break;
+	default:
+		// default
+		break;
+}
+- int sum(int a, int b); // declaration
+int main() { int a = 1, b = 2; printf(sum(a, b)); return 0;} // call
+int sum(int a, int b) { return a + b; } // implementation
+- a void function returns nothing
+- functions and their code blocks each have their own scope
+
+3. Pointers and Memory
+- 
+char *letter; // letter is declared a pointer
+char c = 'k'; // c has address which 'k' is assigned to
+letter = &c; // letter points to the address of c
+printf("%c is always the same as %c\n", c, *letter); 
+// *letter will get the value of the address it points to
+
+- struct:
+// declare above main
+typedef struct {
+	float center[3];
+	float radius;
+} Sphere;
+Sphere makeSphere(float *c, float r);
+// declare in main
+float c[ ] = { 23, 45, 67};
+float r = 32;
+Sphere ball = makeSphere(c, r);
+// declare below main
+Sphere makeSphere(float *c, float r) {
+	Sphere sphere;
+	sphere.center[0] = c[0];
+	sphere.center[0] = c[1];
+	sphere.center[0] = c[2];
+	sphere.radius = r;
+}
+- note, object oriented programming will merge struct functions into object methods
+- when we pass an array to a function we reference the array with a *
+
+4. Introduction to Objective-C
+- #import 
+int main() {
+	return 0
+}
+- in Sphere.m file: // implementation
+#import "Sphere.h"
+@implementation Sphere
+// setter
+-(void)setRadius: (float)radius {
+	_radius = radius; // assign to instance variable
+}
+// getter
+-(float)radius {
+	return _radius;
+}
+// setter
+-(void)setCenter: (NSArray *)center {
+	_center = center;
+}
+// getter
+-(NSArray *)center {
+	return _center;
+}
+@end
+- in Sphere.h file // Interface
+#import 
+@interface Sphere : NSObject {
+	NSArray *_center;
+	float _radius;
+}
+-(void)setRadius: (float)radius; // setter
+-(float)radius; // getter
+-(void)setCenter: (NSArray *)center; // setter
+-(NSArray *)center; // getter
+@end
+- in main.m file, in the main function:
+Sphere *ball = [[Sphere alloc] init];
+[ball setRadius: 25];
+NSLog(@"ball radius %f", [ball radius]);
+- C Functions:
+type functionName(param1type param1Name, param2Type param2Name);
+type foo = functionName(param1, param2);
+- Objective-C Methods:
+-(type)instanceMethodWithParam1:(param1Type)param1Name andParam2:(param2Type)param2Name
+type foo = [classInstance instanceMethodWithParam1:param1 andParam2:param2]
+- setters and getters can be written in properties: 
+@interface Sphere : NSObject
+@property(nonatomic) float radius;
+@property(nonatomic, strong) NSArray *center;
+-(void)setCenter: (NSArray *)center radius:(float)radius
+@end
+- It is through inheritance that you can create objects that share some of the same properties and behaviors.
+- Composition refers to the ability of an object being "composed of" various other objects.
+- example of inheritance:
+// Gem.h
+@interface Gem : NSObject
+@end
+// Ruby.h
+@interface Ruby : Gem
+@end
+// Bling.h
+@interface Bling : NSObject
+@property(nonatomic, strong) Ruby *ruby;
+@end
+
+5. Foundation Frameworks
+- NSNumber:
+NSNumber *mike;
+mike = [[NSNumber alloc] initWithInt: 23];
+NSLog(@"mike %@", mike);
+
+mike = @23 // alternate;
+NSNumber *pi = @3.145;
+NSLog(@"pi %@", pi);
+
+NSNumber *fancy = [NSNumber numberWithFloat: 123.321];
+NSLog(@"fancy %@", fancy);
+- NSString:
+NSString *alfa = @"alfa";
+NSString *delta = @"alfa";
+NSLog(@"%@ %@", alfa, delta);
+
+NSString *concat = [[alfa stringByAppendingString:delta]nstringByAppendingString:@"lotsmore"];
+NSLog(@"%@", concat);
+
+NSString *upper = [alfa uppercaseString];
+
+NSString *color = @"Purple";
+NSString *preference = @"My favorite color is ";
+NSString *favorite = [preference stringByAppendingString:color];
+- more documentation is available on xcode documentation
+- NSArray:
+NSArray *foo = [[NSArray alloc] initWithObjects:@"f", @"o", @"o", nil];
+NSLog(@"foo %@", foo);
+- the for in loop
+for (NSString *string in foo) {
+	NSLog(@"%@", string);
+}
+
+NSString *tang = foo[2];
+NSLog(@"%@", thang);
+
+NSArray *foo = @[@"f", @"o", @"o"]; // alternate
+- NSMutableArray:
+NSMutableArray *lots = [[NSMutableArray alloc] init];
+lots[0] = @"one";
+lots[1] = @"two";
+lots[2] = @"three";
+lots[3] = @"four";
+[lots removeObjectAtIndex:2];
+
+- another example of the for in loop:
+NSArray *drinks = @[@"juice", @"water", @"coffee"];
+for (NSString *drink in drinks) {
+ NSLog(@"%@", drink);
+}
+- While an array stores a sequential list of objects. A dictionary stores unordered associations of keys and values. A key within an NSDictionary identifies its related value.
+- NSDictionary:
+NSDictionary *book = [[NSDictionary alloc] initWithObjectAndKeys: @"Cat Man", @"title", @"Susan", @"author", nil];
+NSLog(@"book %@", book);
+
+NSDictionary *book = @{@"title":@"Cat Man", @"author":@"Susan"}; // alternate
+
+NSString *string = [book objectForKey: @"author"]; // retrieve the value for author
+- NSMutableDictionary:
+
+NSMutableDictionary *mutableBook = [NSMutableDictionary dictionaryWithDictionary: book];
+[mutableBook setObject:@1957 forKey:@"year"]; // adds the new key value year: 1957
+- for in loop example on dictionaries:
+for (NSString *string in [mutableBook allKeys]) {
+	NSLog(@"key %@ value %@", string, [mutableBook objectForKey:string]);
+}
+
+6. Advanced Objective-C
+- Memory managment:
+Shape *myShape = [[Shape alloc] init]; // reference 1
+Shape *otherShape = myShape; // reference 2
+otherShape = nil; // reference 1
+myShape = nil; // reference 0, deallocated
+- @property(nonatomic, ?):
+- nontatomic, strong // ensure strong reference is maintained
+- nonatomic, copy // makes a copy of the reference
+- nonatomic, weak // points to an object but does not increase the reference count
+- nonatomic, assign // used for floats, ints and chars as non pointers with no reference
+- return [super area] // call the method further up the inheritance chain
+- Catagories: An alternative to subclassing, Objective-C categories provide a means to adding methods to an existing class, whether it's a system class or a custom class
+- Dynamic Typing: Dynamic typing allows you to declare a variable capable of storing an object of any type. In Objective-C this achieved with the id type:
+Shape *shape = [[Shape alloc] init];
+NSArray *mixed = @[ @23, @"tango", shape];
+for (id thing in mixed) {
+	NSLog(@"%@", thing);
+}
+- the type of id is a generic pointer of an unspecified object:
+id thing = nil;
+thing = @4;
+NSLog(@"thing = %@", thing);
+
+7. Beyond the Basics
+- Primitive data types: char (%c), int (%d), unsigned int (%u), long (%ld), float (%f), double (%lf)
+- primitive data types give you fixed memory and automatic storage
+- With pointers we get dynamic memory and variable storage
+- &myVar // & will return the variable's memory address:
+int max 32767
+int *p; // point to an int
+p = &max; // assign p the memory address of max
+- It is better to pass arguments to functions by reference rather than create copies, which take up more memory:
+increment(&i) where the void function receives *x and uses *x as *x // note the memory address to *x is accessed by x
+- pass by reference to avoid duplicate memory allocation
+- aloc allocates a memory address
+- init initializes the memory witha value:
+
+NSNumber *number; // declare variable
+number = [NSNumber alloc]; // allocate memory
+[number initWithInt:100]; // initilize value
+
+// equivalent to
+NSNumber *number = [NSNumber alloc];
+[number initWithInt:100];
+
+// equivalent to
+NSNumber *number = [[NSNumber alloc] initWithInt:100]
+
+// equivelant
+NSNumber *number = @100 // literals
+
+- @".." // NSString
+- @100 // NSNumber
+- @[] // NSArray
+- @{} // NSDictionary
+- the documentation has sample code that should be studied
