@@ -1,0 +1,125 @@
+1. Introduction to Collections
+- colletion types: arrays, dictionaries, sets
+- var nums = [1, 2, 3]
+- var nums: [String] = ["1", "2", "3"]
+- nums.append("4") // append element
+- nums += ["4"] // alternate method to append
+- nums[0] // first element (subscript)
+- nums.insert("10", atIndex: 2) // insert element
+- nums.removeAtIndex(2) // remove element
+- nums.count // returns the number of elements in the array
+
+2. Dictionaries
+- a dictionaries is a set of key value pairs
+- var airportCodes: [String: String] = ["LGA": "La Guardia", "LHR": "Heathrow"]
+- do not use a dictionary if order matters becasue order is not preserved
+- airportCodes["LGA"] // returns value of the key
+- airportCodes["SYD"] = "Sydney Airport" // adds a key and value to the dictionary
+- airportCodes["LGA"] = "La Guardia International" // updates value of the key
+- airportCodes.updateValue("Dublin Airport", forKey: "DUB") // if the key doesnt exist, a new key value pair is created
+- airportCodes["DXB"] = nil // this removes the value, nil signifies nothing or blank
+- airportCodes.removeValueForKey("DUB") // removes the keys value
+- empty dictionary keys of type optional return nil while an array does not
+
+`swift
+// Enter your code below
+var iceCream = [
+ "CC": "Chocolate Chip",
+ "AP": "Apple Pie",
+ "PB": "Peanut Butter"
+]
+
+iceCream.updateValue("Rocky Road", forKey: "RR")
+
+let applePie = iceCream["AP"]
+
+iceCream.updateValue("Chocolate Chip Cookie Dough", forKey: "CC")
+`
+3. Control Flow With Loops
+- print(num[0]) // prints array element to console
+- for name in array \\{ statements \\}
+- for task in todo \\{print(task)\\}
+- for (key, value) in world \\{ statements \\}
+- 1...5 // 1-5 range
+- 1..<5 // 1-4 range
+- for number in 1...10 \\{ print("(number) times 5 is equal to (number * 5)") \\}
+
+` swift
+var results: [Int] = []
+for multiplier in 1...10 \\{
+ results.append(6*multiplier)
+\\}
+`
+- while condition \\{ statement \\}
+- var x = 0
+while x <= 20 \\{ print(x) x++ \\}
+- repeat \\{ statements \\} while condition
+
+`swift
+let numbers = [2,8,1,16,4,3,9]
+var sum = 0
+var counter = 0
+
+// Enter your code below
+while counter < numbers.count \\{
+ sum += numbers[counter]
+ counter++
+\\}
+`
+
+4. Control Flow With Conditional Statements
+- if condition \\{ statements \\} esle if \\{ statements\\} else \\{ statements \\}
+- &&, ||
+
+`swift
+var results: [Int] = []
+
+for n in 1...100 \\{
+ // Enter your code below
+ if (n % 7 == 0) && (n % 2 != 0) \\{
+ results.append(n)
+ \\}
+ // End code 
+\\}
+`
+- switch value \\{
+	case value1: statements
+	case value2: statements
+	default: statements
+\\}
+- switch value \\{
+	case value1, value2: statements
+	case value3, value4: statements
+	default: statements
+\\}
+- switch value \\{
+	case 1..<10: statements
+	case 10...20: statements
+	default: statements
+\\}
+
+`swift
+var europeanCapitals: [String] = []
+var asianCapitals: [String] = []
+var otherCapitals: [String] = []
+
+let world = [
+ "BEL": "Brussels", 
+ "LIE": "Vaduz", 
+ "BGR": "Sofia", 
+ "USA": "Washington D.C.", 
+ "MEX": "Mexico City", 
+ "BRA": "Brasilia", 
+ "IND": "New Delhi", 
+ "VNM": "Hanoi"]
+
+for (key, value) in world \\{
+ // Enter your code below
+ switch key \\{
+ case "BEL", "LIE", "BGR" : europeanCapitals.append(value)
+ case "VNM": asianCapitals.append(value)
+ default: otherCapitals.append(value)
+ \\}
+ // End code
+\\}
+`
