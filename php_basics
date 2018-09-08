@@ -1,0 +1,43 @@
+1. What is PHP
+- Server side web language
+- first stood for personal home page (1995), but now stands for PHP hypertext preprocessor
+- PHP can be embedded directly in your html code using code blocks
+- index.php allows the command line interpreter to run the file
+- // php code block
+
+2. PHP Data & Structure
+- variables in php start with the $ sign
+- 
+- 
+- single statements do not rquire semi colons, but multiple statements or lines do
+- comments //
+
+3. PHP Datatypes
+- ints, floats, strings, arrays , bools, objects, resources (files, query responses)
+- gettype($one) // returns the data type
+- a float operated on or with an int will return float
+- $greeting = "hi"; $greeting[0] // returns "h"
+- \n // new line
+- $bool = TRUE
+- $var_dump($bool) // prints the var and value
+- zero values and empty strings are falsey values
+- constants don't require a dollar sign as a prefix
+- php has built in constants
+- define("YEAR", 2014);
+- $myArray = array('eyes', 2); 
+- $myArray[0] // 'eyes'
+- arrays can hold mixed data types
+- associative arrays allow us to use a string as a key:
+$eye_colors = array('chris' => 'blue', 'judy' => 'green'); // $eye_colors['chris']
+
+4. PHP Operators
+- an operator takes one or more values and yields another value
+- +, -, *, /, ++, --
+- ==, ===, !=, !==, >, =
+- and, or, !
+- . // period is the concat operator
+
+5. PHP Conditionals & Loops
+- if( ) { } elseif ( ) { } else { }
+- for($count = 0; $count < 10; $count++) { }
+- foreach( $icons as $icon) { }
