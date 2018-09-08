@@ -100,34 +100,34 @@ li:empty {
   - ::before
   - ::after
   - attr()
+
+```css
 	
-	```css
-	
-	.jpg::before {
-		content: "JPG - ";
-		font-size: .75em;
-  }
-	
-	.zip::before {
-		content: url(../img/icn-zip.svg);
-		margin-right: 8px;
-	}
-	
-	h1::before {
-		content: "";
-		display: inline-block;
-		width: 24px;
-		height: 24px;
-		border-radius: 50%;
-		background: coral;
-		margin: 0 10px;
-	}
-	
-	a::after {
-		content: attr(title);
-		display: inline-block;
-		color: initial;
-		font-size: .65em;
-		margin-left: 5px;
-	}
-	```
+.jpg::before {
+	content: "JPG - ";
+	font-size: .75em;
+}
+
+.zip::before {
+	content: url(../img/icn-zip.svg);
+	margin-right: 8px;
+}
+
+h1::before {
+	content: "";
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: coral;
+	margin: 0 10px;
+}
+
+a::after {
+	content: attr(title);
+	display: inline-block;
+	color: initial;
+	font-size: .65em;
+	margin-left: 5px;
+}
+```
