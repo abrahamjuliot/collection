@@ -1,0 +1,117 @@
+1. Installing Sass
+- Sass is a ruby gem
+- first rename your style sheet to .scss or .sass extension
+- bring up terminal on the mac
+- gem install sass (installs latest version)
+- sudo gem install sass (install to get around permission issues)
+- sass -v (returns the version we installed)
+- gem update sass (updates to the latest version)
+- cd desktop/myProjectFolder (open project folder)
+- sass --watch scss:css // watch for and updating changes
+- the watch command will generate the css file for you
+- be sure not to close the console as this will stop the watch process
+- ctrl+c will stop watch
+- there are tools that can automate this process (see teacher's notes)
+- any plain css written in scss is also valid scss
+2. Refactoring Sass 
+- 1. Break related sections out into partials 
+- 2. Extract repeating patterns into extends
+- 3. Nest rules where it makes sense
+- 4. Create variables for repetitive values
+- 5. Convert repeating declaration groups into mixins
+- partials are files that have an underscore in the file name: _file.sass, these can be imported instead of compiled to css
+- create a gllobal index that will import all your partials
+- the goal is to keep partial files small and readable
+@import 'base/index'
+@import 'layout/index'
+@import 'components/index'
+- find repeating patterns in your code and extract them into placeholder selectors so you can reuse them as bits of code without extra output. These will not compile to css unless they are extended in a rule. 
+- %centered {text-align: center;} // center text
+-- .primary-content {
+	@extend %centered;
+}
+.secondary-content {
+	@extend %centered;
+}
+- avoid over using extends when building entire sections becuase it can be hard to maintain
+- extends are helpers
+- base styles for reusable blocks or elements should be placed in an extend
+- %clearfix {
+	&:after { // & references the parent selector in a rule
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+- place extends as the last import in your main index file to be imported
+- be careful with extends becuase you could bloat the code in the css output
+- avoid sass nesting if it is not necessary, becuase it produces really long selector chains and lot of needless specificity in our selectors: lots of nesting equals bloat
+- a
+	&:link
+	&:visited
+	&:hover
+- nesting is good for extending namespaces with the & parent selector
+.main
+	&-title
+- only nest if it makes sense
+- the variable partial should be imported first in your index, since all depends on it
+- the 2 tier color variable method: 1. declare the description of color 2. declare the function of the color
+- use the "name that color" tool on the web for help naming colors
+- start with your white, black, and grey colors
+// descriptive color variables ($blue, etc)
+// functional color variables ($color-primary, etc)
+$color-prim
+$color-sec
+$color-text-light : $white
+$color-text-base : $grey
+$color-text-dark : $silver-bed
+$color-border-light : lighten($grey, 35%) // sass color function
+$color-shadow : rgba($black, 0.8) // ass color function
+- create variables for your fonts
+$stack-sans-serif : Helvetica, Arial, sans-serif
+$stack-helvetica : 'Helvetica Neue', $stack-sans-serif
+$stack-abolition : 'Abolition Regular', $stack-sans-serif
+- you can also use a 2 tier font variable method and create functional font variables
+- Sass interpolation: '#{$path-img}/bear.jpg'
+- mixins are reusable code modules and a smart way of reusing code
+- mixins a great fro receiving arguments
+@mixin font-face($family, $file) {
+	@font-face {
+		font-family: $family
+		src: '#{$path-font}/#{file}-webfont-eot'
+	}
+}
+
+@include font-face('Abolition regular', abolition-regular)
+- another mixin example:
+@mixin text($size, $l-height: null, $weight: null, $color: null) { // by setting null, the css will not output unless we pass a value
+	font-size: $size;
+	line-height: $l-height;
+	font-weight: $weight;
+	color: $color;
+}
+- it's usually best to include mixins first in a rule, followed by the rest of the declarations
+body {
+	@include text(1em, 1.5, $color: $white); // notice the syntax required after skipping a variable argument is key value pair 
+}
+- nested media queries:
+- create breakpoint variables for your media queries
+.arrow {
+	@media ($large) {
+		display: none;
+	}
+}
+- nested media queries do not bloat file size in any significant way , though some have argued they do
+3. Debugging, Best Practices, and Production
+- Sass does not allow extending placeholders across media queries
+- imports should be in this order: variables, mixinx, base
+- when writing a sass rule, use this order: @extend placeholders first, @include mixins, add remaining declarations
+- use source maps in dev tools to view sass in dev tools
+- console: sass --watch scss:css --style expanded (expanded, compressed, compact) // changes the css output style
+- only the css output file should be uploaded to the server
+- codepen and sassmeister are excellent online tools
+- susy, breakpoint, bourbon provide helpful sass tools
+- the sass way and sass break are excellent blogs
+- be sure to view the sass documentation
+- Sass is driven by an amazing community
+- Learn and expirement
