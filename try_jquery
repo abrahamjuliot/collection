@@ -1,0 +1,160 @@
+1. Introduction to JQuery
+
+- jQuery("h1");
+- $("h1") // same as JQuery
+- $("h1").text( ); // returns the elements text
+- $("h1").text("New Text");
+- Make sure the DOM is loaded before executing jQuery
+- $(document).ready(function() { }); // execute function when the DOM is fully loaded
+- $("#container"); // select ID
+- $(".nav"); // select class
+- $("#type .specific") // select specific elements
+- // add to the bottom of HTML
+
+2. Traversing the DOM
+
+A. Searching the DOM
+- $("#destination li"); // selects all the li descendants
+- $("#destination > li"); // only selects the direct descendants
+- $(".promo, #france"); // selects elements with the class .promo OR id #france
+- $("#destination li:first"); // first child
+- $("#destination li:first"); // last child
+- $("#destination li:odd"); // odd child
+
+B. Traversing the DOM
+- $("#destinations").find("li") // find specific elements in the DOM, a faster method than selection
+- $("li").first()
+- $("li").last()
+- $("li").first().next() // walking the DOM - next
+- $("li").first().prev() // walking the DOM - previous
+- $("li").first().parent() // walking up DOM - parent
+- $("li").first().parent() // walking up DOM - parent
+- $("#destinations").children("li) // find the children, specifically li children 
+
+3. Working with the DOM
+A. Manipulating the DOM
+- $(document).ready( { } );
+- var price = $('From $399.99');
+-- .append()
+-- .prepend()
+-- .after()
+-- .before()
+- $('.element-class').before(price); // adds the p before the element
+- $('.element-class').after(price); // adds the p after the element
+- $('.element-class').prepend(price); // adds the p as the first child of the element
+- $('.element-class').append(price); // adds the p as the last child of the element
+- $('element').remove(); // removes the element form the DOM
+- price.appendTo() // alternative
+- price.prependTo() // alternative
+- price.insertAfter() // alternative
+- price.insertBefore() // alternative
+
+B. Acting on Interaction
+- $(document).ready(function() { $('button').on('click', function () { }); }); // click handler
+
+Example:
+$('button').on('click', function() {
+var message = $("Call 1-555-jquery-air to book this tour");
+$(".usa").append(message);
+$("button").remove();
+});
+
+$(document).ready(function(){
+$("button").on("click", function(){
+var message = $("Call 1-555-jquery-air to book this tour");
+$(".usa").append(message);
+$("button").remove();
+});
+});
+
+C. Refactor Using Traversing
+- When we use the keyword this we are referring to the item that triggered the event
+- $(this).remove(); // removes only the button that was clicked // instead of $("button").remove();
+- $(this).after(price); 
+- $(this).closest('.vacation').append(price); // search for the closest ancestor with the proper class, whereas. parents search for all ancestors with the proper class
+- $(this).find('button').remove();
+
+D. Traversing and Filtering
+- 
+- var amount = $(this).closest('.vacation').data('price');
+- var price = $('From $'+amount+'');
+- var vacation = $(this).closest('''.vacation');
+- var amount = vacation.data('price');
+- vacation.append(price); // faster method
+- $('.vacation').on('click', 'button', function() {}); // only target button if its inside a vacation class // Event Delegation
+- $('.vacation').filter('.onSale');
+- .addClass();
+- .removeClass();
+- $('.vacation').filter('.onSale').addClass('highlighted');
+- $('.highlighted').removeClass('highlighted'); // do this first
+
+4. Listening to DOM Events
+A. On Dom Load 
+- $('.confirmation').on('click', 'button', function() { 
+// find closest confirmation class and 
+// find elements with the ticket class
+$(this).closest('.confirmation').find('.ticket').slideDown();
+});
+- .slideDown()
+- .slideUp()
+- .slideToggle()
+- alert(('li').length); // alert the number of elements on the page // useful for debugging
+
+B. Expanding on on()
+- click, focusin, mousedown, mousemove, mouseover, mouseenter, dblclick, focusout, mouseup, mouseout, mouseleave
+- $('.confirmation').on('mouseenter', 'h3', function () { });
+- Place repeated code into a function
+- function showTicket () {
+$(this).closest('.confirmation').find('.ticket').slideDown();
+}
+- when you call the function, do not include () if you do not want it to execute when the doc loads. Exclude the () when you want the event to trigger the function
+- $('.confirmation').on('click', 'button', showTicket);
+Example:
+function showPhotos() {
+$(this).find("span").slideToggle();
+}
+
+$(document).ready(function() {
+$("#tour").on("click", "button", function() {
+$(".photos").slideToggle();
+});
+$(".photos").on("mouseenter", "li", showPhotos).on("mouseleave", "li", showPhotos);
+});
+
+C. Keyboard Events
+- Keyboard Events: Keypress, keydown, key up
+- Form Events: blur, select, change, focus, submit
+- $('.vacation').on('keyup', '.quantity', function() {})
+- adding a + to the beginning of an expression will convert it to a number // + string expression
+- .val() // set input value
+- .val() // get input value
+- var quantity = +$(this).val();
+
+D. Link Layover
+- .comments { display: none; }
+- .$('.vacation').on('click', '.expand',
+ function(event) {
+ event.preventDefault();
+ $(this).closest('.vacation')
+ .find('.comments')
+ .fadeToggle(); 
+});
+
+5. Styling
+A. Taming CSS
+- $(this).css('display', 'block');
+- $(this).css({'background-color': '#eee', 'border-color': '1px solid #967'});
+- .show()
+- .hide()
+- it is cleaner code to use addClass() to change styles
+- addClass(), removeClass(), toggleClass()
+
+B. Animation
+- $(this).animate({'top': '-10px'}); // defualt 400 ms
+- if ($(this).hasClass('highlight')) { }
+- $(this).animate({'top': '-10px'}, 'fast'); 
+- .vacation { transition: top 0.2s; }
+- .highlight { top: -10px; }
+
+
+6. Learn More
