@@ -1,0 +1,15 @@
+- using all can slow the browser rendering because all properties are checked
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+- if a property has an identifiable half way point, it can be transitioned.
+- http://leaverou.github.io/animatable/
+- https://docs.webplatform.org/wiki/css/properties/transform
+- transform: rotate(25deg), skewX(10deg), scale(1.1), translateX()
+- transform-origin: 50% 50% // default
+- http://cubic-bezier.com
+- perspective: 700px // creates the illusion of depth for children elements (larger valuse create a shallow perspective, more subtle)
+- perspective-origin: 50% 50% // default
+- transform: rotateY(55deg), rotateX(55deg) // add to child for 3d result
+- transform-style: preserve-3d // child elements of the child will also have 3d
+- backface-visibility: hidden // makes the backface hidden
+- rotateZ works the same as rotate
+- rotate3d(x, y, z, ,) / 1,0,1, 180deg or turn
