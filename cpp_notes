@@ -1,0 +1,1232 @@
+C++ NOTES
+ 
+CHAPTER 1
+1.1 - Why Program?
+1.2 - Computer Systems: Hardware and Software
+1.3 - Programs and Programming Languages
+1.4 - What is a Program Made of?
+1.5 - Input, Processing, and Output
+1.6 - The Programming Process
+1.7 -  Procedural and Object-Oriented Programming
+
+CHAPTER 2
+Primitive - char, int, boolean, float, double
+Reference - String, fstream, math
+
+// Double slash 						Marks the beginning of a comment. 
+# Pound sign 							Marks the beginning of a preprocessor directive. 
+< > Opening and closing brackets 		Encloses a filename when used with the #include directive. 
+( ) Opening and closing parentheses 	Used in naming a function, as in int main()
+{ } Opening and closing braces 			Encloses a group of statements, such as the contents of a function. 
+" " Opening and closing quotation marks Encloses a string of characters, such as a message that is to be printed on the screen. 
+; Semicolon 							Marks the end
+
+\n Newline 			Causes the cursor to go to the next line for subsequent printing. 
+\t Horizontal tab 	Causes the cursor to skip over to the next tab stop. 
+\a Alarm 			Causes the computer to beep. 
+\b Backspace 		Causes the cursor to back up, or move left one position. 
+\r Return 			Causes the cursor to go to the beginning of the current line, not the next line. 
+\\ Backslash 		Causes a backslash to be printed. 
+\' Single quote 	Causes a single quotation mark to be printed. 
+\" Double quote 	Causes a double quotation mark to be printed.
+
+Note: An escape sequence is stored in memory as a single character.
+
+Data Type Typical Size Typical Range 
+short int 				2 bytes 	-32,768 to +32,767 
+unsigned short int 		2 bytes 	0 to +65,535 
+int 					4 bytes 	-2,147,483,648 to +2,147,483,647 
+unsigned int 			4 bytes 	0 to 4,294,967,295 
+long int 				4 bytes 	-2,147,483,648 to +2,147,483,647 
+unsigned long int 		4 bytes 	0 to 4,294,967,295 
+long long int 			8 bytes 	-9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 
+unsigned long long int 	8 bytes 	0 to 18,446,744,073,709,551,615
+
+amount = 32L; // Forces the integer to be a Long
+amount = 32L; // Forces the integer to be a Long Long
+amount = 32F; // Forces the integer to be a float
+
+#include <string> // Required for the string class
+S e b a s t i a n \0 // C++ automatically places the null terminator at the end of string literals.
+
+Floating Point Representations 
+Decimal Notation  	E Notation 
+247.91 				2.4791E2
+0.00072 			7.2E–4
+2,900,000 			2.9E6
+
+// sizeof() is used to determine the size of a data type or variable
+cout << sizeof(variable) << sizeof(int); 
+
+Fundamental Arithmetic Operators 
+Operator 	Meaning 		Type 		Example 
+	+ 		Addition 		Binary 		total = cost + tax;
+	− 		Subtraction 	Binary 		cost = total − tax;
+	* 		Multiplication  Binary 		tax = cost * rate;
+	/ 		Division 		Binary 		salePrice = original / 2;
+	% 		Modulus 		Binary 		remainder = value % 3;
+	
+// Single-Line comments
+/* Multi-Line
+   Comments */
+   
+// Named Constants
+const double INTEREST_RATE = 0.069;
+
+// Using the define directive instead of const definitions
+#define INTEREST_RATE 0.069
+
+CHAPTER 3
+3.1 - THE CIN OBJECT
+	1.	cout << "Input a Value: "; // Question or Instruction to the User
+		cin >> inputVariable;      // Input from the user
+	2.	cin >> variable_1 >> variable_2; // Input sperated by a space or enter
+	
+3.2 - MATHEMATICAL EXPRESSIONS
+	1.	Arithmetic operators in order of precedence:
+	    (unary negation) - 
+	    * / % 
+	    + -
+	2.  Exponents - #include <cmath>
+	    area = PI * pow(radius, 2.0); // radius to the power of 2 [arguments and varibale should be doubles]
+	3. cout << (numerator / denominator) << endl; // Expressions sent to cout
+
+3.3 - TYPE CONVERSION
+When an operator works with two values of different data types, 
+the lower-ranking value is promoted to the type of the higher-ranking value.
+Note, however; when the final value of an expression is assigned to a variable, 
+it will be converted to the data type of that variable.
+	
+	1.	Data Type Ranking [highest to lowest]
+	long double // One data type outranks another if it can hold a larger number
+	double 
+	float 
+	unsigned long 
+	long 
+	unsigned int 
+	int
+	
+	EXAMPLE:
+	int x, y = 4; 
+	float z = 2.7; 
+	x = y * z; 
+	
+	In the expression y * z, y will be promoted to float and 10.8 will result from 
+	the multiplication. Since x is an integer, however, 10.8 will be truncated and 
+	10 will be stored in x.
+	
+	2. When you divide an integer by another integer in C++, the result is 
+	always an integer. If there is a remainder, it will be discarded. 
+	For example, in the following code, parts is assigned the value 2.0: 
+	double parts; 
+	parts = 15 / 6; // Altleast one number must be a floating point
+	                // if a floating number should be assigned to the variable
+
+3.4 - OVERFLOW AND UNDERFLOW
+Typically, when an integer overflows, its contents wrap around to that 
+data type’s lowest possible value. No warning or error message is given, 
+so be careful when working with numbers close to the maximum or minimum 
+range of an integer.
+
+3.5 - TYPE CASTING
+Necessary when dividing integers [one variable needs to be double]
+	1.	static_cast<DataType>(variable) // Converts a variable to a data type
+	2.  (DataType)variable // Converts a variable to a data type
+	3.  DataType(variable) // Converts a variable to a data type
+	
+3.6 - MULTIPLE AND COMBINED ASSIGNMENTS
+	1.	a = b = c = d = value;  // The value will be assigned to each variable
+	2.  variable = variable + 1; // A combined assignement operator
+	3.  +=, -=, *=, /=, %= // Combined assignement operators
+	
+3.7 - FORMATTING OUTPUT - #include <iomanip>
+	1.	setw() - Establishes print field of x spaces - right justified by 
+	    default and must be used before each value that is sent to cout.
+	    ***EXAMPLE: cout << setw(10) << "7spaces" << endl; 
+	       Output: "---7spaces" // --- is 3 blank spaces
+	2.  setprecision() - The number inside the parentheses specifies the total 
+		number of significant digits, before and after the decimal point. If
+		fixed is used, setprecision specifies digits after the decimal point.
+	3.	fixed - forces cout to print the digits in fixed point notation, or 
+		decimal.
+		***EXAMPLE: cout << setprecision(2) << fixed;
+	4.	showpoint - forces cout to display whole number with trailing zeros 
+		after a decimal point.
+		***EXAMPLE: cout << fixed << showpoint << setprecision(2) - Good example
+		for financial output.
+	5.  left  - Causes subsequent output to be left justified  //left << setw()  // Remains in effect until you use the right manipulator
+	6.	right - Causes subsequent output to be right justified //right << setw() // Remains in effect until you use the left manipulator
+	
+3.8 - WORKING WITH CHARACTERS AND STRING OBJECTS - #include <string>
+	1.	getline(cin, inputLine); - Reads an entire line including spaces and 
+		stores it in a string object.
+	2.	cin.get() - Inputs char or int and assigns to variable, or pauses the 
+		screen until the enter is pressed. 
+		***EXAMPLE 1: cout << " Enter a character or integer: "
+						   variable = cin.get()
+		***EXAMPLE 2: cout << "Press enter to continue"; 
+						   << cin.get();
+						 
+	3.	cin.ignore [between mixing cin and cin.get()] // Clearing the buffer
+			
+			cin.ignore(100,'\n');
+
+		***EXAMPLE: cout << "Enter value 1: ";
+					cin >> variable;
+					cin.ignore();
+					cout << "Enter value 2: "
+					variable = cin.get();
+	
+	4. String Member Functions
+	string state = "Texas"; 
+	int size = state.length(); // assigns the length of a string
+	
+	string greeting2, greeting1 = "Hello "; 
+	string name1 = "World";
+	greeting2 = greeting1 + name1; // greeting2 now holds "Hello World"
+	greeting1 += name1; // greeting1 is now "Hello World"
+	
+3.9 - MORE MATHEMATICL LIBRARY FUNCTIONS
+	1.	#include <cstdlib> // For rand and srand
+	2.  #inclulde <ctime>  // For the time function
+	***EXAMPLE: // Get the system time
+				unsigned seed = time();
+				// Seed the random number generator
+				srand(seed);
+				// Display random number
+				valueRandom = 1 + rand() % 1000 << endl; // 1000 indicates max
+
+abs 	y = abs(x); 	Returns the absolute value of the argument. The argument and the return value are integers. 
+cos 	y = cos(x); 	Returns the cosine of the argument. The argument should be an angle expressed in radians. The return type and the argument are doubles. 
+exp 	y = exp(x); 	Computes the exponential function of the argument, which is x. The return type and the argument are doubles. 
+fmod 	y = fmod(x, z); Returns, as a double, the remainder of the first argument divided by the second argument. Works like the modulus operator, but the arguments are doubles. (The modulus operator only works with integers.) Take care not to pass zero as the second argument. Doing so would cause division by zero. 
+log 	y = log(x); 	Returns the natural logarithm of the argument. The return type and the argument are doubles. 
+log10 	y = log10(x); 	Returns the base-10 logarithm of the argument. The return type and the argument are doubles. 
+sin 	y = sin(x); 	Returns the sine of the argument. The argument should be an angle expressed in radians. The return type and the argument are doubles. 
+sqrt 	y = sqrt(x); 	Returns the square root of the argument. The return type and argument are doubles. 
+tan 	y = tan(x); 	Returns the tangent of the argument. The argument should be an angle expressed in
+
+3.10 - FOCUS ON DEBUGGING - HAND TRACING A PROGRAM
+3.11 - FOCUS ON PROBLEM SOLVING
+ 
+CHAPTER 4 - MAKING DECISIONS
+4.1 - RELATIONAL OPERATORS
+	1.	>, <, >=, <=, ==, !=
+	
+4.2 - THE IF STATEMENT
+	1.	if (expression) // if the expression is true, execute the statement
+		   statement;
+	
+4.3 - EXPANDING THE IF STATEMENT
+	1.	if (expression) // if the expression is true, execute the statements
+		   {
+		   		statement;
+		   		statement;
+		   }
+		   
+4.4 - THE IF/ELSE STATEMENT
+	1. if (expression)
+		  statement or block;
+	   else
+	      statement or block;
+	      
+4.5 - NESTED IF STATEMENTS
+	1.	if (expression)
+	   {
+	   		if (expression)
+	   		{
+	   			statement;
+	   			statement;
+	   		}
+	   }
+	   
+	2.	if (expression) 
+	   {
+	   		if (expression)
+	   		{
+	   			statement;
+	   			statement;
+	   		}
+	   		else
+	   		{
+	   			statement;
+	   			statement;
+	   		}
+	   }
+	   else
+	   {
+	   		statement;
+	   }
+	   
+4.6 - THE IF/ELSE IF STATEMENT
+	1.	if (expression)
+		{
+			statement;
+			statement;
+		}
+		else if (expression)
+		{
+			statement;
+			statement;
+		}
+		else
+		{
+			statement;
+			statement;
+		}
+4.7 - FLAGS
+	1. bool variable = false
+	   if (expression)
+		  variable = true
+	   else
+	      variable = false
+4.8 - LOGICAL OPERATORS
+	1.  && - AND ***EXAMPLE: if (variable < 10 && variable > 5)
+	2.  || - OR ***EXAMPLE: if (variable > 10 || variable < 5)
+	3.  ! - NOT ***EXAMPLE: if (!(variable < 10 && variable > 5))
+	4.	Logical Operators in order of precednce
+	 	!, &&, || - Parenthesis may be used to change order of precedence
+4.9 - CHECKING NUMERIC RANGES WITH LOGICAL OPERATORS
+	1.	The && logical operator is good for finding conditions within a numeric 
+		range.
+	2.	The || logical operator is good for finding conditions outside a numeric 
+		range.
+4.10 - MENUS
+4.11 - FOCUS ON SOFTWARE ENGINEERING: VALIDATING USER INPUT
+	1.	Check numbers to ensure they are in a range of possible, reasonable, or 
+	    available values.
+	2.	Check for numbers that lead to no solution, such as division by zero.
+4.12 - COMPARING CHARACTERS AND STRINGS
+	 	'0'-'9' 48-57
+	 	'A'-'Z' 65-90
+	 	'a'-'z' 97-122
+	 	blank 32
+	 	period 46
+4.13 - CONDITIONAL OPERATOR - Alternative to if/else
+	1.	(expression_1) ? (expression_2) : (expression_3)
+		Means: If expression_1 is true
+		       execute expression_2
+		       else execute expression_3
+	2. variable = (expression_1) ? (expression_2) : (expression_3)
+		Means: The value assigned to variable will either be 1 or 0, False or 
+		True
+	3. (expression_1) ? (variable = 1) : (variable = 0)
+	4. cout << (expression ? "Statement" : "Alternate Statement"); 
+	[must use parenthesis in cout]
+4.14 - THE SWITCH STATEMENT - Alternative to if/else if
+	1.	switch (IntegerExpression) // integer, character, or expression value
+		{ // The constant expression must be an integer literal ('') or constant
+		  // and cannot be a variable or an expression.
+		case ConstantExpression1: statement(s) // Place 1 or more statements
+								  break; // must have for the program to stop
+		case ConstantExpression2: statement(s) // Place 1 or more statements
+								  break; // must have for the program to stop		
+		case ConstantExpression3: statement(s) // Place 1 or more statements
+								  break; // must have for the program to stop
+		default: statement(s)
+		}
+	2. case 'a':
+	   case 'A': cout << "Same output for various cases"; 
+	   			 break;
+4.15 - MORE ABOUT BLOCKS AND SCOPE
+	*The scope of a variable is limited to the block in which it is defined.
+	 Variables inside a set of braces have local scope or block scope. It is a 
+	 good idea to define variables near the part of the program where they are 
+	 used. The variablel is not visible befor eit is defined or after the 
+	 closing brace of a block. This is true of any variable defined inside a 
+	 set of braces. Although you can define variables inside nested blocks, you
+	 should avoid givng them the same name as variables in the outer block. It
+	 is too easy to confuse one with the other.
+	 
+5.1 - THE INCREMENT AND DECREMENT OPERATORS [++ and -- Intended for variables]
+	1.	num++; - Increament or adds 1 to the value
+	2.	num--; - Decrements or subtracts 1 from the value
+	3.	num++ is postfix, ++num is prefix - Postfix mode causes the increment to 
+	happen after the value of a variable is used in an expression. Prefix mode, 
+	however, causes the increment to happen first.
+	***EXAMPLE: variable = ++num // Assign increment in expression
+				variable = num++ // Assign increment after expression
+5.2 - INTRODUSCTION TO LOOPS - THE WHILE LOOP [Pretest Loop]
+	1.	while (expression)
+		      statement; // This cycle repeats until the expression is false
+	***EXAMPLE: int main ()
+				{
+					int loopNumber = 0;
+					while (number < 5)
+					{
+						cout << "Hello]n";
+						loopNumber++;
+					}
+					cout << "5 loops and finished!\n"
+					return 0;
+				}
+	2. Infinite Loop
+	***EXAMPLE: int number = 0
+				while (number < 5)
+				{
+					cout << "Hello\n";
+				}
+5.3 - USING THE WHILE LOOP FOR INPUT VALIDATION
+    ***EXAMPLE: 
+    			cout << "Enter... :";
+    			cin >> variable;
+    			while (expression)
+    			{
+    				cout << "INVALID INPUT: Enter... : ";
+    				cin >> variable;
+    			}
+5.4 - COUNTERS
+	***EXAMPLE: 
+				const int MIN_NUMBER = 1,
+						  MAX_NUMBER = 10; 
+			          int variable = MIN_NUMBER
+			    while (variable <= MAX_NUMBER)
+			    {
+			    	statement;
+			    	statement;
+			    	variable++;
+			    }
+5.5 - THE DO-WHILE LOOP [Postest Loop]
+	1.	do
+		{
+			statement;
+			statement;
+		} while (expression); // must be termintated with a semicolon
+5.6 - THE FOR LOOP [Pretest Loop]
+	1.	for (initialization; test; update) // no semicolon for update 
+			{
+				statement;
+				statement;
+			}
+	2.	for (initialization, initialization; test; update, update) 
+			{
+				statement;
+				statement;
+			}
+	3. for ( ; ; )
+			{
+				statement;
+				statement;
+			}
+			
+5.7 -  KEEP A RUNNING TOTAL
+	1. Begin by setting the accumulator variable to zero
+	
+5.8 - SENTINELS
+	1.	A sentinal is a special value that marks the end of a list of values.
+	When the user enters the sentinal, the loop terminates.
+	***EXAMPLE: while (inputVariable != X)
+				{
+					cout << "Enter another value: ";
+					cin >> inputVariable;
+				}
+				cout << "The loop has terminated.\n"
+
+5.9 - DECIDING WHICH LOOP TO USE
+	1	The while loop
+		-good for reading a list of data and validating it
+		-conditional loop
+		-pretest loop
+	2.	The do-while loop
+		-ideal when you need to the loop to run atleast once
+		-good for repeating a menu
+		-conditional loop
+		-posttest loop
+	3.	The for loop
+		-ideal when a counter vaiable is needed to control the number of loops
+		-good for situations when the exact number of loops is known
+		-conditional loop
+		-pretest loop
+	
+5.10 - NESTED LOOPS
+	1.	A nested loops is a loop that appears inside another loop.
+	2.	An inner loop goes through all of its iterations for each iteration of 
+	an outer loop.
+	3.	Inner loops complete their iterations faster than outer loops.
+	4. To get the total number of a nested loop, multiply the number of 
+	iterations of all the loops.
+
+5.11 - USING FILES FOR DATA STORAGE
+	1.	#include <ofstream> - Output file stream
+		***EXAMPLE: ofstream outputFile;
+					outputFile.open("Employees.txt");
+	2.	#include <ifstream> - Input file stream
+		***EXAMPLE: ifstream inputFile;
+					inputFile.open("Customers.txt");
+		***EXAMPLE: ("C:\\data\\inventory.txt")
+		***EXAMPLE: ofstream outputFile("Employees.txt");
+	3.	#include <fstream> - File stream (Read, write or both)
+	4.	inputFile.close();
+	5.	outputFile << "I love C++ programming\n"; - Writes to an output file
+		outputFile << "Price: " << price << endl;
+	6.	inputFile >> name;
+		cout << name << endl;
+	7.	while (inputeFile >> number) // inputs only true values (excludes blank)
+		{
+			cout << number << endl;
+		}
+	8.	if (inputFile) // If the file is true it exists
+		{
+			statement;
+		}
+		else 
+		{
+			cout << "Error opening the file.\n";
+		}
+	9.	if (inputFile.fail()) // Truse when file operation is unsuccessful
+	    {
+	    	cout << "Error opening file.\n";
+		}
+		else
+		{
+			// Process the file
+		}
+	10.	When using I/O, always test the file stream to make sure the file was 
+	opened successfully.
+	11.	ifstream inputFile;
+		string filename;
+  		int number;
+  		
+  		// Get the filename from the user
+  		cout << "Enter the filename: ";
+  		cin >> filename;
+  		
+  		// Open the file
+  		inputFile.open(filename.c_str()); // Opens the file as stated by user
+
+5.12 - OPTIONAL TOPICS: BREAKING AND CONTINUING A LOOP
+	1.	break; // Causes a loop to terminate early
+		***Example: if (variable == 'Q' || variable == 'q')
+					break;
+	2.	continue; // Causes a loop to stop its current run and begin the next
+
+6.1 - MODULAR PROGRAMMING
+	1.	A program may be broken up into managable functions
+
+6.2 - DEFINING AND CALLING FUNCTIONS
+	1.	int main () // Return type-Function name-Parameter list [Function header]
+	    {
+	   		cout << "Hello World\n"; // Function body
+	   		return 0;
+	    }
+	2.	Void Functions do not cause the value zero to be returned when finished:
+		void displayMessage()
+		{
+			cout << "Hello from the function displayMessage.\n";
+		} // No value is returned to the program that executes it
+	3.	Calling a Function:
+	    functionName(); // This statement is the function call
+	4.	Function Header: void displayMessage() //() hold function variables
+		Function Call:   displayMessage(); //() hold data variables for function
+	5.	You can also call a function within another function body and so on 
+
+6.3 - FUNCTION PROTOTYPES
+	1.	Function Prototypes [function delcarations]:
+		void displayMessage(); // Must be placed before the function is called
+
+6.4 - SENDING DATA INTO A FUNCTION
+	1.	When function is called the program may send  values into the funciton.
+	result = pow(2.0, 4.0) // function pow is being called. 2.0 and 4.0 are
+	arguments passed into the funciton.
+	***Example of Prototype: void displayMessage(int); 
+	***Example of Function call: displayMessage(5);
+	***Example of Function definition: void displayMessage(int num)
+									   {
+									       cout << num << endl;
+									   }
+	2. A parameter is a special variable that holds a value being passed into a 
+	function.
+	void dispalyValue(int num)  // The variable num is a parameter
+	{
+		cout << "The value is " << num << endl;
+	}
+	
+6.5 - PASSING DATA BY VALUE
+When an argument is passed into a parameter, only a copy of the argument's value 
+is passed. Changes to the parameter do not affect the origional argument.
+
+6.6 - USING FUNCTIONS IN A MENU-DRIVEN PROGRAM
+Functions are ideal for use in menu-driven programs. When the user selects an
+item from a menu, the program can call the appropriate function.
+
+6.7 - THE RETURN STATEMENT
+The return statement causes a function to end immediately.
+	1.	return;
+	2. The return type must match the function type.
+	
+6.8 - RETURNING A VALUE FROM A FUNCTION
+A function may send a value back to the part of the part of the program that 
+called the function.
+	1.	Void functions do not return a value; however, a function defined with a 
+	valid data type does.
+	*** EXAMPLE: int sum (int variable1, int variable2) // Function header
+				 {
+				 	return statement; // returns the value of the expression
+				 }
+	2. variableReturn = functionVariable(value1, value2);
+	3. A function's return value is commonly assigned to a variable in the main 
+	program. You can also assign the value to a cout statement. Anywhere the
+	functions data type may be used, the function's return value may also be 
+	used.
+	
+6.9 - RETURNING A BOOLEAN VALUE
+Functions may return true or false values using the bool data type.
+
+6.10 - LOCAL AND GLOBAL VARIABLES
+A local variable is defined inside a function and is not accessible outside the 
+function. A global variable is defined outside all functions and is accessible 
+to all functions in its scope.
+	1.	A global constant is a named constant that is available to every 
+	function in a program.
+
+6.11 - STATIC LOCAL VARIABLES
+Static variables are not destroyed  when a function returns. They exist for the
+lifetime of the program, even though their scope is only the function in which
+they are defined.
+	1. static int statNum; // like global variable, static variables are
+						   // initialized to zero by default
+6.12 - DEFAULT ARGUMENTS
+Default arguments are passed to parameters automatically if no argument is 
+provided in the function call.
+	1.	 A function prototype may be written as:
+	* void showArea (double = 20.0, double = 10.0);
+	* void showArea (double weight = 20.0, double length = 10.0)
+	2.	Therefore, the argument may be ommitted in the function call:
+	* showArea();
+	
+6.13 - USING REFERENCE VARIABLES AS PARAMETERS
+When used as parameters, reference variables allow a function to access the 
+parameter's origional argument. Changes to the parameter are also made to the 
+argument.
+
+6.14 - OVERLOADING FUNCTIONS
+Two or more functions may have the same name as long as their parameter lists 
+are different.
+
+6.15 - THE EXIT() FUCTION
+The exit() function causes a program to terminate, regardless of which function
+or control mechanism is executing.
+	* 	#include <cstdlib>
+		exit(0);
+
+6.16 - STUBS AND DRIVERS
+A stub is a dummy function that is called instead of the actual function it 
+represents. A driver is a program that tests a function by simply calling it.
+	
+7.1 - ARRAYS HOLD MULTIPLE VALUES
+An array allows you to store and work with multiple values of the same data 
+type.
+	1.	int days[6]; // Definition of an array of 6 integers
+
+    2.	const int NUM_DAYS = 6;
+     	int days[NUM_DAYS];  // Arrays can also be declared with named constants
+
+7.2 - ACCESSING ARRAY ELEMENTS
+The individual elements of an array are assigned unique subscripts. These 
+subscripts are used to access the elements.
+	1.	days[0] = 20; // Stores 20 in the first element of the array 
+	(days sub zero is assigned 20)
+	2.	Understand the difference between the size declarator and the subscript
+	3.	Array elemenets may be used with the cin and cout objects like any other 
+	variable.
+	4.	It is possible to use a loop to cycle through an entire array:
+	const int ARRAY_SIZE = 5;  // Array size declarator with 5 elements
+	int numbers[ARRAY_SIZE];
+	for (int count = 0; count < ARRAY_SIZE; count++) // runs on elements 0 - 4
+		 numbers[count] = 99; // Assigns 99 to each element
+	5. Inputing and outputing the array's data must be done one element at a 
+	time.
+
+7.3 - NO BOUNDS CHECKING IN C++
+C++ does not prevent you from overwriting an array's bounds.
+
+7.4 - ARRAYS INITIALIZATION
+Arrays may be initialized when they are defined.
+	1.	const int ARRAY_SIZE = 5;  // Array size declarator with 5 elements
+		int numbers[ARRAY_SIZE] = {1, 2, 3, 4, 5};
+	2.	int numbers[ARRAY SIZE] = {1, 2, 3,};   // Legal
+		int numbers[ARRAY SIZE] = {1, ,3 , ,5}; // Not Legal
+	3.	int numbers[] = {1, 2, 3, 4, 5}; // 5 elements spaces are auto assigned 
+
+7.5 - PROCESSING ARRAY CONTENTS
+Inividual array elements are processed like any other type of variable.
+	1.	pay = hours[3] * rate; // effects the value store in element 3
+	2.	++hours[3];
+	3.	hours[3]++;
+	4.	if (cost[2] < cost[0])
+	5.	while (value[place] != 0)
+	6.	for (int count = 0; count < SIZE; count++)
+			 newValues[count] = oldValues[count];
+
+7.6 - USING PARALLEL ARRAYS
+By using the same subscript, you can build relationships between data stored in 
+two or more arrays.
+	1.	const in NUM_EMPLOYEES = 5;
+		int hours [NUM_EMPLOYEES];
+		double payRate[NUM_EMPLOYESS];
+		
+7.7 - ARRAYS AS FUNCTION ARGUMENTS
+To pass an array as an argument to a function, pass the name of the array.
+	1.	When a single element of array is passed to a function, it is handled
+	like any other variable.
+	2.	A function may accept an entire array as an argument:
+		showValues(numbers, ARRAY_SIZE) // Function call
+		void showValues(int nums[], int size) // Note, it has empty brackets 
+	3.	When an entire is passed to a function, it is not passed by value, but
+	passed by reference.
+	4. To prevent a function from making changes to an array's contents, declare
+	the array parameter as a const.
+		void showValues(const int nums[], int size)
+
+7.8 - TWO-DIMENSIONAL ARRAYS
+A two-dimensional array is like several identical arrays put together. It is 
+useful for storing multiple sets of data.
+	1.	double scores[3][4]; // 3 rows and 4 columns
+	2. Each element has two subscripts (one for its row and another for its 
+	column).
+	Row 0:
+	scores[0][1]
+	scores[0][2]
+	scores[0][3]
+	scores[0][4]
+	Row 1:
+	scores[1][1]
+	scores[1][2]
+	scores[1][3]
+	scores[1][4]
+	Row 2:
+	scores[2][1]
+	scores[2][2]
+	scores[2][3]
+	scores[2][4]
+	
+	scores[2][1] = 92.25;
+	cout << scores[0][2];
+	3.	Programs that cycle through each element of a two-dimensional array 
+	usually do so with nested loops.
+	for (int row = 0; row < NUM_ROWS; row++)
+	{
+		for (int column = 0; column <NUM_COLUMNS; column++)
+		cout << numbers[row][column];
+	{
+	4. int hours[3][2] = {{8, 5},  // Row 1
+	                      {7, 9},  // Row 2
+	                      {6, 3}}; // Row 3
+	5. When a two-dimensional array is passed to a function, the parameter type 
+	must ocntain a size declarator fo rthe number of columns.
+	void showArray(const int array[][COLUMN], int rows) // COLUMN is global
+	
+7.9 - ARRAYS WITH THREE OR MORE DIMENSIONS
+C++ does not limit the number of dimensions that an array may have. It is 
+possible to create arrays with multiple dimensions, to model data that occur in
+multiple sets.
+	1.	double seats[3][5][8]; // 3 sets of 5 rows with 8 columns
+	2. When writing functions that accept multi-dimensional arrays as arguments,
+	all but the first dimension must be explicitly stated in the parameter list.
+
+7.10 - FOCUS ON PROBLEM SOLVING AND PROGRAM DESIGN
+
+7.11 - INTRODUCTION TO THE STL VECTOR - The Standard Template Library offers a 
+vector data type, which in many ways, is superior to standard arrays. 
+
+#include <vector> // Needed to define vectors 
+using namespace std;
+ 
+Definition Format 					Description 
+vector<float> amounts; 				Defines amounts as an empty vector of floats. 
+vector<string> names; 				Defines names as an empty vector of string objects. 
+vector<int> scores(15); 			Defines scores as a vector of 15 ints. 
+vector<char> letters(25, 'A'); 		Defines letters as a vector of 25 characters. Each element is initialized with 'A'. 
+vector<double> values2(values1); 	Defines values2 as a vector of doubles. All the elements of values1, which is also a vector of doubles, are copied to value2.
+
+vector<int> numbers { 10, 20, 30, 40 }; // you do not use an = operator before the list 
+
+With C++ 11, you can use a range-based for loop to step through the elements of a vector,
+// Define and initialize a vector. 
+vector<int> numbers { 10, 20, 30, 40, 50 }; 
+// Display the vector elements. 
+for (int val : numbers) 
+cout << val << endl; 
+
+
+You can use a reference variable with the range-based for loop to store items in a vector.
+// Define and initialize a vector. 
+vector<int> numbers(5); 
+// Get values for the vector elements. 
+for (int &val : numbers) { 
+cout << "Enter an integer value: "; 
+cin >> val; 
+} 
+
+To store a value in a vector that does not have a starting size, or that is 
+already full, use the push_back member function. The push_back member function 
+accepts a value as an argument and stores that value after the last element in 
+the vector. (It pushes the value onto the back of the vector.) 
+Here is an example: 
+numbers.push_back(25);   // add an aelement to the numbers vector
+
+
+Unlike arrays, vectors can report the number of elements they contain. This is 
+accomplished with the size member function. Here is an example of a statement 
+that uses the size member function: 
+numValues = set.size(); // numValues is an int and set is a vector
+
+The size member function is especially useful when you are writing functions 
+that accept vectors as arguments. For example, look at the following code for 
+the showValues function: 
+void showValues(vector<int> vect) { 
+ for (int count = 0; count < vect.size(); count++) 
+ cout << vect[count] << endl; 
+}
+
+Use the pop_back member function to remove the last element from a vector.
+collection.pop_back(); // removes the last element from the collection vector
+
+To completely clear the contents of a vector, use the clear member function, as 
+shown in the following statement: 
+numbers.clear(); // numbers will be cleared of all its elements
+
+To determine if a vector is empty, use the empty member function.
+if (numberVector.empty()) // True if empty
+ cout << "No values in numberVector.\n";
+ 
+ 
+8.1 - SEARCH AND SORTING ARRAYS
+A search algorithm is a method of locating a specific item in a larger 
+collection of data. This section discusses two algorithms for searching the 
+contents of an array.
+	1.	Linear Search (sequential search) - SHould not be used on large arrays.
+	int searchList(const int list[], int numElems, int value)
+	{
+		int index = 0;      // Used as a subscript to search array
+		int position = -1;  // To record position of search value
+		bool found = false; // Flas to indicate if the value was found
+		
+		while (index < numElems && !found)
+		{
+			if (list[index] == value) // If the value is found
+			{
+				found = true;     // Set the flag
+				position = index; // Record the value's subscript
+			}
+			index++;              // Go to the next element
+		}
+		return position;          // Return the position, or -1
+	}
+	
+	2.	 Binary Search. The values in the array must be sorted in order.
+	int binarySearch(const int array[], int numElems, int value)
+	{
+		int first = 0,            // First array element
+			last = numElems - 1,  // Last array element
+			middle,               // Midpoint of search
+			position = -1;        // Position of search value
+		bool found = false;       // Flag
+		
+		while (!found && first <= last)
+		{
+			middle = (first + last) / 2;  // Calculate midpoint
+			if (array[middle] == value)   // If value is found at mid
+			{
+				found = true;
+				position = middle;
+			}
+			else if (array[middle] > value)  // If value is in lower half
+				last = middle - 1;
+			  else
+			    first = middle + 1;          // If value is in upper half
+		}
+		return position;
+	}
+	
+8.3 - INTRODUCTION TO SORTING ALGORITHMS
+Sorting algorithms are used to arrange data into some order.
+
+	1.	The bubble sort is an easy way to arrange data in ascending or 
+	descending order.
+	{
+		bool swap;
+		int temp;
+		
+		do
+		{
+			swap = false;
+			for (int count = 0; count < (size - 1); count++)
+			{
+				if (array[count] > array[count + 1])
+				{
+					temp = array[count];
+					array[count] = array[count + 1];
+					array[count + 1] = temp;
+					swap = true;
+				}
+			}
+		} while (swap);
+	}
+	
+	2. The Selection Sort locates the smallest value in the array and moves it
+	to element 0. This process continues until all of the elements have been 
+	placed in their proper order.
+	void selectionSort (int array[], int size)
+	{
+		int startScan, minIndex, minValue;
+		
+		for (startScan = 0; startScan < (size - 1); startScan++)
+		{
+			minIndex = startScan;
+			minValue = array[startScan];
+			for(int index = startScan + 1; index < size; index++)
+			{
+				if (array[index] < minValue)
+				{
+					minValue = array[index];
+					minIndex = index;
+				}
+			}
+			array[minIndex] = array[startScan];
+			array[startScan] = minValue;
+		}
+	}
+	
+9.1 - GETTING THE ADDRESS OF A VARIABLE
+	1.	The address operator (&) returns the memory address of a variable
+	***Example: &amount
+				cout << &amount
+				
+9.2 - POINTER VARIABLES
+	1.	Pointer variables, which are often just called pointers, are designed to
+	hold memory addresses. With pointer variables you can indirectly manipulate 
+	data stored in other variables.
+	***Example: 
+				int x = 25;  // int variable
+				int* ptr = nullptr  // Ptr is a pointer to an int
+				                    // Use NULL for older compilers
+				ptr = &x;    // Store the address of x in ptr
+				*ptr = 100;  // Assign 100 to the location pointed to by ptr
+				cout << *Ptr << endl; // display the new contents of x
+				
+	In C++, pointers are useful, and even necessary, for many operations. One 
+	such operation is dynamic memory allocation. When you are writing a program 
+	that will need to work with an unknown amount of data, dynamic memory 
+	allocation allows you to create variables, arrays, and more complex data 
+	structures in memory while the program is running. 
+	
+9.3 - THE RELATIONSHIP BETWEEN ARRAYS AND POINTERS
+	1.	Array names can be used as constant pointers, and pointers can be used 
+	as array names.
+	***Example: 
+	short numbers[] = {10, 20, 30, 40, 50};
+	cout << *(numbers+0);  // retrieved by adding the subscript to the pointer
+	cout << *(numbers+1);  // points to numbers[1]
+	cout << *(numbers+2);
+	cout << *(numbers+3);
+	cout << *(numbers+4);
+	***Example (using pointer notation):
+	const int SIZE = 5
+	int numbers[SIZE];
+	cout << "Enter " << SIZE << " numbers: ";
+	for (int count = 0; count < SIZE; count++) {
+		cin >> *(numbers + count) << " ";  // points to numbers[count]
+		cout << endl;
+	}
+	***Example (using subscripts):
+	const int SIZE = 5
+	double numbers[SIZE];
+	*numbers = numbers    // Assign the address of the numbers array to pointer
+	cout << "Enter " << SIZE << " numbers: ";
+	for (int count = 0; count < SIZE)
+		 cin >> *numbers[count] << " ";
+	cout << endl;
+	
+	***Remember:
+	array[index] is equivelent to *(array + index)	
+
+9.4 - POINTER ARITHMETIC
+Some mathematical operations may be performed on pointers.
+
+	***Example: 
+	for (count = 0; count < SIZE; count++)
+	{
+		cout << *numptr << " ";
+		numptr++;
+	}
+
+9.5 - INITIALIZING POINTERS
+Pointers may be initialized with the address of an existing object.
+	***Example: int myValue, *pointerTo_myValue = &myValue; 
+
+9.6 - COMPARING POINTERS
+If one address comes before another address in memory, the first address is 
+considered "less than" the second. C++'s relational operators may be used to
+compare pointer values.
+
+9.7 - POINTERS AS FUNCTION PARAMETERS
+A pointer can be used as a functon parameter. It gives the function access to
+the original argument, much like a reference parameter does.
+	***Example:
+	doubleValue(&number); // Function call
+	
+	void doubleValue(int *val)  // Function definiton
+	{
+		*val += 2;
+	}
+	
+A constant pointer is a pointer that is initialized with an address, and cannot
+point to anything else.
+	***Example:
+	int value = 22;
+	int* const ptr = &value;
+	
+A constant pointer is a pointer that points to a constant and cannot point to 
+anything except what it is pointing to.
+	***Example:
+	int value = 22;
+	const int * const ptr = &value;
+
+9.8 - DYNAMIC MEMORY ALLOCATION
+Variables may be created and destroyed while a program is running. Dynamic
+memory allocation can allocate storage for a variable while the program is 
+running. The "new" operator is used to allocate memory.
+	double *dptr;
+	dptr = new double; // new returns address of memory allocation
+	
+New can also be used to allocate an array.
+	const int SIZE = 25;
+	arrayPtr = new double[SIZE];
+	for(int count = 0; count < SIZE; count++)
+		*arrayPtr[count] = count * count;
+
+Releasing dynamic memory -  use "delete" to free dynamic memory
+	delete fptr;
+
+Use [] to free dynamic array
+	delete [] arrayptr;
+	arrayptr = 0;
+Only use delete with dynamic memory!
+
+9.9 - RETURNING POINTERS FROM FUNCTIONS
+Functions can return pointers, but you must be sure the item the pointer 
+references still exists.
+
+CHAPTER 10 - Character testing, C-Strings, and More about the String Class
+10.1 - CHARACTER TESTING
+The C++ library provides several functions for testing characters. To use 
+these functions you must include the cctype header file. #include <cctype>
+
+(isupper(myVariable)) // returns true the char is upper case
+
+Character 
+Function 		Description 
+isalpha 		Returns true (a nonzero number) if the argument is a letter of the alphabet. 
+				Returns 0 if the argument is not a letter. 
+isalnum 		Returns true (a nonzero number) if the argument is a letter of the alphabet 
+				or a digit. Otherwise it returns 0. 
+isdigit 		Returns true (a nonzero number) if the argument is a digit from 0 through 9. 
+				Otherwise it returns 0. 
+islower 		Returns true (a nonzero number) if the argument is a lowercase letter. 
+				Otherwise, it returns 0. 
+isprint 		Returns true (a nonzero number) if the argument is a printable character 
+				(including a space). Returns 0 otherwise. 
+ispunct 		Returns true (a nonzero number) if the argument is a printable character 
+				other than a digit, letter, or space. Returns 0 otherwise. 
+isupper 		Returns true (a nonzero number) if the argument is an uppercase letter. 
+				Otherwise, it returns 0. 
+isspace 		Returns true (a nonzero number) if the argument is a whitespace character. 
+				Whitespace characters are any of the following: 
+ 				space '' vertical tab '\v '
+ 				newline '\n ' tab '\t '
+				Otherwise, it returns 0.
+				
+10.2 - CHARACTER CASE CONVERSION
+The C++ library offers functions for converting a character to upper- or 
+lowercase. #include <cctype>
+
+Function 	Description 
+toupper 	Returns the uppercase equivalent of its argument. 
+tolower 	Returns the lowercase equivalent of its argument.
+
+10.3 - C-STRINGS
+In C++, a C-string is a sequence of characters stored in consecutive memory 
+locations, terminated by a null character ('\0').
+
+If you want to store a C-string in memory, you have to define a char array that 
+is large enough to hold the string, plus one extra element for the null 
+character. Here is an example: 
+const int SIZE = 21; // 20 chars and null
+char name[SIZE] = "Jasmine";
+cin.getline(name, SIZE);
+
+cout << "The sentence you entered is:\n"; 
+for (int count = 0; name[count] != '\0'; count++) { 
+	cout << name[count]; count++; 
+}
+
+You can implicitly size a char array by initializing it with a string literal, 
+as shown here: 
+char name[] = "Jasmine";
+
+10.4 - LIBRARY FUNCTIONS FOR WORKING WITH C-STRINGS
+The C++ library has numerous functions for handling C-strings. These functions
+perform various tests and manipulations and require that the cstring header file 
+be included. #include <cstring>
+
+char name[] = "Thomas Edison"; // 13 chars (13 + NULL is 14 total)
+int length; 
+length = strlen(name); // assigns 13 to length
+
+The strlen function accepts a pointer to a C-string as its argument. It returns 
+the length of the string, which is the number of characters up to, but not 
+including, the null terminator. As a result, the variable length will have the 
+number 13 stored in it. The length of a string isn’t to be confused with the 
+size of the array holding it.
+
+length = strlen("Thomas Edison");
+
+The strcat function accepts two pointers to C-strings as its arguments. The 
+function concatenates, or appends one string to another.
+strcat(string1, string2); // copies the contents of string2 to string1 
+cout << string1 << endl;
+
+The strcpy function can be used to copy one string to another.
+const int SIZE = 13; 
+char name[SIZE]; 
+strcpy(name, "Albert Einstein");
+
+Because the the strcat and strcpy functions can potentially overwrite the bounds 
+of an array, they make it possible to write unsafe code. As an alternative, you 
+should use strncat and strncpy whenever possible. The strncat functions works 
+like strcat, except it takes a third argument specifying the maximum number of 
+characters from the second string to append to the first. Here is an example 
+call to strncat and strncpy: 
+strncat(string1, string2, 10);
+strncpy(string1, string2, 5);
+
+The strstr function searches for a string inside of a string. The strstr 
+function can be useful in any program that must locate data inside one or more 
+strings.
+strPtr = strstr(arr, "seven"); // search for "seven"
+
+To compare C-strings, you should use the library function strcmp. 
+This function takes two C-strings as arguments and returns an integer that indicates how 
+the two strings compare to each other. Here is the function’s prototype: 
+int strcmp(char *string1, char *string2); 
+The function takes two C-strings as parameters (actually, pointers to C-strings) and returns 
+an integer result. The value of the result is set accordingly: 
+• The result is zero if the two strings are equal on a character-by-character basis 
+• The result is negative if string1 comes before string2 in alphabetical order 
+• The result is positive if string1 comes after string2 in alphabetical order 
+Here is an example of the use of strcmp to determine if two strings are equal: 
+if (strcmp(string1, string2) == 0) 
+ cout << "The strings are equal.\n"; 
+else 
+ cout << "The strings are not equal.\n";
+ 
+if (strcmp(firstString, secondString) == 0) // Example 1
+if (!strcmp(firstString, secondString))     // Example 2
+
+Function 		Description 
+strlen 			Accepts a C-string or a pointer to a C-string as an argument. Returns the length of 
+				the C-string (not including the null terminator.) 
+				Example Usage: len = strlen(name);
+strcat 			Accepts two C-strings or pointers to two C-strings as arguments. The function 
+				appends the contents of the second string to the first C-string. (The first string is 
+				altered, the second string is left unchanged.) 
+				Example Usage: strcat(string1, string2);
+strcpy 			Accepts two C-strings or pointers to two C-strings as arguments. The function copies the second C-string to the first C-string. The second C-string is left unchanged. 
+				Example Usage: strcpy(string1, string2);
+strncat 		Accepts two C-strings or pointers to two C-strings, and an integer argument. The 
+				third argument, an integer, indicates the maximum number of characters to copy 
+				from the second C-string to the first C-string. 
+				Example Usage: strncat(string1, string2, n);
+strncpy 		Accepts two C-strings or pointers to two C-strings, and an integer argument. The 
+				third argument, an integer, indicates the maximum number of characters to copy 
+				from the second C-string to the first C-string. If n is less than the length of string2, 
+				the null terminator is not automatically appended to string1. If n is greater than 
+				the length of string2, string1 is padded with ‘\0’ characters. 
+				Example Usage: strncpy(string1, string2, n);
+strcmp 			Accepts two C-strings or pointers to two C-strings arguments. If string1 and 
+				string2 are the same, this function returns 0. If string2 is alphabetically greater 
+				than string1, it returns a negative number. If string2 is alphabetically less than 
+				string1, it returns a positive number. 
+				Example Usage: if (strcmp(string1, string2))
+strstr 			Accepts two C-strings or pointers to two C-strings as arguments. Searches for the 
+				first occurrence of string2 in string1. If an occurrence of string2 is found, the 
+				function returns a pointer to it. Otherwise, it returns nullptr
+
+10.5 C-STRING/NUMERIC CONVERSION FUNCTIONS
+The C++ library provides functions for converting a C-string representation of a
+number to a numeric data type and vice versa.
+
+#include <cstdlib>
+Function 	Description 
+atoi 		Accepts a C-string as an argument. The function converts the C-string to an integer 
+			and returns that value. 
+			Example Usage: int num = atoi("4569");
+atol 		Accepts a C-string as an argument. The function converts the C-string to a long integer and returns that value. 
+			Example Usage: long lnum = atol("500000");
+atof 		Accepts a C-string as an argument. The function converts the C-string to a double
+			and returns that value. 
+			Example Usage: double fnum = atof("3.14159");
+itoa		Converts a integer to a string
+			
+#include <string>
+Function 						Description 
+to_string(int value); 			Accepts an int argument and returns that argument 
+								converted to a string object. 
+to_string(long value); 			Accepts a long argument and returns that argument 
+								converted to a string object. 
+to_string(long long value); 	Accepts a long long argument and returns that 
+								argument converted to a string object. 
+to_string(unsigned value); 		Accepts an unsigned argument and returns that 
+								argument converted to a string object. 
+to_string(unsigned long value);	Accepts an unsigned long argument and returns that 
+								argument converted to a string object. 
+to_string(unsigned long long value) ;	Accepts an unsigned long long argument and 
+										returns that argument converted to a string object. 
+to_string(float value); 		Accepts a float argument and returns that argument 
+								converted to a string object. 
+to_string(double value); 		Accepts a double argument and returns that argument 
+								converted to a string object. 
+to_string(long double value); 	Accepts a long double argument and returns that 
+								argument converted to a string object.
+
+10.6 FOCUS ON SOFTWARE ENGINEERING
+10.7 MORE ABOUT THE C++ STRING CLASS
+Standard C++ provides a special data type for storing and working with strings.
+#include <string>
+
+If you want to read a line of input (with spaces) into a string object, use the 
+getline() function. Here is an example: 
+string name; 
+cout << "What is your name? "; 
+getline(cin, name);
+
+There is no need to use a function such as strcmp to compare string objects. You 
+may use the <, >, <=, >=, ==, and != relational operators.
+
+Definition 						Description 
+string address; 				Defines an empty string object named address. 
+string name("William Smith"); 	Defines a string object named name, initialized with 
+								“William Smith.” 
+string person1(person2); 		Defines a string object named person1, which is a 
+								copy of person2. person2 may be either a string
+								object or character array. 
+string set1(set2, 5); 			Defines a string object named set1, which is initialized 
+								to the first five characters in the character array set2. 
+string lineFull('z', 10); 		Defines a string object named lineFull initialized 
+								with 10 'z' characters. 
+string firstName(fullName, 0, 7); 	Defines a string object named firstName, initialized 
+									with a substring of the string fullName. The substring
+
+The string class also has member functions. For example, the length member function 
+returns the length of the string stored in the object. The value is returned as an unsigned integer. 
+Assume the following string object definition exists in a program: 
+string town = "Charleston"; 
+The following statement in the same program would assign the value 10 to the variable x. 
+x = town.length();
+
+
+CHAPTER 11
+
+
+	
