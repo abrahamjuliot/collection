@@ -1,0 +1,175 @@
+- Protocols are called interfaces in other languages
+- It allows us to define a set of expected behaviors for objects
+- a protocol only describes an implemenation, but it does not provide one
+- class, struct, or enum may use protocols
+
+`swift
+protocol FullyNameable \\{
+ // the value can be get, set or both
+ var FullName: String \\{ get \\}
+\\}
+
+struct User: FullyNameable \\{
+ var fullName: String 
+ // this struct now conforms to the protocol
+\\}
+
+let user = User(fullName: "John Smith")
+
+// the advantage of using the protocol is that it provides an expectation of certain attributes or behaviors
+
+struct Friend: FullyNameable \\{
+ let firstName: String
+ let middleName: String
+ let lastName: String
+ 
+ // here the protocol is implemented by a computed value
+ var fullName: String \\{
+ return "(firstName) (middleName) (lastName)"
+ \\}
+\\}
+
+let friend = Friend(firstName: "Tay", middleName: "Al", lastName: "Swift")
+
+friend.fullName
+`
+- In some cases, protocols are better than class inheritance because protocols can force a necessary blueprint
+- classes can conform to multiple protocols (by comma separation)
+- sublcasses can implement protocols
+
+`swift
+import Foundation
+
+protocol Payable \\{
+ func pay() -> (basePay: Double, benefits: Double, deductions: Double, vacationTime: Int)
+\\}
+
+enum EmployeeType \\{
+ case Manager
+ case NotManager
+\\}
+
+class Employee \\{
+ let name: String
+ let address: String
+ let startDate: NSDate
+ let type: EmployeeType
+
+ var department: String?
+ var reportsTo: String?
+
+ init(fullName: String, employeeAddress: String, employeeStartDate: NSDate, employeeType: EmployeeType) \\{
+ self.name = fullName
+ self.address = employeeAddress
+ self.startDate = employeeStartDate
+ self.type = employeeType
+ \\}
+\\}
+
+func payEmployee (employee: Payable) \\{
+ let paycheck = employee.pay()
+\\}
+
+class HourlyEmployee: Employee, Payable \\{
+ var hourlyWage: Double = 15.00
+ var hoursWorked: Double = 0
+ let availableVacation = 0
+ 
+ func pay() -> (basePay: Double, benefits: Double, deductions: Double, vacationTime: Int) \\{
+ return ((hourlyWage * hoursWorked), 0, 0, availableVacation)
+ \\}
+\\}
+
+let hourlyEmployee = HourlyEmployee(fullName: "Abe", employeeAddress: "none", employeeStartDate: NSDate(), employeeType: .NotManager)
+
+payEmployee(hourlyEmployee)
+
+`
+- any protocol that we create becoems a type in swift that we can use
+
+`swift
+protocol Blendable \\{
+ func blend()
+\\}
+
+class Fruit: Blendable \\{
+ var name: String
+
+ init(name: String) \\{
+ self.name = name
+ \\}
+ 
+ func blend() \\{
+ print("I'm mush")
+ \\}
+\\}
+
+class Dairy \\{
+ var name: String
+
+ init(name: String) \\{
+ self.name = name
+ \\}
+\\}
+
+class Cheese: Dairy \\{\\}
+
+class Milk: Dairy, Blendable \\{
+ func blend() \\{
+ print("I haven't changed. I'm still milk")
+ \\}
+\\}
+
+func makeSmoothie(ingredients: [Blendable]) \\{
+ for ingredient in ingredients \\{
+ ingredient.blend()
+ \\}
+\\}
+
+let strawberry = Fruit(name: "Strawberry")
+let cheddar = Cheese(name: "Cheddar")
+let chocolate = Milk(name: "Chocolate")
+
+let ingredients [Blendable] = [strawberry, chocolate]
+`
+
+- isa-a (inheritance) has-a (protocol) relationship
+- protocols can inherit from other/ multiple protocols
+
+`swift
+protocol Printable \\{
+ func description() -> String
+\\}
+
+protocol PrettyPrintable: Printable \\{
+ func prettyDescription() -> String 
+\\}
+
+struct User: PrettyPrintable \\{
+ let name: String
+ let age: Int
+ let address: String
+ 
+ func description() -> String \\{
+ return "(name), (age), (address)"
+ \\}
+ 
+ func prettyDescription() -> String \\{
+ return "name: (name)nage: (age)naddress: (address)"
+ \\}
+\\}
+
+let user = User(name: "Pasan", age: 27, address: "Some Address")
+
+print(user.description())
+print(user.prettyDescription())
+`
+- There are 3 types of protocols in swifts standard Library: Can Do, Is A, and Can Be
+- Can Do protocols have the -able suffix
+- Is A protocols have the -Type suffix
+- Can Be protocols have the -Convertible suffix
+- Swift is a protocol oriented programming language
+- It simply means carefully defining interfaces for your objects
+- Protocols help keep things nice and tidy and safe
+- think small when it comes to programmin: small objects, small protocols, small methods
+- protocols are useful encapsulate common behavior without an inheritance structure
