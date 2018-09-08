@@ -1,0 +1,14 @@
+1. Introduction to SVG
+- https://developer.mozilla.org/en-US/docs/Web/SVG
+- you can embed directly into html or add with img or background url
+- img(src='img/star.svg' alt='Star Logo')
+- background: transparent url('../img/star.svg') center center no-repeat
+
+2. SVG and CSS
+- .svg { }
+- ... 
+- .circle { fill: blue }
+- it's best to use svg with img and only embed them when you must apply styling
+- stroke-opacity: 0; stroke-width: 8; // less detail and larger stroke width on mobile first
+- fine detail is not always visible on smaller screen resolutions
+- add detail as the screen gets larger
