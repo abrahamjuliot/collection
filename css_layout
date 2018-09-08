@@ -1,0 +1,95 @@
+DISPLAY MODES
+[1] CSS reset methods
+- use css reset or normalize css
+- reset will reset everything to zero
+- you can also customize css reset
+- normalize is more stable if you want to preserve common defaults
+- bootstrap and foundation use normalize
+- Normalize is well documented
+[2] Block vs. Inline Elements
+- Block elements take up an entire line; they stack.
+- use a container or the body tag to set the width: 90% and margin: auto
+- inlilne elements do not take up the entire line
+- inline elements cannot be given a width or a top and bottom margin
+- inline elements also have a default white space between them. You can provide a margin-right: -5px to remove the space, if at all necessary.
+- whitespace: nowrap; prevents inline elements from wrapping
+[3] Inline-Block Formatting
+- whitespace occurs with inline block as well
+- Keep in mind, display values are not inherited by child elements
+[4] Table Display
+- display: table
+- use box-sizing: border-box
+- display: table-cell
+- vertical-align: middle
+- margins do not work on table cell elements
+[5] Column Layout with Inline-Block
+- 
+.col {
+	display: inline-block;
+	padding: 20px;
+	margin-right: -5px; // remove the white space (varies based on the font size)
+	vertical-align: top; // align the column
+}
+.primary-content {width: 60%;}
+.secondary-content {width:40%;}
+- for the mobile first view, set the columns to display: block, so they stack
+FLOAT LAYOUT
+[1] Creating a Horizontal menu
+- content wraps around floats, depending on how it's floated
+[2] The float Clearfix
+- add to the parent element
+.clear-fix::after {
+	content: " ";
+	display: table;
+	clear: both;
+}
+[3] Floating Columns and Images
+- 
+.my-img {
+	width: 50%;
+	float: left
+	margin: 10px
+}
+
+- default the img class to 100% on small devices
+[4] Mobile First
+- in mobile first design, we design the mobile design first as default css
+- build your cuss up from the basic code base
+- img can be 100% 
+- initially hide sections that are not crucial for the mobile experience
+- media (min-width: 760px) // build up like so
+- mobile first approach brings faster performance for mobile users becuase additional css is only loaded for larger screen sizes
+POSITIONING SCHEMES
+[1] Relative Positioning
+- elements can be positioned relative to their initial position
+- use overflow: hidden on the parent element, if their is overflow
+[2] Absolute Positioning
+- elements are positioned relative to the nearest parent with a relative position
+- elements are removed from the normal doc flow
+- these have a higher z-index than fixed elements
+[3] Fixed Positioning
+- keep z-index in mind
+[4] Absolute Centering
+- position: relative; // parent
+- position:absolute // child
+- margin: auto; // child margin
+FLEXBOX LAYOUT
+- establish a flex formatting contex with display: flex
+- row is the default layout
+- align-self center // align element to absolute enter
+- flex-grow: 1 // take up full space of 1 item
+- flex: 1 // each column will take the same amount of space
+- order: -1 // swap the order
+- use modernizer when using flexbox
+- check how it looks on older browser stack
+GRID LAYOUT
+- first determine the max number of columns, 12 for example
+- determine the column and gutter width in px, then convert to percent
+- target / context = result // 64/ 1000 = 65 or 6.5 percent
+- .grid-1 {width: 6.5%}
+- .grid-2 {width: 15%} // gutter included
+- .grid-3 {width: 23.5%} // and so on
+- .grid-12 {width: 100%}
+- .grid-contianer:after, clear-fix:after {content: " "; display: table; clear: both;} // clearfix
+- gird container are 100%width by default and then set to a max-width on larger views 
+- create a visibility class to hide elements on mobile first view, display: hidden
