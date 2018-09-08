@@ -1,9 +1,9 @@
-# view storms in my brain
+# storms in my brain
 > "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - codepen formulas: https://codepen.io/abrahamjuliot/
 
-# view my memory on paper
+# worth remembering
 A collection of my personal course notes
 
 ## 2014
