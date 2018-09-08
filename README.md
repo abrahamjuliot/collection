@@ -1,4 +1,5 @@
 # view storms in my brain
+> "when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - codepen formulas: https://codepen.io/abrahamjuliot/
 
@@ -6,6 +7,7 @@
 A collection of my personal course notes
 
 ## 2014
+> "Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains." -Bill Gates, Co-Founder, Microsoft
 - [C++ Notes](https://github.com/abrahamjuliot/course-notes/blob/master/cpp_notes) | [Projects](https://github.com/abrahamjuliot/course-notes/blob/master/projects.cpp)
 - CSS Foundations
 - Introduction to Programming
@@ -18,6 +20,8 @@ A collection of my personal course notes
 - Node.js Basics
 
 ## 2015
+> "We believe that coding should be a required language in all schools." -Tim Cook
+CEO, Apple
 - Interactive Web Pages with Javascript
 - JavaScript Loops, Arrays and Objects
 - Responsive Layouts
@@ -35,6 +39,7 @@ A collection of my personal course notes
 - Mongo Basics
 
 ## 2016
+> "I think that great programming is not all that dissimilar to great art. Once you start thinking in concepts of programming it makes you a better person...as does learning a foreign language, as does learning math, as does learning how to read." -Jack Dorsey Creator, Twitter
 - SVG Basics
 - Advanced Sass
 - HTML
@@ -70,5 +75,6 @@ A collection of my personal course notes
 - Ruby Basics
 
 ## 2017
+> "Everybody in this country should learn to program a computer, because it teaches you how to think” -Steve Jobs
 - CSS Layout Basics
 - CSS Flexbox Layout
