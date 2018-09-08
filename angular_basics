@@ -1,0 +1,124 @@
+1. Getting Started with Angular
+- built for interactive single page applications
+- angular is a declarative framework
+- sites built with angular: https://www.madewithangular.com/#/
+- angular is a client side application framework: only ajax/json request are made to the server, rather than large html files
+- other client side frameworks: backbone, ember
+- 4 main concepts of angular: templates (views), directives, controllers, scopes (modules)
+- Both directives and controllers have access to $scope
+- http://www.ng-newsletter.com/posts/beginner2expert-how_to_start.html
+- Setup:
+- angular.module("todoListApp", []); // app.js
+- // index.html
+- angular.module("todoListApp")
+.directive('helloWorld', function() {
+	return {
+		template: "this is the hello world directive!"
+		restrict: "E" // restricts to an element only
+	}
+}); // directive.js
+- // the template will be injected into out directive
+- // attribute (non-element) method, same outcome
+- note helloWorld should be written as hello-wrorld in the template
+- https://docs.angularjs.org/guide/directive
+
+2. Controllers and Scope
+- controllers control the app, and they can do just about anything, such as making changes to the ui, handling user data, and determining the state of the app
+- angular.module("todoListApp", [])
+.controller('mainCtrl', function($scope) {
+	$scope.helloWorld = function() {
+		console.log('Hello World!');
+	}
+}); // app.js
+- 
+Save
+ // index.html
+- debugging plugins: 
+- Angular JS Batarang https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en
+- ng-Inspector for Angular JS https://chrome.google.com/webstore/detail/ng-inspector-for-angularj/aadgmnobpdmgmigaicncghmmoeflnamj
+- you can have child scopes with child controllers in the template. 
+- child scopes will inherit the parent scope. Parent scopes can share functions and values with their children.
+- it is generally best practice to not use the root (ng-app) scope directly in your application, because any function or value in the root scope is globally available to all child scopes
+- Sibling controllers do not have access to each others scopes
+
+3. Using Angular's Built in Directives
+- angular save time with directives and two-way data binding
+- the ng-model directive is used on the element. ng-model is set equal to the $scope variable
+- ng-model="todo" // the todo variable will be automatically initialized and updated to the scope
+- ng-model="todo.name" // the todo object will be automatically initialized and updated to the scope, with the property name
+- you can add ng-model to a check box and the value in the variable will be initialized and updated to either true or false
+-  { { todo.name } }  // expressions will be evaluated
+- ng-click="expression or function" // use to change app states 
+- ng-hide="" // true or false
+- ng-show="" // true or false
+- ng-repeat="todo in todos" // repeat items in an array or an array of objects; access properties and methods with todo. notation. Every element of the ng-repeat directive has it's own $scope.
+- ng-blur="editing = false" // place in an input and this will fire when the user clicks out of the input. The 'blur' event fires when an input loses focus
+- ng-class="{'editing-item': editing}" // if the variable editing evaluates to true the class editing-item is then applied, you can have multiple class/ tests
+- ng-change="expression or function()" // for input elements; this event fires every time the value of an input changes
+
+4. Services in Angular
+- services can be used across your app through dependency injection
+- services allow you to create a reusable set of functions and values that can be passed across the application
+- services are useful for getting data from a database, as well as firing save, edit, and delete operations
+- .controller('mainCtrl', function($scope, dataService) { 
+	$scope.helloConsole = dataService.helloConsole;
+})
+.service('dataService', function() { 
+	this.helloConsole = function() { console.log('This is the hello console service!'); }
+}); // this. refers to the service itself
+- a service's methods can be invoked by controllers, directives, and other services
+- services are useful for containing data about a logged in user or to communicate with a REST API
+- services can be used to share data between different controllers
+- One of the most common things you’ll do with a service is request data from a server. Typically this will take place over a rest API.
+- pass $http to the services callback function
+- add this method to the service:
+this.getTodos = function(callback) {
+	$http.get('mock/todos.json').then(callback);
+}
+this.deleteTodo = function(todo) {
+	console.log("The " + todo.name + " todo has been deleted!");
+	// other logic
+};
+this.saveTodo = function(todo) {
+	console.log("The" + todo.name + " todo has been saved!");
+};
+- add this method to the controller, which is above the service:
+dataService.getTodos(function(response) {
+	console.log(response.data);
+	$scope.todos = response.data;
+});
+$scope.deleteTodo = function(todo, index) {
+	dataService.deleteTodo(todo);
+	$scope.todos.splice(index, 1);
+};
+$scope.saveTodo = function() {
+	dataServices.saveTodo(todo);
+};
+- add this function to the view: ng-click="deleteTodo(todo, $index)" and ng-click="saveTodo(todo)" // $index is the position of the current todo in the todos array
+- add this to the controller:
+$scope.addTodo = function() {
+	var todo = {name: "This is a new todo."};
+	$scope.todos.unshift(todo); // todos is rendered and available though ng-repeat, unshift adds to the beginning of the list
+};
+- add this to the view: ng-click="addTodo()"
+
+5. Improving Our Todo App
+- it is best to place controllers and services in sub folder/files
+- begin the file with 'use strict'; // http://teamtreehouse.com/library/the-javascript-use-strict-statement
+- use the module method to include the app:
+angular.module('todoLstApp') // do not declare dependencies because that is only needed when creating a new module
+- load the script in the index.html file
+- keeping the app.js minimal is a good thing
+- ng-repeat="todo in todos orderBy: 'completed': true" // where completed is a class that is now filtered and reverse is true
+- ng-init="todo.completed = false" // works in conjuction with ng-repeat to set default values
+- we can create a custom directive to load the todo list of html: 
+- in the templates folder, create a template file: todos.html and create a directive file in the directive folder: todos.js:
+angular.moodule('todoListApp')
+.directive('todos', function() {
+	return {
+		templateUrl: 'templates/todos.html',
+		controller: 'mainCtrl', // with this, you do not need ng-controller in index.html
+		replace: true // this will replace the tag with the html, if preferred
+	}
+}); // load this script in index.html
+- an array's .filter method returns a subset of the array based on logic in the callback. For example, `['foo', 'bar', 'yes', 'no'].someMethod(callback)`
