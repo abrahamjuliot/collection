@@ -1,0 +1,56 @@
+1. Getting Started with MongoDB
+- no sql stands for not only sql (structured query language)
+- documents are core to how you interact with and model data in Mongo
+- every document is required to have a unique id and they are structured much like json
+- Mongo documents can store objects as field values
+- show dbs // list the databases
+- use mongoBasics // create a new database
+- db.post.insert // db refers to the database you are using and post is your collection
+- db.post.insert({title: "hurray!"})
+- show collections // will show your post collection and system indexes
+- db.post.find() // will list all the documents in that collection
+
+2. Understanding MongoDB
+- documents can be organized into collections
+- documents are individual records
+- a document is like a row in a relational database and a collection is like a table
+- documents can store references to other documents
+- ls() // see the contents of the current directory
+- load(' ') // run a file; The load command is relative to the cwd (current working directory) of where you launch the mongo shell from
+- quit() // quits
+- db.users.count() // returns number of documents
+- db.users.find() // returns users data
+- db.users.find()[0] // returns individual user data
+- db.users.find().limit(2) // limits the docs returned to only 2
+- note: cls will clear the terminal
+- var post = db.posts.find()[1]; // assign the result to a variable
+-- post.title // access properties with dot notation
+- post.author // the author field returns the object id as it references docs in another collection (users)
+- var id = post.author
+-- db.users.find(id); // returns the associated user in the users collection
+- the Mongo Shell is great for management and data exploration. However, almost every functional programming language has a library to access Mongo directly
+
+3. Working with Collections
+- db.getCollectionNames() // shows the current database collections
+- use mongoBasics // navigate to the mongoBasics database
+- once you know the collection names, you can start using collection methods
+- db.posts.getIndexes() // see indexes on a collection
+- db.posts.createIndex({title: -1}) // create index
+- db.posts.dropIndex('title_1'); // deletes the index
+- db.posts.findOne() / returns one document from the collection
+- db.posts.find({ }, {body: false, description: false}) // don't return body and description
+- db.posts.find({ }, {title: true}) // just return the title; id will be included unless you set it to false
+- db.posts.find({title: "Parenting 101"}, {title: true, _id: false}) // returns a specific posts
+- db.posts.find({$or: [{ title: "Parenting 101"}, { "My Recipe" }] }, { }) // the $or operator for queries
+- https://docs.mongodb.org/v3.0/reference/operator/query/
+
+4. Go Further with Mongo
+- npm install -g mongo-hacker // for nice syntax highlighting
+- https://github.com/TylerBrock/mongo-hacker
+- db.posts.update({}) // update a post
+- db.posts.update({author: ObjectId("")}, {$set: { tags: [ 'foo', 'bar'], title: 'I'm an Updated Title'  } } ) // to update a document
+- Object.keys(db.posts.find()[1]) // to see what fields you are working with
+- http://stackoverflow.com/questions/2298870/mongodb-get-names-of-all-keys-in-collection
+- db.posts.find().sort({ title: 1 }) // sort by ascending (1 for ascending and -1 for descending)
+- db.posts.find({ }, { title: true }).limit(2).skip(2) // skip the first 2 results and limit to the next 2 results instead
+- using language drivers is the primary way to use mongodb for applications, and not the console: https://docs.mongodb.org/ecosystem/drivers/
