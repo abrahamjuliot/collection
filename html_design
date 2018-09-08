@@ -1,0 +1,24 @@
+- one to many emails or transaction emails determines design
+- design should be minimal on transaction
+- read(newsletter), buy me(commerce), join me(invitation) design for one to many
+- transaction emails should be focused, short but comprehensive, appropriate, practical - easily printable for record keeping
+- too much info can overwhelm, too little can frustrate
+- Sans-Serif Fonts: arial, arial black, tahoma, trebuchet MS, verdana
+- Serif Fonts: courier, courier new, georgia, times, times new roman 
+- dont rely on images to get your message accross
+- images must be embeded through absolut paths
+- links should be inforamtive and calls to action should be clear
+- 600px width is a good max
+- simple designs are better than complex design because many clients can not handle advanced css
+- table, tr (table rows), td (column cells)
+- td can span multiple columns and multiple rows
+- use the html strict doctype
+- body, center, table
+- use table cells for buttons
+- use nested tabels for more control of the structure
+- css3 is not supported in many clients, css 2.1 is best
+- use a css inliner and keep it as simple as possible
+- write css in the head first and use a css reset - google it
+- use client specific resets
+- use a minimum of 16px font for mobile devices
+- media queries: use attr selectors for clients like yahoo, use !important to overide inline styles
