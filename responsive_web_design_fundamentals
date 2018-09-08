@@ -1,0 +1,29 @@
+- Responsive Web Design is an art, not a sciences
+- Chrome's emulator is sufficient to test
+- Think responsively, think mobile first
+- start with phone, then tablet, then desktop if even necessary
+- prioritize content for mobile users first, the key content should always be on the page regardless of the screen size and users should get the full experience
+- 
+- use relative units when specifying widths for elements (width: 100%)
+- img, embed, object, video { max-width: 100%; } // use this catch all: preset all these elements as a safeguard
+- buttons should be 48px by 48px 
+- - make sure there is at least 40 px of room between your tap targets
+- - nav a, button {min-width: 48px; min-height: 48px;}
+- - a { padding: 1.5em; }
+- - { min-width: 48px; min-height: 48px; }
+- Start with phone size, then tablet, then desktop (if there is even a need for a bigger design)
+- 
+- @media screen and (min-width: 500px) { }
+- @media screen and (min-width: 0px) and (max-width: 400px) { body { background-color: red; } }
+- Let the content define when to use a brake point, i.e line length
+- - Ex: mobile first, min-width: 500px, min-width: 700px
+- display: flex
+- flex-wrap: wrap;
+- order: 1
+- Best Resource
+https://developers.google.com/web/fundamentals/layouts/index?hl=en
+- responsive tables: 
+- - hide columns by using table { display: none; }
+- - no more table technique: table, thead, tbody, th, td, tr { display: block;} thead tr { position: absolute; top: -9999px; left: -9999px; } td { position: relative; padding-left: 50%; } td:before { position: absolute; left: 6px; content: attr(data-th); font-weight: bold; }
+- - contained scrolling: div.contained-table { width: 100%; overflow-x: auto; }
+- lines of text should be around 65 chars
