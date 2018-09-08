@@ -1,0 +1,39 @@
+1. Data, Databases and SQL
+- structured query language
+- reading data from a database is known as querying
+- databases act as the memory for dynamic web sites or mobile apps
+- the same data can be queried and shown different ways
+- common data types: text, numeric, date
+- having a correct data types helps sort and calculations
+
+2. Getting Data from a Database
+- Mode Analtyics used for businesses to get insights from their database, pgAdmin for PostgreSQL, phpMyAdmin and MySQL Workbench for MySQL
+- lines of sequel are statement or queries (questions)
+- comment --
+- SELECT * FROM ; // retrieves data from entire table 
+- SELECT , FROM ;
+- SELECT AS FROM ;
+- SELECT AS "" FROM ; // check syntax of sql setting
+- SELECT FROM ; // shorthand
+
+3. Finding the Data You Want
+- SELECT FROM WHERE ;
+- SELECT FROM WHERE = ;
+- =, != or <>, , = // equality operators (strict and case sensitive)
+- SELECT FROM WHERE AND ...;
+- SELECT FROM WHERE OR ...;
+- SELECT FROM WHERE IN (, , ...); // shorthand for or
+- SELECT FROM WHERE NOT IN (, , ...);
+- SELECT FROM WHERE BETWEEN AND ; // shorthand for ranges
+- SELECT FROM WHERE LIKE ; // case insensitive
+
+SELECT title FROM books WHERE title LIKE "Harry Potter%Fire";
+SELECT title FROM movies WHERE title LIKE "Alien%";
+SELECT * FROM contacts WHERE first_name LIKE "%drew";
+SELECT * FROM books WHERE title LIKE "%Brief History%";
+SELECT * FROM books WHERE title LIKE "unsure of Case";
+
+- IS NULL // filters empty cells (missing values)
+- IS NOT NULL // filters out empty cells (missing values)
+- SELECT * FROM , WHERE . = .; // selecting more than 1 table (relational data bases)
+- be sure to keep using these skills and practice
