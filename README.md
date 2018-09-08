@@ -4,5 +4,5 @@
 
 # view my memory on paper
 A collection of my personal course notes
-- C++ (2014)
+- C++ (2014) | [Projects] (https://github.com/abrahamjuliot/course-notes/blob/master/projects.cpp)
 
