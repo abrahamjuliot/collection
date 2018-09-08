@@ -1,0 +1,83 @@
+- In workspaces type Python and press enter and enter exit() to exit the Python shell
+- print("Hello World")
+- hello.py // python file
+- enter python hello.py to run the file in the console
+- help() is a function in python and may be used in the console: help(print) will expound on the print function
+- dir() is a function that will expound on the directory of a function, obect, etc.
+- print("Hi")
+- answer = input("true or false?") // always gets a string, even if the content is a number
+- if answer == "true":
+ print(answer + " is correct!")
+else:
+ print(answer + " is false.") // to end a block un-indent the next line
+- print("{} sleeps all night and {} works all day".format(name, name)) // alternate string fromat
+- int, float
+- int("2") // convert to integer
+- float(2) // 2.0
+- int(2.0) // 2
+- try:
+ statement
+ except: 
+ statement
+// try, but if that fails do the except
+- if not '.' in myVar:
+ statement
+// the in check to see if something is in something else
+- if not // similar to if !( )
+- len() // returns the length of a string or array
+- round() // rounds a float or number
+- mystring[0] // returns the first index of the string var
+- myList = [1, 2.5, 'a'] // a list, similar to an array
+- list() // a function that creates a list, a list is a collection of items in Python
+- a in list('hello') // false
+- e in lest('hello') // true
+- str.split() // splits a string into a list, items being separted by the strings' whitespaces
+- str.join() // joins a list into a string // '_'.join(sentence_list) // everything we join has to be a string
+- shopping_list = [ ] // or = list( ) // either works 
+ while True:
+ new_item = input("> ")
+ if new_item == 'DONE':
+ break
+ shopping_list.append(new_item) // adds an item
+ print("Added! list now has {} items.".format(len(shopping_list)))
+ continue
+print("Here's your list:")
+for item in shopping_list: // for in loop
+ print(item)
+- def // keyword to define a function
+- def say_hello():
+ print('Hello')
+say_hello() // Hello
+- def add_to_two(num):
+ print(num + 2)
+add_to_two(4) // 6
+- def square(num)
+ return num * num
+square(5) // 25
+five_squared = squared(5) // returns and assigns 25
+- def show_help():
+ print("What should we pickup at the store?")
+ print("Enter DONE to stop. Enter HELP for this help.")
+def add_to_list(item):
+ shopping_list.append(item)
+ print("Added! List now has {} item(s).".format(len(shopping_list)))
+def show_list():
+ print("Here's your list:")
+ for item in shopping_list:
+ print(item)
+show_help()
+while True:
+ new_item = input("> ")
+ if new_item == 'DONE':
+ break
+ elif new_item == 'HELP':
+ show_help()
+ continue
+ add_to_list(new_item)
+ continue
+show_list()
+- import random // imports the random library
+- import brings outside code into your script
+- you can also import your function from a seperate file
+- dir(random) // enter in the console to look at the library
+- random.randint(a, b) // retunrs random int in range a, b
