@@ -1,0 +1,275 @@
+Learn the fundamentals to the JavaScript Language. JavaScript is the key to programming in the browser, mastering jQuery, and building apps with Node.js. You will learn how to program effectively in JavaScript, the different types, functions, and techniques for writing solid JavaScript. 
+
+Variables 
+The JavaScript Variables badge will teach you everything you need to know about variables, how they are created and used, and how JavaScript handles some special cases of variable creation.
+- variables can simplify your code 
+Naming
+- Descriptive and meaningful 
+- Start with a-z A-Z _ $ (not 1-9) 
+- Continue with A-Z a-z 0-9 _ $ 
+- Be aware of unusable keywords in JavaScript http://www.w3schools.com/js/js_reserved.asp 
+
+Null and Undefined
+- var myVar; // undefined represents a non-value that was undefined 
+- console.log(typeof myVar === "undefined"); 
+- var x = null; 
+- if(x === null) {console.log("variable is null");} 
+
+Scope
+- Functions within a function can access variables outside of the function that are within the main function 
+
+Shadowing
+- Two variables in different scopes can have the same name 
+- To avoid bugs always use var to define and declare variables 
+- If var is not used, the variable will become a global variable 
+
+Hoisting
+There is no block scope in JavaScript. The only time we get a new block scope is when we create a new (non-nested) function 
+When you declare and assign a variable in a block within a function, the variable declaration is hoisted to the tope of the function and assigned within the block. You don't have to worry about this rule as long as you keep all your variable definitions at the top of your functions. 
+Global variables should be defined at the top of the file that they are used in Strings 
+Basics
+- "This is my string\'s text" 
+- "He said \"This is my string\'s text\"" 
+
+Escape Characters
+- "C:\\folder\\myfile.txt" 
+- var multiline = "line1\nline2\nline3"; 
+- var tabline = "\tthis is tabbed" 
+- Concatenation
+- var p1 = "he ", p2 = "ran"; var whole = p1 + p2; whole + " more" 
+- var multiline = "line1\n" + "line2\n" + "line3\n"; 
+- first_name + " " + last_name 
+Methods
+- var length = whole.length; // Returns the length of a string or array 
+- var index = whole.indexOf("World"); // Returns the index of where the sub string exists in the string variable from [0] and case sensitive. If it is not in the string, -1 will be returned. 
+- if (whole.indexOf("W") !== -1) {} else {} 
+- console.log(whole.charAt(2)) // returns the single character at subscript 2 
+- var world = whole.substr(start, length); 
+- start is the starting index of the string 
+- length is the length of the string 
+- whole.sunstr(6, 5); 
+- console.log(whole.toLowerCase()); // Displays the string variable in all lower case characters 
+- console.log(whole.toUpperCase()); // Displays the string variable in all upper case characters 
+Comparing Strings
+- if (first === second){} else {} // === is strictly equal to (type included and case sensitive) 
+- if (first.toLowerCase() === second.toLowerCase()) // not case sensitive 
+Numbers
+Creating Numbers
+- var a = 11, b = -123, c = 1.5, d = 123.456789;
+- In js there is only one type of number. 11 is really 11.0. All numbers in js are floating point.
+- Rounding Errors - 0.1 * 0.2 == 0.0200000....4
+- var g = 1000000 // 1E6
+- 1.23E6 // 1230000
+- Octal Numbers - 012 // 1 makes it 8 and 2 makes it 10 - only works with numbers under 8 // Therefore, do not start your numbers with zero
+- Hexadecimal notation - 0xff == 255
+- Parsing Numbers From Strings
+- parseInt("197"); // converts a string to an int
+- parseInt("019", 10); // 19 // best to be specific and use base 10 with this function
+- parseInt("23 people", 10); // 23
+- parseInt("There are 23 people", 10); // NaN // Not a Number
+- Check for NaN - console.log(isNan(myNumber))
+- parseFloat("123.456"); // must start with a number as with parseInt // No need to add the base 10
+Operators
+* +, -, *, /, %, ++, --,
+* +x, -x, *x, /x
+* Remember in js all numbers are the same floating point type, even if they look like whole numbers
+* (1 + ((2 * 3 ) / 4)) - 5 // Natural Precedence
+* Use parenthesis by default to make your code more understandable and readable
+
+Comparisons
+* , =, ==, ===, !, !=, !==
+* === will check data types as well
+* In general use === to compare and check
+* 10 == "ten" is false because the data types are not equal
+*console.log(1 === parseInt("1", 10)); // best way to compare int to string value
+
+The Math Object
+* var myNum = Math.random(); // between 0 and 1
+* Math.random() * 10; // number between 0 and 10
+* Math.round(Math.random() * 10); // round to the nearest whole number
+* Math.random() * 20; // a random number between 0 and 20
+* Math.round(2.3); // 2
+* Math.round(2.5); // 3
+* Math.floor(3.7); // 3 // will always round down
+* Math.ceil(6.2); // 7 // will always round up
+* Math.pow(2, 5); // 32 // 2 to the power of 5
+* Math.sqrt(4); // 2 // Square root of 2
+* Math.min(); // as many arguments
+* Math.max(); // as many arguments
+* Math.abs(-1) // 1 // absolute value
+* Math.PI // a constant // 3.14....
+* More of the Math object library may be viewed in the browser console
+
+Arrays
+
+Creating Arrays
+Arrays allow us to store large numbers of values within a single variable. They act like lists which allow us to group our data together in an ordered fashion.
+* var myArray = ['some', 'words', 'here'];
+* console.log(myArray.length); // 3
+* var myArray = ['a string', 3, true, 'treehouse', function(a, b){return a + b}, ['a sub array', 2, 3, 4]]; // you can store any type of variable, functions, and sub array // myArray.length will not count the number of elements in a sub array within the main array
+* var emptyArray = [];
+* var myArray = new Array(); // this will construct a new array //However, myArray = [] is simpler
+* var myArray = new Array(50); // the length will be 50
+* Using the array constructor is not recommended
+* By default arrays will expand or contract when we remove or add elements
+
+Getting and Setting
+* var myArray = ["Hello", 42, true, function(a) {return a * 2}];
+* index 0, 1, 2
+* var word = myArray[0]; // assign value in subscript 0
+* var doubler = myArray[3]; // assign the function
+* console.log(doubler(10));
+* myArray[100] // undefined
+* We can change the values of array elements by reassigning them, much like how we retrieve them
+* var myArray[4] = "A new element" // here we've added a new element
+* var myArray[12] = "Another new element" // here we've added a new element to subscript 12 // Any subscripts which have not been assigned a value will be undefined
+* var myArray[myArray.length] = "A new string" // best way to add a new element to the end of an existing array
+
+Methods
+* var myArray = [2, 3, 4];
+- console.log(myArray.toString()); // toString will print the value before push is added
+- myArray.push(5); // adds a value to the end of the array
+* myArray.pop(); // returns and removes the last element of the array
+* var myArray = [2, 3, 4];
+* myArray.unshift(1); // adds a value to the beginning of the array
+* myArray.shift(); // returns and removes the first element of the array
+* push out last, pop in last, unshift in first, shift out first
+* myArray.sort(); // sorts as though the elements were strings
+* myArray.sort(function(a, b) {return a - b;}); // sorts numbers numerically
+* myArray.sort(function(a, b) {return Math.random() - 0.5;}); // sorts numbers randomly
+* myArray.reverse(); // reverses the order of the elements in the array
+* var x = [1, 2, 3], y = [4, 5, 6];
+* var z = x.concat(y);
+* var z = x.concat(4, 5, 6, [7, 8, 9]); // if you pass an array it will also concat the elements from the array. This is an easy way to join arrays together
+* var myArray = [0, 1, 2, 3, 4, 5];
+- var result = myArray.slice(1, 4); // Slice out index 1 to the 4th element // [1, 2, 3]
+* var words = ["these", "are", "some", "words"];
+- var result = words.join(' '); // "these are some words // the blank space is added between each element // If an element is not a string it will be called by the method .toString() and converted to a string
+
+Splice
+* myArray = [0, 1, 2, 3, 4, 5, 6];
+- delete myArray[2]; // deletes the element and makes it undefined
+- myArray.splice(2, 1); // Starting at index 2 remove 1 element from the array [0, 1, 3, 4, 5, 6;]
+- myArray.splice(2, 2); // Starting at index 2 remove 2 elements from the array [0, 1, 4, 5, 6;]
+* myArray.splice(2, 0, "two"); // "two" is inserted before element 2 and 0 elements are removed
+* myArray.splice(2, 1, "two"); // subscript 2 is removed and replaced with "two" // It is easier to use the assignment myArray[2] = "two"
+* myArray.splice(2, 1, "two", "three", "four"); // subscript 2 is removed and replaced with "two" and "three" and "four" follow
+*.splice(,,); // the first 2 arguments are about removing elements and anything afterwards is inserted in its place
+
+Functions 
+
+Functions in JavaScript allow us to store code for reuse later in our programs. We can change the behavior each time we use the function by passing in data called arguments.
+
+Arguments
+* function sayHello () {console.log("Hello World!");} // function is a js keyword // named like variables
+* sayHello(); // function call
+* functions can take arguments and return values
+* function sayHello (name) {console.log("Hello World!", name);}
+- sayHello("Jim"); // function call // Jim will be passed to name
+* function sayHello (name, greeting) {console.log(greeting + "World! " + name);}
+- sayHello("Jim"); // function call // Jim will be passed to name and greeting will be undefined
+- if (typeof greeting === "undefined") {greeting = "Hello"} // give a default value to a parameter variable
+
+Return Values
+* function sayHello () {console.log("Hello World!"); return;} // you can return nothing
+- return name.length;
+* Any code after return will not be executed
+* You can do a conditional return
+- if (typeof name === "undefined") {return 0;}
+* return is also useful for conditionally ending a function
+
+Scope
+* var color = "black"; // global scope
+- function showColor () {var color = "green";} // new scope
+* In js we are able to access and change higher level variables from within our functions
+* Avoid giving different variables at different scopes the same name
+* Always use var when you intend to declare a new variable
+* If you do not use var to declare a variable, js will make the variable global, even if it was declared in a function - the var keyword is vitally important
+* in js, new scopes are only created in functions, not conditions or loops
+
+Anonymous Functions
+* var myFunction = function () {}
+- myFunciton(); // call it like any other function
+* var callTwice = function (targetFunction) { targetFunction(); targetFunction();}
+- callTwice(myFunction); // pass the value in myFunction to callTwice
+* callTwice(function(){}); // function will be evaluated and passed as an argument to callTwice
+* callTwice(function namedFunction(){}); // namedFunction will be evaluated and passed as an argument to callTwice // namedFunction will be accessible from the global scope
+* naming the function is useful in debugging, but may not be necessary if you are not going to use it again
+* (function () {var a, b, c;})(arg1, arg2); // the function will evaluate and call immediately // the parenthesis are there as they are around an expression - syntax purpose // the second set of parenthesis are function execution parenthesis
+// this is useful for creating a private scope
+* (function () {)(); // anonymous function declared and call
+
+Examples
+* Action // grabbing the id is the easiest way to work with elements in html
+* var button = document.getElementById('action'); // a common browser method
+* Place your script at the bottom of the page so that it executes when the document is ready
+* button.onclick = function () {;}
+* button.addEventListener('click', function () {;}); // does not work in ie
+* input.setAttribute('value', 'Hello World'); // a method that affects the input field
+
+Objects 
+
+Objects are the foundation of JavaScript. They are very easy to learn, but can be a bit difficult to master. In this course we will look at simple JavaScript objects as well as how to use Prototypes to do object oriented programming.
+
+Basic Objects
+* var person = { name: "Jim"}; // define the keys and values of our object
+- there is no semi-colon after the value of a key
+- end with a comma if you are defining multiple keys
+- person.name // Jim // much like a variable except it is associated with an object
+- person.name = "new name" // we can re-assign the value
+* var person = { skills: ["JavaScript", "C++", "VBA"]}; // define the keys and array values of our object
+- person.skills // much like a arrays except it is associated with an object
+* A string can be used as a key name - "name" and "skills" or "favorite color" for example
+- person.["favorite color"] // the way to access a key with a whitespace // It has to be quoted if its inside square brackets
+* Keys are separated by commas in the object declaration
+
+Methods
+* var person {greet: function () {statement; } } 
+* person.greet(); // call the function from the object
+* A method is a function that is a property of an object
+* var person = {name: "Abe", greet: function () {console.log("Hello, I am " + this.name); } } 
+- this // special js object // this is always going to be bound to the value at the very last second
+- person["greet"] (); // Hello, I am Abe
+- person.greet(); // Hello, I am Abe
+* "this" can be really harmful to our programs if the method containing it is not called within a proper object
+* when you see this in a function, it should only be used as a method bound to a proper object that you are referring to
+- var person = { name: "Abe", greet: function () {return "Hello, my name is " + this.name; } } 
+
+Call and Apply
+* var personGreet = person.greet;
+- personGreet.call(person); // call is a special js method the call() method, which can be added to a function will call the function and the argument passed to it is the object which "this" will refer to. ie. the object person
+* Apply takes all arguments as a single array, where call passes all arguments individually
+- personGreet.call({name: "Abe"}, "sad", "bad");
+- personGreet.apply(person, ["sad", "bad"]); // takes the object name and an array of the argument which the object method receives
+* var args = ["sad", "bad"]; // array
+- person.greet.apply(person, args); //apply an array to the object method in person
+* [random note] name = name || "you"; // default to a value if the variable is currently 0 or undefined - 0 is false - anything positive is true
+
+Prototypes
+* A prototype is an object that provides keys and values for another object, provided the other object does not itself define that key
+* var personPrototype = {name: "Anonymous", greet: function..., species: "Human"}
+* Object oriented programming is programing that is derived around objects and methods on those objects
+* In js we do not have classes
+* Constructor Function[begin with capitol letter to help clarify the function type] - function Person () {this...;}
+- Person.prototype = personPrototype // prototype is an object
+- jim = new Person() // new creates a new object for us, called jim
+- Capitol letter functions should only be constructor functoins, with new in front of it when it is called
+* http://www.javascriptkit.com/javatutors/proto.shtml
+* Example code:
+var carPrototype = {
+model: "generic",
+currentGear: 0,
+increaseGear: function() {
+this.currentGear ++;
+},
+decreaseGear: function() {
+this.currentGear--;
+}
+}
+
+function Car(name) {
+this.model = name;
+}
+
+Car.prototype = carPrototype;
+Car.prototype.wheels = 4;
