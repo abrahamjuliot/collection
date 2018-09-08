@@ -1,0 +1,109 @@
+GETTING STARTED WITH THE COSOLE
+- http://www.tutorialspoint.com/unix_terminal_online.php
+- the console is a text based interface to your computer
+- ls // lists the files and directories of a directory
+- ls -l // list long form
+- ls -a // list all files
+- ls /myFolder // list files in a folder
+- ls -l /myFolder // list files in a folder in long form
+- verb -adj argument // way to remember the command concept
+- clear // clear the console
+- directories are folders
+- pwd // print working directory (the ~ means your at home)
+- cd // change directory [optional tab completion]
+- an absolute path begins with /, for example /home...
+- ~/documents // shorthand for the absolute path to documents, wherever it is
+- cd ~ // change to the home directory
+- cd .. // go up one directory
+- cd ../.. // go up two directories
+- cd /home/treehouse/../ // go to home
+- up arrow key gives you the last command
+- less README.txt // displays the text of the file (spacebar scrolls by page, down arrow scrolls by line
+ - q // quits less
+- more README.txt // alternative program
+- cat README.txt
+- cat README.txt otherFile.txt // prints both file (concats them)
+- nano README.text // to edit the text file (^X means ctrl Exit) - nano is great for beginners, but there are advanced alternatives
+- mv // moves or renames a file or directory (similar to cut)
+- mv // hi.txt documents/ // move the file into the documents directory
+- mv // hi.txt documents/hello.txt // move the file into the documents directory and rename
+- mv documents/ht.txt . // move the my current directory
+- . // represents my current directory
+- mv documents docs // rename documents to docs
+- cp hello.tx hi.txt // copies hello to hi (creates and names a copy)
+- cp -r documents docs // copies the documents folder and files to new named folder (-r is required to copy folders)
+- rm hi.text // removes the file (cannot be undone, be cautious using rm)
+- rm -r docs // removes the docs directory
+- mkdir pictures // make directory
+- mkdir -p docs/notes/console/stage1 (-p allows level deep creation)
+
+USERS AND PERMISSIONS
+- whoami // prints out the current signed in user
+- sudo adduser mike // adds user (requires password)
+- su mike // switch user (mikes password required) 
+- permissions: read, write, execute (rwx)
+- types of permission: user, groups, and other
+- chmod o+w hello.txt // change permissions mode: add write permissions to other (o-w to remove) (ugo)
+- chmod +x hello.txt // add execute permission to everyone
+- ugo (r4 w2 x1) // octal notation
+- 751 (-rwxr-x--x)
+- sudo chown mike hello.txt // change owner of the file to mike (password required)
+- sudo // run a command a the super user (requires your password)
+- !! // runs the previous command
+- sudo !! // run the previous command as the super user
+- The sudo command allows you to override all permissions temporarily to get things done
+
+PROCESSES
+- Processes are instances of running programs on your computer
+- top // shows processes running and resources being consumed (sorted list )
+- ps // shows the processes running
+- ps aux // list everything
+- ps aux | grep "top" // filters a process with "top"
+- ctrl + z // pause current process
+- fg // resumed the last paused process (foreground)
+- jobs // shows paused processes (in your current session)
+- fg 1 // resumes specified process
+- & // immediate background the process
+- ctrl + c // clean up and exit the current process
+- kill 1450 // sends terminate to the process (use top to get the id - be careful) - equivalent to kill -TERM 1450
+- kill -KILL -9 1450 // send the kill signal (force quit, use as a last resort and with care)
+- kill -STOP 1450 // force pause
+- kill sends the signal to the process
+
+ENVIRONMENT AND REDIRECTION
+- env // prints all environment variables 
+- variables are in all caps
+- echo hello // prints hello
+- echo $HOME // prints the contents of the variable
+- PS1="whatever" // assigns value to the variable
+- starting a new process of bash will start a new new variable environment (exit will return)
+- variables are local to the current session
+- export MESSAGE="Hi world" // sets the variable to global sessions of bash
+- which // shows the path of the command
+- find . -name "hello.txt" // locate a file by name (dot means within current directory
+- find / -name "sudoer" // search all directories
+- grep "is" hello.txt // search inside a file for a text pattern
+- grep -n "is" hello.txt // shows the line numbers
+- grep by default is case sensitve
+- grep -1 "is" hello.txt // removes case sensitive
+- grep -v "is" hello.txt // show lines without the pattern
+- man grep // shows the grep manual
+- grep hello // press enter, and this searches the text followed
+- grep this hello_grep.txt // takes the file as the argument for the output rather than console output. This will overwrite contents of the file
+- grep line hello.txt >> grep_file.txt // appends the contents instead of overwrite
+- command A | command B // makes the output of A the input of B
+- ps aux | grep bash // output of ps aux is the input of grep bash
+- pipes connect one processes's output to another process's input
+
+INSTALLING SOFTWARE
+- sudo apt-get update // updates your packages list
+- sudo apt-get install build-essential // installs the package to build package from source
+- which make // tells you were make program is (to check if it was installed)
+- curl -O http:...tar.gz // curl makes request to internet
+- tar -xvf // unzip the tar file
+- .configure // enter within the package directory (this makes the makefile
+- make // build the makefile which builds the program
+- sudo make install // final step to install
+- apt-cache search git // search for packages based on pattern
+- sudo apt-get upgrade // upgrade your packages list (best to run after update)
+- sudo apt-get remove git // uninstall the package (autoremove removes dependencies as well)
