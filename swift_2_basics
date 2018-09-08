@@ -1,0 +1,20 @@
+1. An Introduction to Swift Programming
+- var str = "Hello, playground" // permanently a string variable
+- types are optional (optional typing), but permanent by default (statc typing)
+- let LANGUAGE = "Swift" // constant variable
+- start with constants and use variables when needed
+2. Swift Types
+- country + ", " + state + ", " + city // string concatination
+- you can only concat strings
+- "(country), (state), (city), (222)" // string interpolation
+- you can interpolate different variable types together
+- String, Int, Float, Double, Bool
+- use Double unless you specifically need Float
+- let bestPlayer: String = "Michael Jordan"
+3. Swift Operators
+- Binary Operators: +, -, /, *, %
+- number operand types must be the same: you can't divide and int by a float
+- Assignment Operator: =
+- Comparison Operators: ==, !=, >, =, <=
+- multiplication, division, modular are prioritized higher than addition and subtraction
+- Unary Operators: ++score, score++, --score, score--, +=, -=, *=, /=, %=, !true, !false
