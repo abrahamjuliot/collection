@@ -1,0 +1,123 @@
+Swift Basics 
+Swift is a new programming language created by Apple to program iOS apps. If you are new to programming or to Swift then this course is for you. Learn about programming concepts like: variables, types, collections and control structures. Towards the end of the course we will learn to program a FizzBuzz generator applying everything we have learned in the course. 
+ 
+Variables and Constants 
+What is Swift? 
+Safe, modern, and powerful 
+Common programming concepts include Variables, Loops, Arrays, Types, Dictionaries, Control Flow 
+Code written at global scope is the entry of the program 
+You don’t' need a main function 
+You don't need semi-colons at the end of every statement 
+Consecutive statements on a line must be separated by ';' 
+Xcode 
+Integrated Development Environment (IDE) 
+Comments have their place when used wisely 
+Variables [var] 
+In Swift we have implicit or inferred variable types 
+however, we can tell the system what type we are declaring 
+var strVariable: String = "Hello" 
+let strVariable: String = "Swift" 
+var strVariable = "Hello, playground" 
+variables hsould always start with a letter 
+Write your program so that it is readable and makes sense 
+var modernProgrammingLanguage = "Swift" 
+var greeting = "Hello " + modernProgrammingLanguage 
+Constants [let] 
+let modernProgramingLanguage = "Swift" 
+This safeguards you from potentially making mistake of changing the value 
+variables that do not or should not change should be constants 
+The value of a constant does not need to be known at compile time, but you must assign it a value exactly once. 
+Types 
+Printing Results [print() and println()] 
+You can use the console to print out values in real-time 
+print() // a function that prints output to the console 
+println() // a function prints a single line 
+You don't need to import a library for IO functions or string functions 
+print("Hello \(worldVariable)") // prints "Hello " + worldVariable [This is called string interpolation] 
+var greeting = "\(anyTypeOfVariable_1) \(anyTypeOfVariable_2)" 
+Strings 
+\n // new line [can also be part of a variable] 
+\t // tab [can also be part of a variable] 
+You can print special characters 
+Swift uses Unicode and therefore can support any foreign langauge 
+Numbers and Booleans 
+Int - Non-decimal value 
+Float - 7 decimal points 
+If you don’t specify float then swift will assume double 
+Double - 15 decimal points [default for decimal values] 
+Bool // true or false value 
+Operators [Binary Operators] 
+10 (operand 1) + (Operator) 5 (Operand 2) 
++ - / * % 
+Double(numberVariable) // converts the type to a double 
+Operator Precedence 
+Highest precedence 
+Parenthesis 
+High Precedence 
+multiplication 
+division 
+remainder 
+Low Precedence 
+addition 
+subtraction 
+Unary Operators 
+++ Increment Unary Operator 
+myVariable++ // postfix 
+++myVariable // prefix 
+-- Decrement Unary Operator 
+myVariable-- // postfix 
+--myVariable // postfix 
+- Negative Operator 
+-myVariable / Positive to Negative or Negative to Positive 
+! NOT Operator 
+!myVariable // negates the value 
+let on = false 
+let off = !on 
+Collections 
+What is an Array? 
+var todo = ["Call Someone", "Fly Somewhere", "Run Around"] 
+var todo: [String] = [] // Arrays can be declared with a data type 
+todo += ["Pickup Laundry"] // adds a new element 
+todo[0] // First item in the array 
+todo.count // .count is a property of an array which counts the elements in the array 
+Modifying an Array - Holds an ordered list of values 
+Arrays have several properties and functions associated to them 
+todo.append(newElement) // adds a new element 
+todo[2] = newElements 
+todo.removeLast() 
+Option + Click shows the documentation of the function 
+todo.removeAtIndex(1) 
+todo.insert("Call mom", atIndex: 0) 
+What is a Dictionary? - Holds an unordered list of key value pairs 
+var countries = ["CA": "Canada"] // [Key: Value] // dictionaries can also be constants 
+countries["CA"] // Returns Some "Canada" 
+countries["US"] = "United States" // Assigns a new key value pair to the dictionary countries 
+countries["US"] = "United States of America" // updates the key to a new value 
+Dictionaries are not used for order pairs, but rather indexing them 
+let item = countries.removeValueForKey["CA"] 
+Control Flow 
+For-In-Loop 
+for item in todo {println(item)} 
+for constant in array {// do something} 
+The for-In Loop is used to perform some function over each item in a collection 
+for number in 1...10 // 1...10 represents a closed rage of numbers from 1 to 10, 10 included 
+1.. Greater than 
+>= Greater than or equal to 
+== Equal to 
+!= Not equal to 
+=== Identical 
+!== Not identical 
+If Statement 
+if number == 12 {} 
+if number == 12 {} else {} 
+if number == 12 {} else if number == 11 {} else {} 
+Switch Statement 
+for card in cards { switch card {case 11: default:  } }  
+{case 11...13:} 
+{case 1,11,12,13:} 
+Switch statement are favored over if else if else statements; however, they both have their places 
+Logical Operators 
+Logical 
+&& AND operator // useful for testing inside a range 
+|| OR operaotr // useful for testing outside a range 
+! NOT operator
