@@ -1,0 +1,274 @@
+[1] syntax: ternary conditional, logical assignments, switch block; [2] performance: loop optimization, script execution, performance tips, measuring performance; [3] caution: careful comparison, exception handling, avoiding keywords eval and with, parsing numbers; [4] modularity: namespacing, anonymous closures, global imports, augmentation
+
+SWORD OF SYNTAX
+1.1 TERNARY CONDITIONAL
+- someCondition ? doIfTrue : elseDoIfFalse 
+- var myVar = test ? doTrue : doFalse // conditional assignment
+- "string" + (test ? "ifTrue" : "ifFalse") // conditional concat
+- test_1 && test_2 ? doTrue : doFalse // multiple tests
+- test ? function() { }() : function() { }() // immediately invoked functions
+- test ? (one = 1, two = 2) : (three = 3, four = 4) // multi statements
+- test_1 ? true : test_2 ? true : false // nested ternary conditional (else if ternary)
+1.2 LOGICAL ASSIGNMENT - OR
+- array = array ? array : [ ] // if the array exists, assign it to itself, else create new array
+- array = array || [ ] // assign array if true or (else) assign new array, order matters in logical assignment
+-- array.push(1) // push to new or current array
+1.3 LOGICAL ASSIGNMENT - AND
+- result = 0 && 1 // takes the first false value
+- begin = gas && car && day && coffee
+1.4 THE SWITCH BLOCK
+- switch (value) { case 1: // do; break; case 2: // do; break; default: // else do}
+- multiple case values can take the same action
+- switch (value) { case 1: case 2: // do; break;} // case 1 and 2 will do the same action
+- cases may be placed in any order
+- cases may be any value, including a string
+2.1 LOOP OPTIMIZATION
+- Reduce step in for loops with cache values
+- for(var i = 0, len = array.length; i < len; i++) { }
+- be aware that javascript does not scope to block
+-- variables declared in the for loop header are available outside of the loop
+-- name our variables carefully
+- Try to avoid repetitive object.property access in for loops
+- for(var i = 0, len = array.length, list = obj.prop; i < len; i++) { console.log(list[i]) }
+- for in loops are not best for looping through an array, because it will include methods
+- for loops are best for iterating through a loop
+2.2 SCRIPT EXECUTION
+- Any scripts that are high in body of the html do and can slow load time
+- Move scripts as low as possible, like at the end of the body
+- You can also add the async attribute to scripts that must be high in the page
+- async will allow the page to load entirely before loading the script
+2.3 SHORT PERFORMANCE TIPS
+- Inheritance can help with memory efficiency
+- constructor function methods should be placed in a prototype
+-- myConstructor.prototype = {} // hold an abject of methods
+- adding dom elements to the dom causes document reflow
+-- instead use a fragment: document.createDocumentFragment()
+-- declare with var as few as possible
+-- list your variables in one var and avoid var declaration in loops
+- place long strings like html strings in an array and use the .join('\n') method
+-- newline is optional
+2.4 MEASURING PERFORMANCE I
+- console.time('time to add') // before code
+- console.timeEnd('time to add') // after code
+- In the timing of one particular process, the messages must match exactly for the opening .time() and the closing .timeEnd()
+- When using time you need to make sure you pass a string to it with the name of the timer
+-
+console.time('Test');
+internalThoughts = array.join(' ');
+console.time('innerTest');
+console.log(internalThoughts);
+console.timeEnd('innerTest');
+console.timeEnd('Test');
+- the inner test time will take up time for the outer test in the above code
+2.5 MEASURING PERFORMANCE II
+- var rightNow = new Date() // immediatly captures the current date
+- console.log(+rightnow) // numerical version of the date
+- rightNow = +new Date() // numerical version assignment
+- 
+var rstartTime = +new Date();
+// do something
+var endTime = +new Date();
+var elapsedTime = endTime - startTime
+console.log(elapsedTime);
+- Speed test plugin
+var SpeedTest = function(testImplement,testParams,repetitions) {
+ this.testImplement = testImplement;
+ this.testParams = testParams;
+ this.repetitions = repetitions || 10000;
+ this.average = 0;
+};
+
+SpeedTest.prototype = {
+ startTest: function() {
+ if (this.testImplement(this.testParams) === false) {
+ alert('Test failed with those parameters.');
+ return;
+ }
+ var beginTime, endTime, sumTimes = 0;
+ for (var i = 0, x = this.repetitions; i < x; i++) {
+ beginTime = +new Date();
+ this.testImplement(this.testParams);
+ endTime = +new Date();
+ sumTimes += endTime - beginTime;
+ }
+ this.average = sumTimes / this.repetitions;
+ return console.log('Average execution across ' + this.repetitions + ': ' + this.average);
+ }
+};
+-- Speed test prototype
+var IP = ['Nipping Global Variable', 'Sneaky Forin', 'Bulging Blocking Script'],
+GH = ['Switch Blocks', 'Pesky Gnat', 'Aiedra'],
+inhabitants = [IP,GH];
+
+function populationGetter(popn) {
+ var list = '';
+ for (var i = 0, x = popn.length; i < x; i++) {
+ for (var j = 0; j < popn[i].length; j++) {
+ list += (popn[i][j] + ', ');
+ }
+ }
+ return list;
+}
+
+populationGetter(inhabitants);
+var concatTest = new SpeedTest(populationGetter, inhabitants, 100000);
+concatTest.startTest();
+
+3 THE CRYSTAL OF CAUTION
+3.1 CAREFUL COMPARISONS
+- == / compares contents
+- === / compares contents and type
+- triple equal seeks very strict equality
+- instanceof operator helps identify objects
+- 
+function Bird(){};
+function DatatypeBird(){};
+DatatypeBird.prototype = Object.create(Bird.prototype);
+
+var NumberNommer = function(){};
+NumberNommer.prototype = Object.create(DatatypeBird.prototype);
+
+var myNumberNommer = new NumberNommer();
+// myNumberNommer is a new instance of Bird.
+// also (myNumberNommer instanceof DatatypeBird) is true
+3.2 EXCEPTION HANDLING
+- an exception is a run-time error, not a syntax error
+- try { } catch (error) { console.log(error); } // a try block is a test zone for your code
+- 
+try { 
+	// do something 
+	if ( ) {
+		// throw to the catch block
+		throw new ReferenceError();
+	}
+	if ( ) {
+		throw new TypeError();
+	}	
+} catch(error) { 
+	if (error instanceof ReferenceError) {
+		// file not available
+	}
+	if (error instanceof TypeError) {
+		// not type expected
+	}
+} finally { // do regardless, show results for example}
+- you can have nested try blocks
+- try { catch (error1) { try { } catch (error2) { } } catch { } }
+- you can throw custom errors
+- throw new Error("custom message")
+3.3 STUFF THAT (SOMETIMES) STINKS
+- The "with" keyword is generally avoided
+- 
+var drawbridge = {
+	soldiers: 8,
+	capacity: 20,
+	open: function() {}
+}
+
+with (drawbridge) { open(); }
+- note: new properties and methods are added as globals
+- with is generlly not readable because you dont know what is part of the object or nested object at glance
+- it's better to use vaiables to cache your objects
+- cache objects where possible and avoid the with statement
+- The "eval" keyword should generally be avoided, for debugging purposes
+- eval can be useful in some cases
+- eval("regiment" + number).motto = motto; // one solution
+- it's better to use arrays
+- JSON.parse(myJSON); best way to parse JSON, avoid eval
+- note: for any code, keep your brakets to ensure new code is properly scoped to the right block
+3.4 NUMBER NONSENSE
+- 0.2+0.1 will equal 0.30000...4
+- be aware of floating point arithmetic
+- the toFixed() method will allow you to select the exact amount of decimal places to display
+-
+var num = 0.1+0.2;
+console.log(num.toFixed(1)); // one decimal place will be shown
+- You will need to use parseFloat() to convert toFixed() from a string to a number
+- example: parseFloat(num.toFixed(1))
+- parseInt() will seek the first available integer of a string, without rounding
+- be careful with parseInt("021") // user errors // EcmaScript 5 will convert to 21, while older versions will convert to 17
+- parseInt("021", 10); // use when you want a decimal value (best practice: always use this for parseInt)
+- The best way to check if x is a number: ( typeof x === "number" && !isNaN(x) ) // is the type of data a js number value and not NaN (not not a number), because NaN is a js number value // using both typeof and isNan()
+- Remember to parse your data if it is received as a string
+4 THE MAIL OF MODULARITY
+4.1 Namespacing Basics
+- A namespace is an object that groups and protects related data and methods in JavaScript files
+- Namespaces will shield your data from affecting or being affected by global variables
+var WRAPPER = {
+	myVar: [ ]
+	myFunc: function( ) { // use this.myVar }
+}
+WRAPPER.myFunc( ) // function call
+- Ideally all of your data should be in a namespace to reduce your global footprint
+- You can also nest your namespaces (namespace objects within a namespace object)
+- Example of a namespace:
+var CAVES = {
+	stalactites: 4235,
+	stalagmites: 3924,
+	bats: 345,
+	treasureChests: 3,
+	openChest: function() {
+ 		this.treasureChests--;
+ 		alert('DA DADADA DAAAAAAA!');
+	}
+};
+- Example of nested namespace:
+var CAVESOFCLARITY = {
+ 	stalactites: 4235,
+ 	stalagmites: 3924,
+	bats: 345,
+	SECRET: {
+ 		treasureChests: 3,
+ 		openChest: function() {
+ 			this.treasureChests--;
+ 			alert('DA DADADA DAAAAAAA!');
+ 		}
+ 	}
+}; // call with CAVESOFCLARITY.SECRET.openChest()
+- do note that these examples are public properties
+4.2 Anonymous Closures
+- anonymous closure is used to cause some properties to be private, bound only to a surrounding function's local scope, and some properties to be public, accessible by all holders of the namespace
+- public methods and values often trigger private methods and values
+- public methods can signal the private methods to safely modify private data
+- Example of anonymous closure:
+var ARMORY = (function(){ //data })(); // immediately invoked
+- Example with private and public data:
+var ARMORY = (function() { 
+	// private
+	var myList = [ ], 
+		doSome = function() {};
+	
+	// public (the ARMORY namespace)
+	return {
+		myFunc: function() { // edit private myList},
+		myVar: 2
+	}
+})();
+ARMORY.myFunc() // call public method
+ARMORY.myVar // access public variable
+- the parenthesis that immediately invoke the function enables the ARMORY variable to immediately contain the object that serves as our module, rather than a function
+- Remember you can still use nested namespaces
+4.3 Global Imports
+- When a global variable is references within a model namespace, the inner and outer namespaces scopes are checked before the global scope; that's a vary expensive process.
+- Each time this global variable is used within a module, the entire scope chain is checked. You can help achieve better performance by using a global import
+- global imports are clearer and faster:
+var wartime = true; // global
+var ARMORY = (function( war ) { 
+	if(war) { //do something }
+})(wartime);
+4.4 Augmentation
+- Augmentation provides extra properties for existing modules
+- Augmentation is the term for adding or changing properties in a module after the module has already been built
+- In a separate file we can keep a function which will add values or functionality to our existing ARMORY module:
+
+ARMORY = (function( oldNS) { 
+	// private
+	var oil = 1000;
+	
+	// public
+	oldNS.assign = function( ) { };
+	return oldNS;
+})( ARMORY );
+
+- Beware: previous private data will not be accessible to the new properties. 
+- Best practice is to group file contents around needed data
