@@ -1,0 +1,35 @@
+`
+var privateVariable = 0; // global to the parent object
+
+// a closure is a function with its own private variables
+
+function closureFn() {
+	var privateVariable = 1; // local to this function
+	function modifyPrivateVariable(num) {
+		privateVariable = num;
+	}
+	return modifyPrivateVariable; // returns this private scope
+}
+
+privateScope = closureFn() // assign the function returned
+// privateScope now holds its own and new private scope of privateVariable
+
+// loop and conditional do not enclose var declaration
+// however, you can encapsulate them in a private fuction
+// decalred in the outer block and called within the inner block
+
+function createHandler(num) {
+	return function() {
+		console.log(num);
+		// do something with name variable
+	}
+}
+
+if (true) {
+	var globalNum = 0;
+	createHandler(globalNum);
+}
+
+// es2015 solves this problem
+let blockScopeVariable;
+`
