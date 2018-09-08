@@ -1,0 +1,105 @@
+- https://gulp-practice-abrahamjuliot.c9users.io/
+
+# Install gulp globally
+npm install -g gulp
+# Install http-server globally
+npm install -g http-server
+
+- gulpfile.js
+
+`
+'use strict';
+
+var gulp = require('gulp'),
+ concat = require('gulp-concat'),
+ uglify = require('gulp-uglify'),
+ rename = require('gulp-rename'),
+ sass = require('gulp-sass'),
+ maps = require('gulp-sourcemaps'),
+ del = require('del');
+
+gulp.task('concatScripts', function() \\{
+ return gulp.src([ // return concatScripts to use as dependency
+ 'js/jquery.js', 
+ 'js/sticky/jquery.sticky.js',
+ 'js/main.js'
+ ]) // files to concat
+ .pipe(maps.init()) // map the js file
+ .pipe(concat('app.js')) // concat file
+ .pipe(maps.write('./')) // write map to relative dest folder (js)
+ .pipe(gulp.dest('js')); // concat result folder
+ // run by entering gulp concatScripts
+\\});
+
+// including concatScripts as a dependency
+gulp.task('minifyScripts', ['concatScripts'], function() \\{
+ return gulp.src('js/app.js') // file to minify
+ .pipe(uglify()) // minify file
+ .pipe(rename('app.min.js')) // minify rename
+ .pipe(gulp.dest('js')); // minify result folder
+\\});
+
+gulp.task('compileSass', function() \\{
+ return gulp.src('scss/application.scss') // file to compile
+ .pipe(maps.init()) // map the sass file
+ .pipe(sass()) // compile file
+ .pipe(maps.write('./')) // write map to relative dest folder (css)
+ .pipe(gulp.dest('css')); // compile result folder
+ // gulp can create this folder
+\\});
+
+gulp.task('watchFiles', function() \\{
+ // return is not needed because
+ // this task does not depend on another
+ gulp.watch('scss/**/*.scss', ['compileSass']);
+ // look in the scss folder
+ // look in all its sub directories
+ // look for any file with the .scss extension
+ gulp.watch('js/main.js', ['concatScripts']);
+ // run concatScripts upon a change
+\\});
+
+gulp.task('clean', function() \\{
+ del([
+ 'dist',
+ 'css/application.css*', // also gets map files
+ 'js/app*.js*' // also get min and map files
+ ]);
+\\});
+
+// enter gulp build to run all dependencies
+// don't need to include concatScripts because
+// its a depency of minifyScripts
+gulp.task('build', ['minifyScripts', 'compileSass'], function() \\{
+ // compile prodution files to a source folder
+ return gulp.src([ 
+ 'css/application.css', 
+ 'js/app.min.js',
+ 'index.html',
+ 'img/**', 
+ 'fonts/**'], \\{base: './'\\}
+ )
+ .pipe(gulp.dest('dist')); // src folder 
+ // base keeps the directory structure
+ // by prividing the current working directory
+ // otherwise the files will be listed
+ // without directories
+\\});
+
+// gulp serve to run
+gulp.task('serve', ['watchFiles']);
+
+// or enter gulp to run default dependencies
+gulp.task('default', ['clean'], function() \\{
+ // note, the gulp start method will change in gulp 4
+ gulp.start('build'); // runs after clean is done
+\\});
+`
+- npm install gulp-concat --save-dev
+- npm install gulp-uglify --save-dev
+- npm install gulp-rename --save-dev
+- npm install gulp-sass --save-dev
+- npm install gulp-sourcemaps --save-dev
+- npm install del --save-dev
+
+- http-server -p $PORT
