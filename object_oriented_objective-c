@@ -1,0 +1,95 @@
+1. Getting Oriented - Object-Oriented, That Is
+- inheritance defines how a subclass inherits the parent class
+- composition is an alternative to inheritance. it is the act of building a class out of already functional component parts
+- NSDictionary and NSMutableDictionary // you changes the values in mutable
+
+NSDictionary *orderDictionary = @\\{
+	@"burgers": @5
+	@"shakes": @3
+	@"customers": @4
+	@"isTakeOut": @NO
+	@"subtotal": @0.0
+\\};
+
+// [[orderDictionary valueForKey: @"burgers"] intValue]
+
+`objective-c
+NSDictionary *artDict = @\\{
+ @"Artist":@"Dali", 
+ @"Title":@"The Ship", 
+ @"Medium":@"Oil Paint"
+\\};
+
+NSString *favoriteArtist = [artDict valueForKey: @"Artist"];
+`
+2. Memory, Arrays and Loops, Oh My!
+- A pointer is a variable whose value is the memory address of another variable
+ - alloc and init:
+
+NSDictionary *testDict; // declare object
+testDict = [NSDictionary alloc] // allocate memory
+[testDict initWithObjectsAndKeys: @5, @"burgers", @3, @"shakes", nil]; // initialize the object with keys and values
+
+- The above is more flexible, but is the same as using the literal syntax:
+NSDictionary *orderDict = @\\{
+	@"burgers": @5,
+	@"shakes": @3
+\\}
+
+`objective-c
+NSMutableDictionary *carDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"Honda", @"Make", @"Accord", @"Model", nil];
+NSString *myRide = [[NSString alloc] initWithString:@""];
+myRide = [carDict valueForKey: @"Make"];
+`
+- NSArray and NSMutableArray // elements must be objects
+- NSMutablArrays cannot be created witht the literal syntax. You will need to manuall alloc and init:
+NSMutableArray *nameArray = [[NSMutableArray alloc]initWithObjects: @"Andrew", @"Kenneth", @"Craig", @"Kenneth", nil]; // must end with nil
+
+or
+
+NSMutableArray *nameArray = [NSMutableArray arrayWithObjects: @"Andrew", @"Kenneth", @"Craig", @"Kenneth", nil];
+
+- [nameArray objectAtIndex: 2]; // retrieve the lement at index 2
+- [nameArray count]; // length off array
+- [nameArray replaceObjectAtIndex: 0 withObject:@"Gabe"]; // replace an element
+- [nameArray removeObjectAtIndex: 0]; // remove an element
+- [nameArray removeObjectIdenticalTo: "Match"]; // remove matching element
+- [nameArray insertObject: @"newName" atIndex:2]; // insert an element
+- [nameArray addObject: @"Zed"]; // append an element
+- for(NSNumber *age in agesArray) \\{ ageValue = [age intValue]; \\} / for in loop
+
+`objective-c
+NSArray *drinks = @[@"juice", @"water", @"coffee"];
+for(NSString *drink in drinks) \\{
+ NSLog(@"%@", drink);
+\\}
+`
+
+3. Diving Deeper - Classes, Properties and Methods
+- .h file is the header and .m is the implementation file
+- // .h file:
+#import 
+@interface TableCheck : NSObject
+@property (nonatomic) int serverNumber;
+@property (nonatomic) float subtotal;
+@end
+- // .m file:
+#import "TableCheck.h"
+@implementation
+
+@end
+- // main.m file (#import "TableCheck.h")
+TableCheck *table1 = [[TableCheck alloc] init];
+table1.subtotal = 15.00; // though its better to use setter and getter methods
+
+[table1 setSubtotal: 12.75] where setSubtotal is a method, this is the same as table1.subtotal = 12.75 
+
+- ios memory management: https://teamtreehouse.com/library/ios-memory-management
+- primitive data types do not need a memory directive like strong or weak
+- methods should be short and focused
+- (void) addTax : (TableChecks*) tableCheck \\{ // use self to refer to current class \\}
+
+4. Tying it All Together
+- (id) means we can return any object type or pass any type of argument. It's a dynamic type, very useful in the for in loop on an array of multiple types
+- learn the importance of categories
+- * creates a pointer, & gets the pointer address
