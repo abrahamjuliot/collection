@@ -1,0 +1,295 @@
+1. Complex Data Structures
+- let coordinate1: (x: Int, y: Int) = (0,0) // tuple example
+coordinate.x // returns 0
+- struct Point \\{
+	let x: Int
+	let y: Int
+\\} // struct example, let or var may be used and a type must be supplied
+
+let coordinatePoint = Point(x: 0, y: 0) // an instance of the struct is created here
+coordinatePoint.x // returns 0
+- first letter of a struct must be uppercase
+- a struct is essentially a blueprint of data types
+- a struct is an object that contains information in the form of a data structure
+- struct definitions are simply blueprints and to use them we need to create an instance
+- structs are best used ot encapsulate related data
+
+`swift
+struct Book \\{
+ let title: String
+ let author: String
+ let price: Double
+\\}
+
+let myBook = Book(title: "Animal Farm", author: "George Orwell", price: 6.00)
+`
+- example of struct with a method
+`swift
+struct Point \\{
+	let x: Int
+	let y: int
+	
+	func surroundingPoints(withRange range: Int = 1) -> [Point] \\{
+		var results: [Point] = []
+		for xCoord in (x-range)...(x+range) \\{
+			for yCoord in (y-range)...(x-range) \\{
+				let coordinatePoint = Point(x: xCoord, y: yCoord)
+				results.append(coordinatePoint)
+			\\}
+		\\}
+		return results
+	\\}
+\\}
+let coordinatePoint = Point(x:0, y: 0)
+coordinatePoint.surroundingPoints() // the structs instance method called
+`
+- a method is any function associated with a particular type. Structs can have methods which work on the structs data, whereas tuples cannot.
+
+`swift
+struct Person \\{
+ let firstName: String
+ let lastName: String
+ func getFullName() -> String \\{
+ return "(firstName) (lastName)"
+ \\}
+\\}
+
+let aPerson = Person(firstName: "Abraham", lastName: "Juliot")
+let fullName = aPerson.getFullName()
+`
+- an init method sets up an object and makes it ready for use. swift automatically creates the init method. Below is a manual/custom example of what swift does automatically:
+struct Point\\{
+	let x: Int
+	let y: Int
+	init(x: Int, y: Int) \\{
+		self.x = x
+		self.y = y
+	\\}
+\\}
+- self is required in init methods to refer to the instance of its properties and to distinguish from the received parameters, but self is inferred elsewhere in the struct object and using self not required (as in objective-C)
+- remember, a struct cannot be used until we create an instance of it
+
+`swift
+struct RGBColor \\{
+ let red: Double
+ let green: Double
+ let blue: Double
+ let alpha: Double
+ 
+ let description: String
+ 
+ // Add your code below
+ init(red: Double, green: Double, blue: Double, alpha: Double) \\{
+ self.red = red
+ self.green = green
+ self.blue = blue
+ self.alpha = alpha
+ self.description = "red: (red), green: (green), blue: (blue), alpha: (alpha)"
+ \\}
+\\}
+`
+
+2. Classes
+- example of a class:
+class Enemy \\{
+	var life: Int = 2 // initial or default value
+	let position: Point
+	
+	init(x: Int, y: Int) \\{
+		self.position = Point(x: x, y: y)
+	\\}
+	
+	func decreaseHealth(factor: Int) \\{
+		life -= factor
+	\\}
+\\}
+- the init method is required in a class
+- init methods never have a return type
+- similar to structs, constant properties are read-only (or private) wheras variable properties are writable (public)
+- in depth class example with helper functions
+`swift
+class Tower \\{
+	let position: Point
+	var range: Int = 1
+	var strength: Int = 1
+
+	init(x: Int, y: Int ) \\{
+		self.position = Point(x: x, y: y)
+	\\}
+
+	func fireAtEnemy(enemy: Enemy) \\{
+		if inRange(self.position, range: self.range, target: enemy.position) \\{
+			while enemy.life > 0 \\{
+				enemy.decreaseHealth(self.strength)
+				print("Enmey vanquished!")
+			\\}
+		\\} else \\{
+			print("Darn! The enemy is out of range!")
+		\\}
+	\\}
+	// helper method to the above method
+	func inRange(position: Point, range: Int, target: Point) -> Bool \\{
+		let availablePositions = position.surroindingPoints(withRange: range)
+		for point in availablePositions \\{
+			if (point.x == target.x) && (point.y == target.y) \\{
+				return true
+			\\}
+		\\}
+		return false
+	\\}
+\\}
+
+let tower = Tower(x: 0, y: 0)
+let enemy = Enemy(x: 1, y: 1)
+tower.fireAtEnemy(enemy)
+
+`
+
+`swift
+struct Location \\{
+ let latitude: Double
+ let longitude: Double
+\\}
+
+class Business \\{
+ let name: String
+ let location: Location
+ 
+ init (name: String, location: Location) \\{
+ self.name = name
+ self.location = location
+ \\}
+\\}
+
+let someBusiness = Business(name: "Treehouse", location: Location(latitude: 3.1, longitude: 58.2))
+`
+- custom struct data types are building blocks for class objects
+- Methods that we do not call directly on an instance but help compute the output for another function are informally called helper methods
+- Instance methods should be narrow in scope and carry out a single task
+- self refers to the instance of the class or struct
+
+3. Class Inheritance
+- unlike structs, classes can inherit from other classes
+// class Enemy inherits from class Enemy
+class SuperEnemy: Enemy \\{
+	let isSuper: Bool = true
+
+	override init (x: Int, y: Int) \\{
+		// first initialize subclass properites (if any)
+		// then go up the chain and assign values to the superclass
+		super.init(x: x, y: y)
+		self.life = 50
+	\\}
+\\}
+let superEnemy = SuperEnemy(x: 0, y: 0)
+superEnemy.life // holds 50
+
+- SuperEnemy is a Subclass and Enemy is the Superclass or parent class
+- override in the Subclass means the init method belongs ot the Superclass but we changing the body to do something different
+- when initializing the class properties, you must first initialize the subclass properties (if any are not set), and then the superclass properties
+
+`swift
+class Vehicle \\{
+ var numberOfDoors: Int
+ var numberOfWheels: Int
+ 
+ init(withDoors doors: Int, andWheels wheels: Int) \\{
+ self.numberOfDoors = doors
+ self.numberOfWheels = wheels
+ \\}
+\\}
+
+// Enter your code below
+
+class Car: Vehicle \\{
+ var numberOfSeats: Int
+ override init (withDoors doors: Int, andWheels wheels: Int) \\{
+ self.numberOfSeats = 4
+ super.init(withDoors: doors, andWheels: wheels)
+ \\}
+\\}
+
+let someCar = Car(withDoors: 4, andWheels: 4)
+`
+- if a new class mirrors the properties and methods of another class, you should use inheritance
+class LaserTower: Tower \\{
+	
+	override init(x: Int, y: Int) \\{
+		super.init(x: x, y: y)
+		self.range = 100
+		self.stregth = 100
+	\\}
+	// override a superclass method
+	override func fireAtEnemy(enemy: Enemy) \\{
+		while enemy.life >= 0 \\{
+			enemy.decreaseHealth(strength)
+		\\}
+		print("Enemy Vanquished!")
+	\\}
+\\}
+
+let laserTower = LaserTower(x: 0, y: 0)
+
+`swift
+class Person \\{
+ let firstName: String
+ let lastName: String
+ 
+ init(firstName: String, lastName: String) \\{
+ self.firstName = firstName
+ self.lastName = lastName
+ \\}
+ 
+ func getFullName() -> String \\{
+ return "(firstName) (lastName)"
+ \\}
+\\}
+
+// Enter your code below
+class Doctor: Person \\{
+ override init(firstName: String, lastName: String) \\{
+ super.init(firstName: firstName, lastName: lastName)
+ \\}
+ override func getFullName() -> String \\{
+ return "Dr. (lastName)"
+ \\}
+\\}
+
+let someDoctor = Doctor(firstName: "Sam", lastName: "Smith")
+someDoctor.getFullName()
+`
+
+4. Differentiating Between Objects
+- Remember classes can be inherited, while structs cannot
+- struct example:
+struct User \\{
+	var fullNmae: String
+	var email: String
+	var: age: Int
+\\}
+
+var someUser = User(fullName: "Abraham", email: "abraham@me.com", age: 31)
+var anotherUser = someUser
+someUser.email = " " // anotherUser.email will not be changed
+
+- class example
+class Person \\{
+	var fullName: String
+	var email: String
+	var age: Int
+	
+	init(name: String, email: String, age: Int) \\{
+		self.name = name
+		self.email = email
+		self.age = age
+	\\}
+\\}
+
+var somePerson = Person(name: "Abraham", email: "abraham@me.com", age: 31)
+var anotherPerson = somePerson
+somePerson.email = " " // anotherPerson.email will also be changed
+
+- all structs are value types, which means that the values are copied
+- all classes are reference types, which means the values are referenced
+- value types or structs should be used to represent simple data
+- strings, ints, booleans, floats, doubls, arrays are all value types
