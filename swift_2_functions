@@ -1,0 +1,61 @@
+1. Functions in Swift 2.0
+- dont repeat yourself
+- when you write code that is repeated, it is best to encapsulate it in a function
+- func calculateArea(length: Int, width: Int) -> Int \\{
+	let area = length * width
+	return area
+\\}
+- calculateArea(10, width: 12)
+- functions must have a return type if something is returned, otherwise it returns void by default
+- the returned value must match the returned type
+- func () -> Void \\{\\}, func () -> () \\{\\}, or func () \\{\\} implies the function returns void
+
+`swift
+func temperatureInFahrenheit(temperature: Double) -> Double \\{
+ return ((temperature * 9) / 5) + 32
+\\}
+
+let fahrenheitTemp = temperatureInFahrenheit(24.0)
+`
+
+2. Function Parameters
+- function parameters can have both an external and a local parameter name
+- funct funcName(ExternalName localName: Double) -> Double
+- funct temperatrueInFahrenheit(temperatureInCelcius temp: Double) -> Double
+- when you dont write external names, parameters except the first use their local names as external names when the function is called
+- func sayHello(to person: String, and anotherPerson: String) -> String \\{
+	return "Hello (person) and (anotherPerson)"
+\\}
+sayHello(to: "Pasan", and: "Gabe")
+
+`swift
+func getRemainder(value a: Int, divisor b: Int) -> Int \\{
+ return a % b
+\\}
+
+let result = getRemainder(value: 10, divisor: 3)
+`
+- function parameteres can take default values
+- function parameters are constants by default, but adding var will make them variables
+- func (var width: Int) \\{ // width is a variable instead of a constant\\}
+- functions can return multiple values (tuples)
+- the type of a tuple is the type fo the data that it contains
+- let result = func sayHi() -> (Int, String) \\{ return (1, "Hi") \\}
+- result.0 // returns 1
+- result.1 // returns "Hi"
+- Tuples are convenient but without names, 0 and 1 are not readable
+- let result = func sayHi() -> (number: Int, greeting: String) \\{ return (1, "Hi") \\}
+- result.number // returns 1
+- result.greeting // returns "Hi"
+- a variables scope created within a function are local to the functions scope
+
+`swift
+func getTowerCoordinates (location: String) -> (Double, Double) \\{
+ switch location \\{
+ case "Eiffel Tower": return (48.8582, 2.2945)
+ case "Great Pyramid": return (29.9792, 31.1344 )
+ case "Sydney Opera House": return (33.8587, 151.2140)
+ default: return (0, 0)
+ \\}
+\\}
+`
