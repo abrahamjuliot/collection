@@ -1,0 +1,85 @@
+- Encapsulation (access), Inheritance (relation), Polymorphism (requirements)
+- A class is a template to define in an object
+- 
+
+- properties (public [accessible anywhere], protected [accessible only within the class], private [accessible only by parent class])
+- properties are public by default
+- echo $p->name; // access the property name of object p
+- $this is an internal reference to the current instance of an object
+class Product {
+	public static $manufacturer = "Bart Taylor";
+
+	public $name = "default_name", $price, $desc;
+
+	function __construct($name, $price, $desc) {
+		$this->name = $name;
+		$this->price = $price;
+		$this->desc = $desc;
+	}
+
+	public function getInfo() {
+		return "Product Name: ". $this->name;
+	}
+
+	public function getMaker() {
+		return self::$manufacturer;
+	}
+}
+- => is the object operator
+echo $p->getInfo() // Product Name: default_name
+$shirt = new Product("Space", 20, "Shirt")
+$drink= new Product("Soda", 5, "Drink")
+
+- object inherit class methods and properties as a child
+- DRY (don't repeat yourself)
+- class Soda extends Product {
+	public $flavor;
+
+	function __construct($name, $price, $desc, $flavor) {
+		parent::__construct($name, $price, $desc);
+		$this->flavor = $flavor;
+	}	
+
+	public function getInfo() {
+		return "Product Name: ".$this->name." Flavor: ". $this->flavor;
+	}
+}
+- $drink= new Soda("Soda", 5, "Drink", "Grape")
+- Declaring class properties or methods as static makes them accessible without needing an instantiation of the class. A property declared as static can not be accessed with an instantiated class object (though a static method can).
+- self::method();
+- self::property_name;
+echo $shirt->getMaker(); // "Bart Taylor"
+echo $shirt::$manufacturer; // "Bart Taylor"
+echo $shirt->$manufacturer; // error
+- Object interfaces allow you to create code which specifies which methods a class must implement, without having to define how these methods are handled.
+-
+interface Rideable {
+	public function howToRide();
+}
+
+class Skateboard implements Rideable {
+	public function howToRide() {
+		$steps = array();
+		$steps[] = "balance"
+		$steps[] = "kick"
+		$steps[] = "don't fall"
+		return $steps;
+	}
+}
+
+- PHP 5 has an exception model similar to that of other programming languages. An exception can be thrown, and caught ("catched") within PHP.
+-
+try {
+	// this is where the code we want to test goes
+} catch (Exception $e) {
+	// inspect $e
+	$e->getMessage(); // message past in exception constructor
+	$e->getCode(); // integer of error code
+	$e->getFile(); // file of error
+	$e->getTrace(); // multi-d array containing trace methods
+	$e->getTraceAsString(); // string format
+	$e->__toString(); // describes the exception thrown
+}
+- object oriented tools:
+method_exists(object, method_name);
+is_subclass_of(object, class_name);
