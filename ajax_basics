@@ -1,0 +1,110 @@
+AJAX CONCEPTS
+- Asynchronous JavaScript And XML
+- Updates content on a web page without loading a new web page
+- AJAX can work with Ruby, PHP, Python, Cold fusion, etc.
+- AJAX sends a request and the server sends a response.
+- AJAX is also known as XMLHttpRequest Object (XHR Object)
+- 	1. create a XMLHttpRequest Object
+	2. define a callback function
+	3. open a request
+	4. end the request
+script
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			document.getElementById('ajax').innerHTML = xhr.responseText;
+		}
+	};
+	xhr.open('GET', 'sidebar.html');
+	function sendAJAX() { // called by onclick event	
+		xhr.send(); 
+		document.getElementById('load').style.display = "none";
+	}
+- POST is secure and sends more info. It is for storing info to a data base, such as sensitive information or lots of information.
+- GET is for getting information less than 2083 chars. It also sends data to web servers through query strings.rr
+- POST sends data in the body of the request and therefore is secure.
+- XML: extensible markup language
+- JSONP: JSON with Padding (linking to hosted js cdn for examples)
+- In General AJAX cant communicate with other web servers, outside of your own
+- CORS: Cross-Origin Resource Sharing
+
+PROGRAMMING AJAX
+- 1. Create an XMLHTTP Request Object, 2. Create a callback function, 3. Open a request, 4. Send the request.
+- Each stage involves a ready state
+- An Http status code of 404 means File not Found, and 200 means OK
+- The value of an XLHttpRequest object's readyState when the browser has received all of the data from the server is 4
+- JSON: JavaScript Object Notation
+- JSON works with array notation or object notation, or both
+- { "name" : "value", } // JSON requires double quotes around the key and string values
+- [ { "name" : "value" }, { "name" : "value" } ] // array of objects
+- JSON is a plain text string and needs to be parsed to be converted into a javascript object
+- xhr.responseText is how we access the JSON string
+- var emplyees = JSON.parse(xhr.responseText);
+- JSON.parse() is a method that converts a JSON string into a javascript object
+- CDN: content delivery network
+- ajax through JQuery is less code and allows for faster coding
+- function sendAJAX() { $('#ajax').load('sidebar.html');} // this loads the contents of the sidebar.html element with ID of 'ajax'
+- google "jQuery ajax shorthand methods"
+- $.get(url, data, callback);
+- 1. the url to get, 2. data for the server, if any, 3. callback function to process the server response
+- var url = '/emloyees.php';
+- var data = {
+ firstName : "Dave",
+ lastName : "McFarland";
+};
+var callback = function (response) {
+ // do something with the response
+};
+$.get(url, data, callback);
+- var callback; $.get('footer.html', function(response) {$('#footer').html(response);}); // shortened version
+- It is good to end your jQuery function with a comment // end foo to identify which function is ending
+-$.getJSON(url, function( response) { 
+ var statusHTML = '';
+});
+- $.each(array_or_object, callback(index, value)) {} // steps through each item in array
+- $.post(url, data, callback);
+- $.ajax(url, settings);
+- $.ajax(url, {
+ data : formData,
+ type : "POST",
+ success : function(response) {
+ $('#signup').html(response);
+ }
+});
+- $.ajax method has more flexibility and options than other ajax methods in jQuery
+- $.fail method can be added to any ajax methods except the .load method // $.get().fail(function (jqXHR) {
+ alert(jqXHR.statusText);
+});
+- the fil method does not work for external servers
+- $.get("missing.html", function(data) {
+ $("#footer").html(data);
+}).fail(function(jqXHR) {
+ alert(jqXHR.statusText);
+});
+- API: Application Programming Interface
+- Ruby, PHP, Python, and JavaScript can be used to talk to APIs
+- $(document).ready(function () {
+ $('button').click(function () {
+ $('button').removeClass("selected");
+ $(this).addClass("selected"); // apply to this button
+ var flickerAPI = "http://api.flicker.com/services/feeds/photos_public.gne?jsoncallback=?"
+ var animal - $(this).text();
+ var flickrOptions = {
+ tags: animal,
+ format: "json"
+ }
+ function displayPhotos(data) {
+ var photoHTML = '';
+ $.each( data.items, function (index, photo) {
+ photoHTML += '';
+ photoHTML += '';
+ photoHTML += '';
+ });
+ photoHTML += '';
+ $('#photos').html(photoHTML);
+ }
+ $.getJSON(flickerAPI, flickrOptions, displayPhotos)
+ });
+});
+- It's common practice to store JQuery selectors in a variable
+- $.each is a faster way to write a for loop
