@@ -1,0 +1,68 @@
+1. Intro
+- http://blog.teamtreehouse.com/unobtrusive-javascript-important
+- HTML for the content and structure of the document, CSS for the layout and style, and Unobtrusive JavaScript for behaviour and interactivity
+- your site, and it’s content, should still be accessible when JavaScript is unavailable
+- http://blog.teamtreehouse.com/beginners-guide-to-jquery
+- jQuery(el) or $(el)
+- .hide()
+- .show()
+- keep in mind method chaining is best practice for an element that is already selected
+- in the console:
+- document.head.children // returns an array of the head elements
+- document.body.children[0] // return the first child in the body
+- the above is not an ideal way to access elements that could change
+- document.getElementByClassName("class")
+- DOM manipulation Methods: add/remove html elements, update/ read html element attributes, and Transform HTML elements
+- Traversing the DOM: Moving from a parent element to its children, moving from a child element to its parent, moving from a sibling element to another sibling element
+- Event Methods: keyboard, mouse, touch, and scroll events
+- Attribute Methods: get or modify the attributes of an element
+- $(document).ready(function() { });
+- $(function() { }); // alternate
+
+2. Creating a Spoiler Revealer
+- Prep, Plan, Perform, Perfecting
+- .append()
+- $(this).remove()
+- .next()
+- .prev()
+- .click()
+
+3. Creating s Simple Lightbox
+- var href = $(this).attr("href")
+- .click(function(event) { event.preventDefault(); });
+- its handy to name variables like so when you are selecting with jQuery: $myVar = $('div') // and you can call jquery methods on that variable now
+- .children()
+- . text()
+- maniy jquery methods are getter/ setter methods: if you don't pass a parameter it is a getter which returns something, else if you do pass in a parameter it is a setter which sets something.
+
+4. Creating a Mobile Drop Menu
+- .each()
+- .val()
+- .text()
+- .attr()
+- .parent()
+- .css()
+- .hasClass()
+- .prop()
+- .change()
+
+5. Creating a password Confirmation Form
+- .focus()
+- $(this)
+- .next()
+- .hide()
+- .show()
+- .keyup()
+
+6. Creating a Simple Drawing Application
+- click()
+- css()
+- removeClass()
+- siblings()
+- addClass()
+- click()
+- toggle()
+- css()
+- change()
+- val()
+- on()
