@@ -1,0 +1,58 @@
+Introduction to Programming 
+Basics - Computer programming can be intimidating at first, but this gentle introduction to the subject will make the learning curve a bit easier to climb. 
+Getting Started 
+- Strings can have ' ' or " " 
+- "str" + "ing" == "string" 
+- alert(12) will print out 12 
+- alert("Hello World") 
+- prompt("What is your name?") 
+- "Hi, " + prompt("What is your name?") 
+- alert("Hi, " + prompt("What is your name?")) 
+Writing your Program 
+- myscript.js [must include the .js extension] 
+- console.log("Hello World"); // a function that will output information into the console provided by the browser 
+- 
+Variables 
+- var name // most descriptive name possible 
+- var name = prompt("What is your name?"); // variables can be declared without var, but - -generally should not be 
+- alert("Hi, " + name); 
+- console.log("the user's name is " + name); 
+Comments 
+- // 
+- /* */ 
+- If anyone, write comments for your future self 
+Control Structures - Control structures determine the flow of execution within an application. A conditional statement can fork the execution down several paths or a loop can execute the same code several times until a condition is met. 
+- If/ Else 
+- if (true) { } 
+- if (false) { } // 0, " ", null, undefined 
+- if (true) { } else { } 
+- if (false) { } else { } 
+- Loops 
+- while () { } 
+- for (int counter = 0; counter < 10; counter++) {} 
+- Objects and Arrays - An array is a way of storing multiple items and each item is associated to a number called the index. Each item can be accessed using the index value. Objects are usually associated to meaningful pieces of data which it can hold and manipulate. 
+Arrays 
+- var myArray = [1, "string", true, null, [false, 1, "string"]] 
+- myArray.length 
+- myArray[0] 
+- for (int counter; counter < myArray.length; counter++) {} 
+Objects 
+- var me = { 
+first_name: "Jim", // numbers, true, false, arrays, objects 
+last_name: "Hoskins", 
+"Employee Number": 1 
+} 
+- me.first_name; // or me["first_name"] 
+- me.last_name; // or me["last_name"] 
+- me["Employee Number"]; 
+- var key = "last_name"; 
+- console.log(me[key]) // or me["last_name"] 
+- me.first_name = "New Name" 
+- me["first_name"] = "New Name" 
+Functions - A function contains a piece of code that needs to be executed several times from different parts of your application. A function optionally takes in arguments and returns an object or value as a result. 
+Functions 
+- var myFunction = function () { } // function is a keyword used to define functions in javascript 
+- function myfunction () {} 
+- var debug = function (message) { } 
+- var debug = function (message) {return message;} 
+- myFunction(debug("hello")) // passing a function return value to a function
