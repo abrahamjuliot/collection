@@ -1,0 +1,40 @@
+- performance is a design consideration
+- set up a performance budget: consider size and amount of assets, set a target load time and page weight (total file size)
+- use chrome tools: view Networks (click disable cache)
+- [https://developers.google.com/speed/](https://developers.google.com/speed/)
+- look for 404 errors
+- limit http requests
+- clean up unused assets (don't need certain js on every page)
+- images use the most bandwidth
+- use svg were possible, for art/design work only
+- inspect images to see their natural size. It should be only 2x as much (for Retina)
+- compress images
+- css should be linked in the doc head
+- avoid css @import (reduce round trip from browser to server)
+- use hosted service (cdn) when possible. Using hosted services is better for speed and reliability, for additional parallel HTTP connections, and for better caching.
+- https://www.google.com/fonts/
+- create a sprite map for svgs (only load map item used on the page instead of loading all map items)
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	<symbol id="mail" viewbox="(svg viewbox)"><path (svg path)/>
+	</symbol>
+	<symbol id="twitter" viewbox="(svg viewbox)"><path (svg path)/>
+	</symbol>
+</svg>
+<a href="">
+	<svg>
+		<use xlink:href="mail">
+	</svg>
+</a>
+<a href="">
+	<svg>
+		<use xlink:href="twitter">
+	</svg>
+</a>
+
+- if possible, place js scripts at the bottom of the page. this improves perceived performance
+- async can be used on a js file, if it is independant of any other file on the page
+- place all your css into one file to reduce http requests
+- use minified js and css files
+- https://cssminifier.com/
+- https://javascript-minifier.com/
