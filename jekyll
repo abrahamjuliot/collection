@@ -1,0 +1,49 @@
+- http://jekyllrb.com/
+- http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html
+- Jade converter https://github.com/snappylabs/jade-jekyll-plugin
+- Sites load fast
+- Sites are more secure
+- Less maintenance involved
+- Free hosting on GitHub pages
+- Use your own domain name
+- Used by HealthCare.gov
+- open the mac terminal and enter: gem install jekyll
+-- if permission is needed: sudo gem install jekyll
+-- then enter your password
+-- check the version: jekyll -v
+- create a new project: jekyll new projectName // the new project folder will show in your home directory
+- cd projectName/
+-- jekyll serve // this sets up a local python server that lets us view our site // a site directory will then be created with the static html and css files. WE can view the site by copying and pasting the server address jekyll provided in our address bar or browse to localhost:4000
+- use jekyll serve —watch to auto update
+- To stop running serve: press ctrl c in the terminal
+- # site setting are written in yaml
+- title (example): WebConfs - A blog about web conferences
+- we can remove the baseurl setting if we are not hosting the site in a sub directory. We do need to configure the main url.
+- kramedown convert text written in markdown to html
+-Anytime we update the config file while the server is running, we need to stop the server and rebuild the site with the server settings (ctrl c, and then jekyll serve )
+- To remove the .html: Under build settings add permalink: pretty
+-- permalink: /:title will show just the title
+- _layouts includes the main directory
+- To go back to your directory in the console: cd projectName/ and then jekyll serve to run the website
+- In your post post folder update the yaml between the ---
+- you can add author:, permalink:
+- the yaml --- can be empty but must be included to convert the file
+- https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
+- You can create default variables for each post and page
+- New posts must be saved with jekyll's required naming conventions
+- create a folder named _drafts for drafts
+- to view drafts, you will need to type in the console jekyll serve --drafts
+- in the site settings, you can add pagination
+- You can add Disqus comments to your site
+- You can define variables for oyur projec tin _config.yml
+- GitHub pages does not work with sites that use a server-side language
+— Initialize a local repository, add the repository to GitHub, create a GitHub Pages branch, and wait for GitHub pages to build the site
+- in the command line open your project file: cd projectName/
+ and then enter git init and then git status, git add . (peroiod)
+- git checkout -b gh-pages // create a new branch
+- then run: git branch 
+- then run: ls
+- then run: gh-pages -> gh-pages
+- in jekyll project settings, you will need a baseurl defined: 
+- then set the homelink to the site.baseurl
+- git status, git add, git commit -m ‘add baser config’, git much origin gh-pages
