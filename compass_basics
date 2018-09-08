@@ -1,0 +1,44 @@
+- gem update --system
+- sass --version
+- compass watch
+- gem install compass
+- @include reset-html5
+- reset-box-model
+- reset-font
+- nested-reset
+- compass/css3
+- background(radial-gradient())
+- $experimental-support-for-svg: true
+- box-sizing()
+- rotate()
+- transform()
+- translateX()
+- single-transition()
+- $experimental-support-for-opera: false
+- compass/utilities
+- float-left, float-right, clearfix, horizontal-list(10px, left), inline-block-list(10px)
+- $legacy-support-for-ie: false, $legacy-support-for-mozilla: false
+- compass/layout
+- sticky-footer(150px,".container", ".root-footer", ".main-footer")
+- column-count(3), column-gap(3em), column-rule(1px solid #ccc), column-span()
+- compass/typography
+- link-colors(initial, hover, active, visited), hover-link
+- #{ heading(all) } { }, #{ heading(1, 2) } { }, - #{ heading(2, 4) } { }
+- force-wrap, ellipsis
+- $base-font-size: 16px, $base-line-height: 24px, establish-baseline, debug-vertical-alignment, adjust-font-size-to(36px), margin-bottom: rhythm(1, 36px), trailer, leader
+- background: adjust-lightness(color, amount), adjust-saturation(color, amount), shade(color, amount), tint(color, amount)
+- @include background( linear-gradient( color, shade(color, amount) ) );
+- @include contrasted(color);
+- $contrasted-lightness-threshold: 50%
+- contrasted(shade(color, amount));
+- image-url('blah.png');
+- width: image-width(inline-image('blah.png')); - height: image-height('blah.png');
+- @include replace-text('image'); width: image-width('image');
+- replace-text-with-dimension('image', $inline: true)
+- $icons-space, $icons-layout, $icons-sprite-dimensions: true
+- @import "ui/*.png"
+- @include all-ui-sprites
+- http_path = "/my-prj"
+- http_image_path = ""
+- http_generated_images_path = ""
+- environment :production
