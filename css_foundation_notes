@@ -1,0 +1,392 @@
+Getting Started with CSS 
+http://www.w3.org/Style/CSS/ 
+Selector h4 
+Declaration {font-size: 2.5em;} 
+Property name font-size 
+Property value 2.5em 
+importance, specificity, and source order determine the element's style 
+Inline Styles 
+ 
+Internal Styles 
+h1 {color: blue;} 
+External Styles 
+ 
+@import [must precede all other css rules] 
+@import 'css/more-styles.css'; 
+ 
+Type Selectors - Selectors allow for styling to be applied to particular page elements. This critical concept makes it easy to choose a specific page element and assign CSS. 
+Universal Selector 
+* {margin: o; padding: 0; color: red;} 
+Type Selectors 
+h1 {margin: o; padding: 0; color: red;} 
+Descendant Selector 
+h1 span {margin: o; padding: 0; color: red;} 
+Class Selector 
+.meaningfulName {margin: o; padding: 0; color: red;} 
+ID Selector 
+#meaningfulName {margin: o; padding: 0; color: red;} 
+An element can only have one ID 
+A page can only have one element with the same ID name 
+IDs can select descendants: #meaningfulName p {} 
+IDs carry higher specificity than classes 
+Make sure you don’t share properties between classes and IDs 
+IDs can be used for page anchors: 
+ 
+Back to top 
+Grouping Selectors 
+.first, .second, .third {margin: o; padding: 0; color: red;} 
+Dry (Don't repeat yourself) - Avoid repeating the same bits of code 
+Modifying Selectors 
+ 
+Combinator Selectors 
+> child selectors [direct children] .main > a {color: red;} 
++ adjacent sibling selector [next sibling] .main + h1 {color: red;} 
+~ general sibling selector [every specified sibling] .main ~ p {color: red;} 
+Attribute Selectors 
+[class] {color: white;} 
+a[class] {color: white;} 
+a[class="meaningfullName"] {color: white;} 
+ Useful for targeting form element attributes, like text 
+input[type="text"] {width: 200px; color: blue;} 
+input[type="email"] {width: 200px; color: blue;} 
+input[type="submit"] {width: 200px; color: blue;} 
+Link Pseudo Classes 
+Unvisited Links [must have href attribute] a:link {color: red;} 
+Visited Links [must have href attribute] a:visited {color: green;} 
+User Action Pseudo Classes 
+Hover [for any element] a:hover {color: blue;} 
+Active [for any element] a:active {color: yellow;} 
+Focus [for interactive or input elements] a:focus {background-color: yellow} 
+input:focus {color: yellow} 
+:focus {background-color: yellow} 
+Basic Structural Pseudo Class 
+First Child Pseudo Class li:first-child {color: blue;} 
+Last Child Pseudo Class li:last-child {border: none;} 
+Only Child Pseudo Class span:only-child {color: green;} 
+ 
+Advanced Selectors - Many advanced CSS selectors help keep our markup clean, semantic and flexible by targeting specific elements without the need of a class or an ID. 
+Substring Matching Attribute Selectors 
+Begin With Selector a[href^="http:"] {color: seagreen;} 
+Ends With Selector a[href$=".pdf"] {background: url('../images/pdf.png') no-repeat 0 2px;} 
+Contains Selector 
+img[src*="thumbnail"] {border: 5px solid;} 
+ Pseudo-Classes::nth-child 
+li:nth-child(even) {color: white;} 
+li:nth-child(odd) {color:red;} 
+li:nth-child(3) {color:green;} 
+li:nth-child(3) {color:green;} 
+li:nth-child(an+b) {} 
+the "b" value determines 1st value selected 
+the "a" value determines cycle of elements to select 
+the "n" is a counter to select every "a" value 
+Example: li:nth-child(2n+3) 
+li:nth-child(1n+3) is the same as li:nth-child(n+3) 
+li:nth-child(3n+0) is the same as li:nth-child(3n) 
+li:nth-child(-n+5) selects the items before the 5th 
+li:last-child(-n+3) {} targets the 3rd item from the bottom and all that follow 
+Pseudo-Classes::nth-of-type 
+div:nth-of-type(2) {color: blue} styles every 2nd div inside a parent element 
+div:nth-of-type(odd) 
+div:last-of-type(1) 
+div:last-of-type(3) 
+Pseudo-Classes::only-of-type 
+p:only-of-type {color: blue} selects the only one of its' type within the parent element (if it’s the only) 
+Pseudo-Classes::root 
+:root {} Selects the element that is the root of the document 
+Pseudo-Classes::target 
+:target {} Targets elements based on the href url 
+Target 1 
+When the link is clicked the div with the id will take on the css style(s) 
+Pseudo-Classes::empty 
+:empty {} Selects elements that are empty 
+Pseudo-Classes::not() 
+div:not(:empty) {} Selects all elements except the element(s) specified in parenthesis 
+div:not([id="s1"]) {} 
+Pseudo-Classes - UI Element States - commonly used for form elements 
+:enabled 
+selects UI elements that are in an enabled state 
+ input[type="text"]:enabled {} 
+:disabled 
+selects UI elements that are in a disabled state 
+ - Add the disabled boolean attribute 
+:disabled {} 
+:checked 
+input[type="radio"]:checked + label {} 
+The + combinator target the immediate sibling of the radio button (that is checked) 
+Pseudo Elements - target parts of the document that do not always exist as elements. Some Pseudo elements can appear as child content before or after element content 
+::first-line 
+.intro::first-line {} 
+::first-letter 
+.intro::first-letter {} - useful for drop caps 
+::before 
+::before {content: "";} must use the content property and at least have empty "" for the value or a url 
+.phone::before {content "\2607";} a unicode icon 
+::after 
+.phone::after {content "\2607";} 
+.dload::after {content: url(./img/pdf.png);} 
+ 
+.dload::after {content: attr(href); color: blue;} 
+.dload::after {content: attr(title); color: blue;} 
+Sample Box 
+.box::before {content: ""; display: inline-block;} 
+.box::before, .box::after {content: "";} useful for creating a css generated object 
+ 
+Value and Units - Every CSS property has a type of value it can accept, such as a predefined keyword, a length unit, or a URL. In this stage, we'll cover common values and units CSS properties accept. 
+Absolute Length Units - the physical units (in, cm, mm, pt, pc) and the px unit 
+Relative Length Units - relative to another length, like an element font-size or browser 
+ex (1ex is the size of 1 letter x) 
+em (1em is the default size of the browser [16px] - relative to the parent element) If you want 20px 20px/16px = the em value [child/parent] Ems are the preferred units 
+rem (1rem is the default size of the browser [16px] - relative to the root html element) 
+vw (1vw is 0.01 of the viewport width) 
+vh (1vh is 0.01 of the viewport width) 
+vmin (1vh is 0.01 of the minimum value between the height and the width of the viewport width) 
+Numeric and Textual Data Types 
+auto (default value) 
+inherit (same value as parent) 
+initial (value when no styles are applied) 
+url - background-image: url(""); 
+numeric - integer, decimal, negative values, percentages (of the parent element) 
+Color Values 
+words, combination words, hexadecimal [#fff is #ffffff, #f03 is #ff0033], rgb(), rgba() [the a controls the opacity], hsl(), hsla() 
+ 
+Texts, Fonts, and Lists - 
+Font properties 
+font-family: 
+generic font stack list example - Georgia, Times, serif; 
+font families with more than one word need quotes "Times New Roman" 
+font-weight: [normal (400), bold (700), or 100-900, lighter, bolder] 
+font-size: [small, medium, large, larger, smaller, length units, percentage units [relative to the parent element's font size]] 
+font-style: [normal, italic, oblique] 
+font-variant: [small-caps] 
+font: [italics small-caps bold 1.5em Baskerville, "Times New Roman", Time, serif] - The font size and font family must be specified - other values must be placed before the font size 
+Text Properties 
+line-height: [normal, 1.5em, 150%] 
+text-align: [left, right, center, justified] 
+text-decoration: [none, underline, overline, line-through] 
+text-indent: [1.5em, -1.5em] 
+text-transform: [none, uppercase, lowercase, capitalize] 
+white-space: [normal, nowrap, pre, pre-line, pre-wrap] 
+More Text Properties 
+text-shadow: [1px (+-horizontal offset) 1px (+-vertical offset) 4px (blur) #eee] - the shadows can be stacked after a comma 
+overflow: hidden; text-overflow: [clip, ellipsis (for the ...)] 
+word-wrap: [break-word (used for links)] 
+List Styles 
+list-style-type: [square, decimal-leading-zero, and more] 
+list-style-position: [inside] 
+list-style-image: [url('marker.png')] 
+A better approach to an image: 
+list-style-type: none 
+background: url('marker.png') no repeat 0 2px; 
+padding-left: 35px; 
+margin-bottom: 1.2em; 
+list-style: (shorthand property that defines all list properties in one declaration) 
+ 
+The Box Model - Every HTML element, no matter how big or small, can be thought of as a rectangular box made up of content, padding, borders and margins. The Box Model is the basis of CSS layout and positioning, and it dictates how elements are displayed and interact with each other. 
+The CSS Box Model Concept 
+Block elements take up the full width available based on the width parent element [for example: div, p, li, h tags] 
+Inline elements only take up as much width as they need and does not force a new line. [for example: span, img, strong, a (anchor)] 
+Box Model - [content > padding > border > margin > [top, right, bottom, left]] 
+background: [#fff, etc] 
+color: [#fff, etc] 
+padding: [length or percentage, no negative value (accepts up to 4 values)] 
+border: [width style color] 
+border-width: [length or percentage, no negative value, medium, thin, thick (accepts up to 4 values)] 
+border-style: [none, solid, dotted, dashed (accepts up to 4 values)] 
+border-color: [#fff, etc (accepts up to 4 values)] 
+margin: [length or percentage, negative value, auto (accepts up to 4 values)] 
+Width, Height and Overflow Properties 
+display: [none, block, inline, inline-block] 
+inline-block elements are like inline elements but they can have a width and height (not negative values though). 
+visibility: [hidden, visible (display: none removes the element from the page whereas visibility: hidden only hides the element)] 
+width: [length, %] - percentages are relative to the size of its containing box (applies only to the content) 
+The total width must be calculated with the padding and border 
+height: [length, %] - percentages are relative to the size of its containing box (applies only to the content) 
+box-sizing: [border-box] forces the padding and border into the width and height instead of expanding them [-moz- is needed] 
+min-width: [] // prevent width from being too narrow 
+max-width: [] // prevent width from being too wide 
+overflow: [visible, hidden, scroll, auto (provides scroll only when needed)] 
+Floats - a box that is shifted to the left or right on the current line 
+float: [left, right, none] 
+clear: [left, right, both, none](clears the space around the float) 
+.group:before, .group:after {content: ""; display: table;} .group: after {clear: both;} /* clearfix styles */ .group {*zoom: 1;} /*For IE 6 and 7*/ - best method to clear 
+Positioning Properties 
+position: [static (default), relative, absolute, fixed] 
+static ignore any values for the top, right, left, bottom, and z-index 
+relative changes an element without influencing the layout of other elements and excepts values for top, right, left, and bottom [offset properties (relative to where the element would have been if it was static)] 
+absolute position removes the element from the document flow so that it no longer affects the position of other elements and excepts values for top, right, left, and bottom [the offsets are relative to the view port and stays relative to the view port when the page is resized] The position of the element is always relative the parent element with a position other than static (otherwise it is relative to the browser view port). 
+fixed position elements will always stay fixed in the same location regardless of the browser window or if we scroll up and down the page. 
+z-index: () [only applies to elements that are positioned relative, absolute, or fixed] 
+note that position and float should not be applied to the same element because it presents conflicting positioning schemes 
+ 
+Backgrounds and Borders - With CSS, any element can have a background and border applied, and certain properties affect how they appear. In this stage, we'll explore common CSS background and border properties, along with ways to add drop shadows and inner shadows to HTML elements. 
+Background Properties 
+Element backgrounds are transparent by default 
+background-color: [#fff, etc] 
+background-image: url("") - It is good practice to include a background-color in case the use has images disabled (i.e. a color that matches the overall color of the image) 
+background-repeat: [repeat(default), repeat-x, repeat-y, no-repeat (top-left corner by default)] 
+background-position: center, bottom, top, left, right, length(-+), % (the 1st value determines the x axis and the 2nd value determines the x axis[1 value will be applied to both x and y axis]) 
+background-attachment: [scroll(default), fixed, local (scrolls when the element content scrolls)[not moz]] 
+background(shorthand property): color image repeat attachment position; 
+Border Radius 
+border-top-left-radius: [length, % (refers to the corresponding dimensions of the box)] - 2 values can be used (the 1st is the horizontal radius and the 2nd is the vertical radius) 
+border-top-right-radius: [length, %] 
+border-bottom-left-radius: [length, %] 
+border-bottom-right-radius: [length, %] 
+border-radius(shorthand property): [1 value [4 corners], 2 values [1st is top-left and bottom-right, 2nd is top-right and bottom-left], 3 values [1st is top-left, 2nd is top-right and bottom-left, 3rd is bottom-right], 4 values [clockwise], up to 8 values [1st set defines the horizontal radius of each corner / 2nd set defines the vertical radius of each corner - 100px / 50 px will apply to each corner]] 
+Box Shadows 
+box-shadow: inset [declare 1st or last][1st - horizontal offset, 2nd - vertical offset, 3rd - blur radius, 4th - spread radius, 5th - color(defaults to the parent's color)] - box shadows can be stacked by a comma 
+Advanced Backgrounds 
+background: url(""), url(""), url(""); -useful with transparent png images. the last image will be at the bottom 
+background-size: 1-2 values [200px 100px [1st img], 250px[2nd img], 110%[3rd img]] ; -the background size values can be added to the background property by a forward slash (/) 
+background-size: cover [fills the entire background positioning area and scales with the browser window] - make sure your height value is set to 100% 
+background-size: contain [scales the image so that the entire image fits inside the background area while keeping its original aspect ratio] 
+background-clip: [border-box(default), content-box, padding-box] 
+background-origin: [border-box[img behind the borders], content-box [img is displayed within the content area], padding-box [img extends only to the edge of the padding area]] - this property has no effect if the background img is set to fixed 
+ 
+Web Typography - Web typography is an exciting and rapidly evolving area of CSS, wherein layout engines like webkit are pushing beyond W3C standards. In this stage, we’ll cover topics such as best practices for choosing a typeface, text layout, responsive text and vertical rhythm. We'll also explore font resources like the @font-face rule, and other detailed font features and techniques that will enhance our text. 
+Choosing a Typeface 
+2 typefaces may compliment one another 
+Fonts should set the mood and be readable 
+Text Layout and Readability 
+An acceptable line height is 1.5 em, or 1.5 times the text height 
+Avoid lines that are too long or too short 
+Squint and avoid tones that jump out 
+Zoom out too get a birds eye view 
+User will typically first read a page by scanning shapes of headings, paragraphs, lists and images. 
+A visual hierarchy divides sections into different degrees of importance 
+Sites Mentioned 
+ilovetypography.com 
+blackestate.co.nz 
+elliotjaystocks.com 
+simplebits.com 
+circlesconference.com 
+smashingmagazine.com 
+theleagueofmoveabletype.com 
+2012.buildconf.com 
+griplimited.com 
+jrvelasco.com 
+Responsive Text and Vertical Rhythm 
+font-size: 1.2 em 
+max-width: 58%; 
+/*If the browser is reduced below 600px*/ 
+@media screen and (max-width: 559px) { .myBody {font-size: 1em;} .myDiv{max-width: 85%; } }  
+/*If the browser is exceeds above 980px*/ 
+@media screen and (min-width: 980px) { .myBody {font-size: 1.5em;} .myDiv{max-width: 600px; } }  
+font-size: 6.6vw (vw is 0.01 % of the view port window) Not fully supported 
+http://fittextjs.com/ 
+http://basehold.it/ (vertical rhythm) 
+Web Fonts 
+FontSquirrel.com 
+The League of Movable Type 
+Google Webfonts 
+Icon Fonts: 
+Symbolset 
+Pictos 
+IcoMoon 
+@font-face {font-family:;} // used to load fonts from the server 
+-webkit-font-smoothing: antialiased; // smooth the font 
+font-feature-settings: // to use font ligatures 
+Enhancing Typography 
+avoid justified texts that leave rivers 
+ 
+CSS Gradients - CSS gradients allow us to display smooth transitions between two or more colors. In this stage, we'll explore linear and radial CSS gradients, along with the differences in browser syntax. Released: March 21, 2013 Resource: http://www.colorzilla.com/gradient-editor/ 
+Linear Gradients 
+background: -webkit-linear-gradient(orange, darkblue); 
+Linear Gradients: Unprefixed Syntax 
+background: linear-gradient(to right, orange, darkblue); 
+to right 
+to left 
+to bottom (default value) 
+to top left 
+to bottom right 
+Check http://caniuse.com/#feat=css-gradients 
+background: -webkit-linear-gradient(270deg, orange, darkblue); 
+background: -moz-linear-gradient(270deg, orange, darkblue); 
+background: -o-linear-gradient(270deg, orange, darkblue); 
+background: linear-gradient(270deg, orange, darkblue); 
+Radial Gradients 
+background: -webkit-radial-gradient(#E2A112, #00018F); //elliptical by default 
+background: -webkit-radial-gradient(circle, #E2A112, #00018F); 
+Radial Gradients: Unprefixed Syntax 
+Prefixed - position, shape, size 
+Unprefixed - shape, size, at position 
+Transparent Gradients 
+html {height: 100%;} body {background: -webkit-linear-gradient(hsl(218,51%,32%), transparent 75%), url('bg.jpg'); background-size: cover;} 
+transparent is equivalent to rgba(0,0,0,0) - to remove the grey, use rgba(255,255,255,255,0) instead of transparent 
+Repeating Gradients 
+background: -webkit-repeating-linear-gradient(rgba(58,122,187,.8) 20px, rgb(43,79,115) 50px); 
+When creating gradients, remember to always use a fallback color or image for older browsers that do not support gradients 
+ 
+Flexbox and Multi-Column Layout - With CSS multi-column layouts, we can easily define multiple columns of text. One of the benefits of using CSS-based columns is flexibility; content flows from one column to another, and the number of columns can vary depending on the size of the device or viewport. The CSS3 Flexible Box, or flexbox, is a powerful new feature that makes CSS more efficient for layout. Elements can be dynamically rearranged on the page, laid out in any direction, have flexible dimensions to adapt to the display space, and much more! Released: April 1, 2013 
+http://www.w3.org/TR/css3-flexbox/ 
+http://blog.teamtreehouse.com/responsive-design-of-the-future-with-flexbox 
+Flexbox: Part 1 
+.nav {display: -webkit-flex;} // the children of .nav instantly become flex items 
+-webkit-flex-direction: [row, row-reverse, column, column-reverse] 
+-webkit-justify-content: [space-between, flex end, center] 
+-webkit-flex-wrap: wrap; 
+Flexbox: Part 2 
+A flex item is any direct child of a flex container 
+nav, div {display: -webkit-flex;} // now 2 containers can hold flex items or columns 
+the flex-grow property determines how much the other items will grow relative to the other flex items 
+-webkit-flex-grow: 1; 
+-webkit-order: -1; // moves the item before others 
+-webkit-align-self: [center, flex-end, stretch [default]; 
+@media screen and (max-width: 999px) {.main {-webkit-flex-direction: column; } }  // display the flex direction as a column whenever it is below 1000 px 
+modernizer.com // detect flexbox support 
+Multi-Column Layout 
+-webkit-column-count: 3; 
+-webkit-column-gap: 3em; // space between column 
+-webkit-column-rule-width: 2px; // rule is similar to the border property 
+-webkit-column-rule-style: dotted; 
+-webkit-column-rule-color: #777; 
+-webkit-column-rule: 2px dotted #777; 
+-webkit-column-width: 250px; great for responsive design! 
+-webkit-columns: 250px 3; // columns (plural) - shorthand method for width and count 
+Add an img and give it a diplay block, max-width of 100%, and margins 
+h1 {-webkit-column-span: all;} // spans across all columns 
+ 
+Transitions and Transforms - CSS transition properties provide a way to control the animation speed in changing the properties over a given duration. We can also specify time intervals, durations and timing functions that follow a customizable acceleration curve. 
+ 
+CSS transforms allow us to change the position of elements without disrupting the normal document flow. Transforms are implemented using a set of CSS properties that let us apply transformations like rotation, skewing, scaling and translation in both the plane and 3D space. 
+Transitions: Part 1 
+.box:hover {background: red; transition-property: background;} 
+transition-duration: 1s; 
+transition-property: background, border-radius; // multiple properties 
+transition-duration: 1s, .3s; // multiple durations 
+.box:hover {background: red; border-radius: 50%; transition-property: all (default value);} // Shorthand method to transition all animatable properties declared in the rule 
+Not every css property can accept transitions. see http://www.w3.org/TR/css3-transitions/#animatable-properties 
+add the duration to the element to define the transition return duration and add the duration to the element:hover to define the transition enter duration 
+vendor prefix properties: -webkit-, -moz-, -o- 
+Transitions: Part 2 
+.wrap:hover .box {] // selects the .box element when .wrap is hovered 
+predefined timing functions - ease (default), linear, ease-in, ease-out, ease-in-out, step-start, step-end, steps([,[start|end]]?), cubic-bezier(,,,) 
+transition-timing-function: ; 
+ease // starts gently, then speeds up 
+linear // constant speed 
+ease-in // slow to constant 
+ease-out // constant to slow 
+ease-in-out // slow to constant to slow 
+steps(5,end); 
+cubic-bezier(P1x, P1y, P2x, P2y) - both x values need to be in a range between 0 and 1. both y values need can be positive and negative values. p0, p3 [remain fixed] p1, p2 [user provided] 
+cubic-bezier(.5, 0, .3, 1) 
+cubic-buzier(.5, -.5, .3, 1.3) 
+http://cubic-bezier.com/ 
+http://matthewlein.com/ceaser/ 
+transition-delay: 1s; 
+transition-delay: 0s, 1s; // multiple delays 
+shorthand method - transition: margin 1s cubic-bezier(.5, -.5, .3, 1.3) 0s, background .6s ease 1s; // the second time is the delay 
+vendor prefix - -webkit-, -moz-, -o- 
+transitions should only be used as an enhancement feature. The content, functionality and overall user experience should not hinge on the transition effect 
+2D Transforms 
+-webkit-transform: rotate(45 deg); // rotates clockwise 45 deg from its original position. 
+(400grad) is equivelant to 360 deg 
+(1rad) is equal to about 57 deg 
+(3.14rad) is equal to 180 deg 
+(6.28rad) is equal to a full circle 
+(1turn) is a full rotation 
+(.5turn) is a 180 def rotation 
+(2turn) is 2 rotation 
+.myClass {transition: 1s linearear;} .wrap:hover .myClass {-webkit-transfor: rotate(2turn);} 
+-webkit-transition-origin: 50% 50% (default x and y axis) 
+scaleX();
