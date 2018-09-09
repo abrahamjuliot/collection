@@ -1,9 +1,9 @@
-# storms in my brain
+# personal projects
 > "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
-- codepen formulas: https://codepen.io/abrahamjuliot/
+- codepen: https://codepen.io/abrahamjuliot/
 
-# worth remembering
+# collection of my notes
 A collection of my personal course notes
 
 ## 2014
@@ -18,8 +18,6 @@ A collection of my personal course notes
 - HTMLS Tables
 - PHP Basics
 - Node.js Basics
-- Excel 2010: Macros | Projects
-- Programming Foundations: Fundamentals
 
 ## 2015
 > "We believe that coding should be a required language in all schools." -Tim Cook
@@ -43,12 +41,11 @@ CEO, Apple
 - Responsive Web Design Fundamentals
 - JavaScript Road Trip 1-2
 - Try jQuery
-- Blasting Off with Bootstrap
+- Blasting Off with Bootstrap | [project](https://codepen.io/abrahamjuliot/pen/KpMMBr)
 - Communication Foundations (2013)
-- JavaScript and JSON: Integration Techniques
 - Fundamentals of Design
-- Communicate Ideas through Story
-- JavaScript: Templating
+- JavaScript: Templating | project
+- JavaScript and JSON: Integration Techniques | project
 - Adventures in Web Animations
 - JavaScript Best Practices
 - CoffeeScript
@@ -93,10 +90,13 @@ CEO, Apple
 - Ruby Basics
 - HTML5: Structure, Syntax, and Semantics
 - You, Me & SVG
-- Accelerating Through Angular 2
-- Shaping Up With Angular.js
+- Accelerating Through Angular 2 | [project](https://codepen.io/abrahamjuliot/pen/vXVNpy)
+- Shaping Up With Angular.js | [project](http://plnkr.co/edit/CmyT5C?p=preview)
 
 ## 2017
 > "Everybody in this country should learn to program a computer, because it teaches you how to think” -Steve Jobs
 - CSS Layout Basics
 - CSS Flexbox Layout
+- Git & GitHub Basics
+- Exploring JavaScript Conditional
+- Closures in Javascript
