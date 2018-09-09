@@ -1,4 +1,3 @@
-`
 if (value === val1) { 
 	// do 
 } else if (value === val2) { 
@@ -63,4 +62,3 @@ function greet(name) {
 	name && console.log('Hi ' + name);
 	// similar to an if block
 }
-`
