@@ -38,7 +38,7 @@
 - [Design Notes](https://twitter.com/abrahamjuliot/status/897660379245006849)
 - [10 tips for clean code](https://twitter.com/abrahamjuliot/status/897544831198613504)
 - [Regex Simplified](https://twitter.com/abrahamjuliot/status/899131884919169024)
-- [Flexbox simpllified](https://twitter.com/abrahamjuliot/status/868135117960630272)
+- [Flexbox simplified](https://twitter.com/abrahamjuliot/status/868135117960630272)
 - [Switch link per month](https://twitter.com/abrahamjuliot/status/852572908593463296)
 - [Diff of Dates](https://repl.it/@abrahamjuliot/Diff-of-Dates)
 - [Page Transitions](https://twitter.com/abrahamjuliot/status/830576620926750720)
