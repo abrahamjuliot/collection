@@ -174,8 +174,26 @@ CEO, Apple
 - [AWS Cloud9](https://aws.amazon.com/cloud9)
 
 
-# Channels
-- CodingTech, FunFunFunction, AnaTudor, NetNinja, WesBos, FrontEndCenter, LevelUpTuts, TraversyMedia, Academind, freeCodeCamp, Techsith, DesignCourse
+# Best Educational Channels
+- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
+- [Ana Tudor](https://www.youtube.com/user/anaix3l)
+- [Kevin Powell](https://www.youtube.com/user/KepowOb)
+- [Wes Bos](https://www.youtube.com/user/wesbos)
+- [Derek Banas](https://www.youtube.com/user/derekbanas)
+- [techsith](https://www.youtube.com/user/techSithTube)
+- [Traversy Media](https://www.youtube.com/user/TechGuyWeb)
+- [LevelUpTuts](https://www.youtube.com/user/LevelUpTuts)
+- [The Coding Train](https://www.youtube.com/user/shiffman)
+- [DevTips](https://www.youtube.com/user/DevTipsForDesigners)
+- [Coding Tech](https://www.youtube.com/channel/UCtxCXg-UvSnTKPOzLH4wJaQ)
+- [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg)
+- [Paul Halliday](https://www.youtube.com/channel/UCYJ9O6X1oFt7YGXpfRwrcWg)
+- [Academind](https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w/videos)
+- [FreeCodeCamp](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ)
+- [LinusTechTips](https://www.youtube.com/user/LinusTechTips)
+- [Techquickie](https://www.youtube.com/user/Techquickie)
+- [Computerphile](https://www.youtube.com/user/Computerphile)
+
 
 # Essentials for every web developer
 - [developer.mozilla.org/en-US/docs/We](https://developer.mozilla.org/en-US/docs/Web) 
