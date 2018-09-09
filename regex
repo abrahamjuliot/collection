@@ -1,0 +1,36 @@
+/*
+ . any
+ x? optional x
+ x* 0 or more x
+ x+ 1 or more x
+ {b} b times
+ {b,} b or more
+ {a,b} between a and b
+ [aBc] any of set
+ [A-Z] any of range
+ [A-Za-z] any of sets
+ \d [0-9]
+ \D not [0-9]
+ \w [A-Za-z0-9_] 
+ \W not [A-Za-z0-9_] 
+ \s [ \t\r\n\f]
+ \S not [ \t\r\n\f]
+ [^x] any except x
+ [.] or \. turns a special to char
+ a|b a or b
+ (foo) group, also capture group for $1, $2, etc.
+ (fi|fi|fo|fum) or group
+ ^ beginning of String
+ $ end of String
+ (?=foo) lookahead: must follow
+ (?<=foo) lookbehind: must precede
+ (?!foo) negative lookahead: must not follow
+ (?<!foo) negative lookbehind: must not preceded
+ $1 references 1st capture group
+ regexObj = /^word$/, //literal syntax
+ regexStr = '^word$', // user str
+ regex = new RegExp(regexStr);// costructor syntax
+ rx1.test(rx2) // -> true or false
+ str.replace(rx, str2) // -> string
+ /RegExp/igm //i:ignore case, g:global search, m:multiline
+*/
