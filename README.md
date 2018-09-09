@@ -62,7 +62,7 @@ A collection of my personal course notes
 - How to Make a Website
 - Sass Basics
 - HTML Forms
-- HTMLS Tables
+- HTML Tables
 - PHP Basics
 - Node.js Basics
 
