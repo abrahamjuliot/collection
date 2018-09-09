@@ -1,7 +1,45 @@
+# social profiles
+- [repl.it](https://repl.it/@abrahamjuliot)
+
 # personal projects
 > "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - codepen: https://codepen.io/abrahamjuliot/
+- [Ethereum Claymore Miner Monitor](https://repl.it/@abrahamjuliot/claymore-ETH-monitor)
+- [Wage Earnings Ticker](https://repl.it/@abrahamjuliot/earnings)
+- [CSS Variable blocks](https://twitter.com/abrahamjuliot/status/908532527811387393)
+- [AngularJS newsfeed component](https://twitter.com/abrahamjuliot/status/817421605525602304)
+- [DOM Manip Library](https://gist.github.com/abrahamjuliot/a1d1e55347a282e6f74857e9be1e8df6)
+- [Hashtag Generator](https://twitter.com/abrahamjuliot/status/754459206925758465)
+
+## custom tools
+- [functional programming concepts](https://twitter.com/abrahamjuliot/status/945539567007891456)
+- [tagged template literals experemint](https://twitter.com/abrahamjuliot/status/944790373129269248)
+- [css variable tricks](https://twitter.com/abrahamjuliot/status/939695923357130752)
+- [6 line functional alternative to JSX](https://twitter.com/abrahamjuliot/status/1004089789107220480)
+- [dynamic css content](https://twitter.com/abrahamjuliot/status/946990622518292482)
+- [Vanilla JS Animate on scroll](https://repl.it/@abrahamjuliot/vanilla-animate-on-scroll-in-view)
+- [Functional switch](https://twitter.com/abrahamjuliot/status/946664249501163521)
+- [Recursive Functional Loop](https://repl.it/@abrahamjuliot/recursive-function-loop)
+- [Object Deep Freeze](https://repl.it/@abrahamjuliot/object-deep-freeze)
+- [Http Library](https://repl.it/@abrahamjuliot/http-library)
+- [Chained functions](https://repl.it/@abrahamjuliot/Chained-function)
+- [Expire Elements](https://twitter.com/abrahamjuliot/status/854078133556854784)
+- [Vanilla JS vs jQuery](https://twitter.com/abrahamjuliot/status/756189060666843143)
+- [String Object Cheatsheet](https://twitter.com/abrahamjuliot/status/755895479104249856)
+- [Selector functions](https://twitter.com/abrahamjuliot/status/912555637959155713)
+- [Project Management Notes](https://twitter.com/abrahamjuliot/status/899368595028758529)
+- [Design Notes](https://twitter.com/abrahamjuliot/status/897660379245006849)
+- [10 tips for clean code](https://twitter.com/abrahamjuliot/status/897544831198613504)
+- [Regex Simplified](https://twitter.com/abrahamjuliot/status/899131884919169024)
+- [Flexbox simpllified](https://twitter.com/abrahamjuliot/status/868135117960630272)
+- [Switch link per month](https://twitter.com/abrahamjuliot/status/852572908593463296)
+- [Diff of Dates](https://repl.it/@abrahamjuliot/Diff-of-Dates)
+- [Page Transitions](https://twitter.com/abrahamjuliot/status/830576620926750720)
+- [CSS display ghost](https://twitter.com/abrahamjuliot/status/829045595008438272)
+- [Pure CSS Tabs](https://twitter.com/abrahamjuliot/status/823660509958242304)
+- [Pure Css click child & trigger parent](https://twitter.com/abrahamjuliot/status/823655722206400516)
+- [JS deep array of objects filter](https://gist.github.com/abrahamjuliot/e13d3a90cf09ed561af3b1ff48db18e4)
 
 # collection of my notes
 A collection of my personal course notes
@@ -30,13 +68,13 @@ CEO, Apple
 - HTML Email Design
 - Swift Basics
 - AJAX Basics
-- Object Oriented JavaScript
+- Object Oriented JavaScript | [playground notes](https://repl.it/@abrahamjuliot/JavaScript-Objects) | [project](https://repl.it/@abrahamjuliot/FrontAthleticOctopus)
 - Responsive Images
 - CSS Basics
 - Modular CSS with Sass
 - CSS Layout Techniques
 - CSS to Sass
-- Angular Basics
+- Angular Basics | [project](https://twitter.com/abrahamjuliot/status/680639089331183616)
 - Mongo Basics
 - Responsive Web Design Fundamentals
 - JavaScript Road Trip 1-2
@@ -95,8 +133,43 @@ CEO, Apple
 
 ## 2017
 > "Everybody in this country should learn to program a computer, because it teaches you how to think” -Steve Jobs
-- CSS Layout Basics
-- CSS Flexbox Layout
+- CSS Layout Basics | [project](https://repl.it/@abrahamjuliot/CSS-Layout-Basics)
+- CSS Flexbox Layout | [project](https://repl.it/@abrahamjuliot/CSS-Flexbox-Layout)
 - Git & GitHub Basics
 - Exploring JavaScript Conditional
 - Closures in Javascript
+- Intermediate Swift 2.0 | [playground notes](https://repl.it/@abrahamjuliot/Intermediate-Swift-2)
+- HTML Video & Audio | [project](https://repl.it/@abrahamjuliot/HTML-Video-and-Audio)
+- Java Objects | [project](https://repl.it/@abrahamjuliot/Least-Squares) | [project 2](https://repl.it/@abrahamjuliot/Tokenizing-Telephone-Numbers)
+- Java Data Structs | [project](https://repl.it/@abrahamjuliot/InToPost)
+
+## 2018
+- [Async JS Crash Course - Callbacks, Promises, Async Await](https://www.youtube.com/watch?v=PoRJizFvM7s)| [playground notes](https://repl.it/@abrahamjuliot/Callbacks-Promises-Async-Await)
+- Markdown
+- CSS Grid | [playground notes 1](https://repl.it/@abrahamjuliot/CSS-Grid) | [playground notes 2](https://repl.it/@abrahamjuliot/CSS-Grid-2)
+- Regex | notes | [project](https://repl.it/@abrahamjuliot/regex-project)
+
+# Reading Favorites
+- [High-level advice and guidelines for writing sane, manageable, scalable CSS](https://cssguidelin.es/)
+- [An introduction to functional programming in JavaScript](https://opensource.com/article/17/6/functional-javascript)
+- [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/)
+
+# Tech I'm using
+- [helm.io](https://heml.io/)
+- [es6console](https://es6console.com/)
+- [regexpal](https://www.regexpal.com/)
+- [Grabient](https://www.grabient.com/)
+- [color.adobe.com](https://color.adobe.com)
+- [vectr.com](https://vectr.com/)
+- [coder.com](https://coder.com/)
+- [AWS Cloud9](https://aws.amazon.com/cloud9)
+
+
+# Channels
+- CodingTech, FunFunFunction, AnaTudor, NetNinja, WesBos, FrontEndCenter, LevelUpTuts, TraversyMedia, Academind, freeCodeCamp, Techsith, DesignCourse
+
+# Essentials for every web developer
+- [developer.mozilla.org/en-US/docs/We](https://developer.mozilla.org/en-US/docs/Web) 
+- [developers.google.com/web](https://developers.google.com/web)
+- [developer.chrome.com/devtools](https://developer.chrome.com/devtools) 
+- [caniuse.com](http://caniuse.com)
