@@ -1,5 +1,5 @@
 # personal projects
-> "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
+> "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - [Ethereum Claymore Miner Monitor](https://repl.it/@abrahamjuliot/claymore-ETH-monitor)
 - [Animated collection of Treehouse badges](https://codepen.io/abrahamjuliot/pen/POrzaB)
