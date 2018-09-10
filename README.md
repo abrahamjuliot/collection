@@ -1,12 +1,11 @@
-# social profiles
-- [repl.it](https://repl.it/@abrahamjuliot)
-
 # personal projects
 > "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - codepen: https://codepen.io/abrahamjuliot/
 - [Ethereum Claymore Miner Monitor](https://repl.it/@abrahamjuliot/claymore-ETH-monitor)
 - [Animated collection of Treehouse badges](https://codepen.io/abrahamjuliot/pen/POrzaB)
+- UCR eBuy extension: [JS](https://gist.github.com/abrahamjuliot/4d6af7900ab18ad931c31f64f5840013) | [CSS](https://gist.github.com/abrahamjuliot/e0edcc22c717f7ae45a3c5a727b93a7b)
+- [Spotify MP3 AD Blocker Concept](https://gist.github.com/abrahamjuliot/008254f178ae23caf5ecfd62c879614b)
 - [Wage Earnings Ticker](https://codepen.io/abrahamjuliot/pen/JNEWqp)
 - [CSS Variable blocks](https://twitter.com/abrahamjuliot/status/908532527811387393)
 - [AngularJS newsfeed component](https://twitter.com/abrahamjuliot/status/817421605525602304)
@@ -14,11 +13,14 @@
 - [Mini Dom Manip Library](https://codepen.io/abrahamjuliot/pen/obpzBg)
 - [Hashtag Generator](https://twitter.com/abrahamjuliot/status/754459206925758465)
 - [sponsorship cards](https://codepen.io/abrahamjuliot/pen/NpEbXR)
+- [Flexbox Grid Concept for UCR Omniupdate Platform](https://gist.github.com/abrahamjuliot/0306722ed3c6bbca62a75c10a576b0cc)
 - [mobile-friendly concept of UCR Botanic Gardens](https://codepen.io/abrahamjuliot/pen/xRENqa)
 - [mobile-freindly concept of UCR Earth Sciences](https://codepen.io/abrahamjuliot/pen/QjQqwd)
 - [Text Search App](https://codepen.io/abrahamjuliot/pen/LGzKVM) 
 
 ## custom tools
+- [Express Biolerplate Using NPM Scripts](https://github.com/abrahamjuliot/express-boilerplate)
+- [Stylus Boilerplate](https://github.com/abrahamjuliot/stylus-boilerplate)
 - [Functional Programming Concepts](https://twitter.com/abrahamjuliot/status/945539567007891456)
 - [Tagged Template Literals Experemint](https://twitter.com/abrahamjuliot/status/944790373129269248)
 - [CSS Variable Tricks](https://twitter.com/abrahamjuliot/status/939695923357130752)
@@ -49,9 +51,9 @@
 - [DOM Manip Function Set](https://codepen.io/abrahamjuliot/pen/PzExNB)
 - [Pure CSS Accordion](https://codepen.io/abrahamjuliot/pen/pyYMXX)
 - [Pure CSS Model Window](https://codepen.io/abrahamjuliot/pen/dNWNgN)
+- [Cloud9 custom styles](https://gist.github.com/abrahamjuliot/ca066a51e836783cc72d7aaf6f7d51c6)
 
-# collection of my notes
-A collection of my personal course notes
+# course notes
 
 ## 2014
 > "Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains." -Bill Gates, Co-Founder, Microsoft
@@ -90,6 +92,7 @@ CEO, Apple
 - Try jQuery
 - Blasting Off with Bootstrap | [project](https://codepen.io/abrahamjuliot/pen/KpMMBr)
 - Communication Foundations (2013)
+- Excel Macros: 2010 | [project](https://github.com/abrahamjuliot/VBA-Files/blob/master/liabilityDate.cls)
 - Fundamentals of Design
 - JavaScript: Templating | [directory project 1](https://codepen.io/abrahamjuliot/pen/bdQmmB?editors=1010) | [directory project 2](https://codepen.io/abrahamjuliot/pen/eNeBQK)
 - JavaScript and JSON: Integration Techniques | [final directory project](https://codepen.io/abrahamjuliot/pen/bKawwW)
@@ -142,15 +145,19 @@ CEO, Apple
 
 ## 2017
 > "Everybody in this country should learn to program a computer, because it teaches you how to think” -Steve Jobs
+- Node.js Basics (2017) | [project 1](https://github.com/abrahamjuliot/search-treehouse) | [project 2](https://github.com/abrahamjuliot/weather-app)
+- Express Basics (2017) | [project 1](https://github.com/abrahamjuliot/flash-cards) | [project 2](https://github.com/abrahamjuliot/express-website)
+- User Authentication With Express and Mongo | [project](https://github.com/abrahamjuliot/auth)
+- Building Websites with PHP | [project](https://github.com/abrahamjuliot/Php-twig-site)
 - CSS Layout Basics | [project](https://repl.it/@abrahamjuliot/CSS-Layout-Basics)
 - CSS Flexbox Layout | [project](https://repl.it/@abrahamjuliot/CSS-Flexbox-Layout)
-- Git & GitHub Basics
+- Git Basics
 - Exploring JavaScript Conditional
 - Closures in Javascript
 - Intermediate Swift 2.0 | [playground notes](https://repl.it/@abrahamjuliot/Intermediate-Swift-2)
 - HTML Video & Audio | [project](https://repl.it/@abrahamjuliot/HTML-Video-and-Audio)
-- Java Objects | [project](https://repl.it/@abrahamjuliot/Least-Squares) | [project 2](https://repl.it/@abrahamjuliot/Tokenizing-Telephone-Numbers)
-- Java Data Structs | [project](https://repl.it/@abrahamjuliot/InToPost)
+- Java: Advanced Objects | [project](https://repl.it/@abrahamjuliot/Least-Squares) | [project 2](https://repl.it/@abrahamjuliot/Tokenizing-Telephone-Numbers)
+- Java: Data Structs | [project](https://repl.it/@abrahamjuliot/InToPost)
 
 ## 2018
 - [Async JS Crash Course - Callbacks, Promises, Async Await](https://www.youtube.com/watch?v=PoRJizFvM7s)| [playground notes](https://repl.it/@abrahamjuliot/Callbacks-Promises-Async-Await)
