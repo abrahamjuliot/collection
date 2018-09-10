@@ -1,7 +1,6 @@
 # personal projects
 > "when you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. so create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
-- codepen: https://codepen.io/abrahamjuliot/
 - [Ethereum Claymore Miner Monitor](https://repl.it/@abrahamjuliot/claymore-ETH-monitor)
 - [Animated collection of Treehouse badges](https://codepen.io/abrahamjuliot/pen/POrzaB)
 - UCR eBuy extension: [JS](https://gist.github.com/abrahamjuliot/4d6af7900ab18ad931c31f64f5840013) | [CSS](https://gist.github.com/abrahamjuliot/e0edcc22c717f7ae45a3c5a727b93a7b)
@@ -58,88 +57,81 @@
 ## 2014
 > "Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains." -Bill Gates, Co-Founder, Microsoft
 - [C++ Notes](https://github.com/abrahamjuliot/course-notes/blob/master/cpp_notes) | [Projects](https://github.com/abrahamjuliot/course-notes/blob/master/projects.cpp)
-- CSS Foundations
-- Introduction to Programming
-- Javascript Foundations
+- CSS Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_foundation_notes)
+- Introduction to Programming: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/intro_to_programming)
+- Javascript Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/javascript_foundations)
 - How to Make a Website
 - Sass Basics
 - HTML Forms
 - HTML Tables
-- PHP Basics
+- PHP Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/php_basics)
 - Node.js Basics
 
 ## 2015
 > "We believe that coding should be a required language in all schools." -Tim Cook
 CEO, Apple
-- Time Management Fundamentals
-- Interactive Web Pages with Javascript
-- JavaScript Loops, Arrays and Objects
-- Responsive Layouts
-- Build a Blog with Jekyll and GitHub Pages
-- HTML Email Design
-- Swift Basics
-- AJAX Basics
-- Object Oriented JavaScript | [playground notes](https://repl.it/@abrahamjuliot/JavaScript-Objects) | [dice project](https://repl.it/@abrahamjuliot/FrontAthleticOctopus) | [quiz project](https://codepen.io/abrahamjuliot/pen/aOgZxE) | [playlist project](https://codepen.io/abrahamjuliot/pen/OVYGBb)
-- Responsive Images
-- CSS Basics
-- Modular CSS with Sass
-- CSS Layout Techniques
-- CSS to Sass
-- Angular Basics | [todo app project](https://twitter.com/abrahamjuliot/status/680639089331183616)
-- Mongo Basics
-- Responsive Web Design Fundamentals
-- JavaScript Road Trip 1-2
-- Try jQuery
+- Time Management Fundamentals: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/time)
+- Build a Blog with Jekyll and GitHub Pages: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/jekyll)
+- HTML Email Design: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/html_design)
+- Swift Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_basics)
+- AJAX Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/ajax_basics)
+- Object Oriented JavaScript: [notes]([notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_javascript)), [playground notes](https://repl.it/@abrahamjuliot/JavaScript-Objects), [dice project](https://repl.it/@abrahamjuliot/FrontAthleticOctopus), [quiz project](https://codepen.io/abrahamjuliot/pen/aOgZxE], [playlist project](https://codepen.io/abrahamjuliot/pen/OVYGBb)
+- Responsive Images: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/responsive_images)
+- CSS Basics: [https://github.com/abrahamjuliot/course-notes/blob/master/css_basics]()
+- Modular CSS with Sass: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/modular_css)
+- CSS Layout Techniques: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_layout)
+- CSS to Sass: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_to_sass)
+- Angular Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/angular_basics), [todo app project](https://twitter.com/abrahamjuliot/status/680639089331183616)
+- Mongo Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/mongo_basics)
+- Responsive Web Design Fundamentals: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/responsive_web_design_fundamentals)
+- Try jQuery: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/try_jquery)
 - Blasting Off with Bootstrap | [project](https://codepen.io/abrahamjuliot/pen/KpMMBr)
-- Communication Foundations (2013)
+- Communication Foundations (2013): [notes](https://github.com/abrahamjuliot/course-notes/blob/master/communication_2013)
 - Excel Macros: 2010 | [project](https://github.com/abrahamjuliot/VBA-Files/blob/master/liabilityDate.cls)
-- Fundamentals of Design
+- Fundamentals of Design: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/fundamentals_of_design)
 - JavaScript: Templating | [directory project 1](https://codepen.io/abrahamjuliot/pen/bdQmmB?editors=1010) | [directory project 2](https://codepen.io/abrahamjuliot/pen/eNeBQK)
 - JavaScript and JSON: Integration Techniques | [final directory project](https://codepen.io/abrahamjuliot/pen/bKawwW)
-- Adventures in Web Animations
-- JavaScript Best Practices
-- CoffeeScript
-- ES2015: The Shape of JavaScript to Come
-- Real time Web with Node.js
-
+- Adventures in Web Animations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/adventures_in_web_animation)
+- JavaScript Best Practices: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/javascript_best_practices)
+- CoffeeScript: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/coffeescript)
+- ES2015: The Shape of JavaScript to Come: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/es2015)
+- Real time Web with Node.js: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/real_time_web_node)
 
 ## 2016
 > "I think that great programming is not all that dissimilar to great art. Once you start thinking in concepts of programming it makes you a better person...as does learning a foreign language, as does learning math, as does learning how to read." -Jack Dorsey Creator, Twitter
-- SVG Basics
-- Advanced Sass
-- HTML
-- Accessibility
-- Objective C Basics
-- Front End Performance Optimization
-- CSS Selectors
-- CSS Beyond the Basics
-- Bootstrap 4 Basics
-- Object Oriented PHP Basics
-- PHP Functions
-- JavaScript Unit Testing
-- SQL Basics
-- npm Basics
-- CSS Transitions and Transforms
-- Framework Basics
-- Introduction to HTML and CSS
-- Compass Basics
-- jQuery Basics
-- Console Foundations
-- Object Oriented JavaScript
-- Gulp Basics
-- Swift 2.0 Basics
-- Swift 2.0 Collections and Control Flow
-- Swift 2.0 Functions
-- Object Oriented Swift 2.0
-- Swift 2.0 Enumerations and Optionals
-- Delegates in Swift 2
-- Swift 2.0 Protocols
-- Objective C for Swift Developers
-- Error Handling: Error Handling in Swift 2.0
-- Object Oriented Objective C
-- Ruby Basics
-- HTML5: Structure, Syntax, and Semantics
-- You, Me & SVG
+- Python Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/python_basics)
+- SVG Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/svg_basics)
+- Advanced Sass: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/advanced_sass)
+- HTML: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/html)
+- Accessibility: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/accessibility)
+- Objective C Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/objective_c_basics)
+- Front End Performance Optimization: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/front_end_performance)
+- CSS Selectors: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_selectors.md)
+- CSS Beyond the Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_beyond.md)
+- Object Oriented PHP Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_php)
+- PHP Functions: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/php_functions)
+- JavaScript Unit Testing: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/javascript_unit_testing)
+- SQL Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/sql_basics)
+- npm Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/npm_basics)
+- CSS Transitions and Transforms: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_transitions)
+- Framework Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/framework_basics)
+- Compass Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/compass_basics)
+- jQuery Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/jquery_basics)
+- Console Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/console_foundations)
+- Gulp Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/gulp_basics)
+- Swift 2.0 Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_2_basics)
+- Swift 2.0 Collections and Control Flow: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_2_collections)
+- Swift 2.0 Functions: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_2_functions)
+- Object Oriented Swift 2.0: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_swift_2)
+- Swift 2.0 Enumerations and Optionals: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_2_enumerations)
+- Delegates in Swift 2: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/delegates_in_swfit_2)
+- Swift 2.0 Protocols: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_2_protocols)
+- Objective C for Swift Developers: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/objective-c_for_swift_devs)
+- Error Handling: Error Handling in Swift 2.0: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/error_handling_swift_2)
+- Object Oriented Objective C: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_objective-c)
+- Ruby Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/ruby_basics)
+- HTML5: Structure, Syntax, and Semantics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/html5)
+- You, Me & SVG: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/you_me_svg.md)
 - Accelerating Through Angular 2 | [project](https://codepen.io/abrahamjuliot/pen/vXVNpy)
 - Shaping Up With Angular.js | [project](http://plnkr.co/edit/CmyT5C?p=preview)
 
@@ -151,9 +143,9 @@ CEO, Apple
 - Building Websites with PHP | [project](https://github.com/abrahamjuliot/Php-twig-site)
 - CSS Layout Basics | [project](https://repl.it/@abrahamjuliot/CSS-Layout-Basics)
 - CSS Flexbox Layout | [project](https://repl.it/@abrahamjuliot/CSS-Flexbox-Layout)
-- Git Basics
-- Exploring JavaScript Conditional
-- Closures in Javascript
+- Git Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/git_and_github)
+- Exploring JavaScript Conditional: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/JavaScript%20Conditional.js)
+- Closures in Javascript: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/closures_in_javascript)
 - Intermediate Swift 2.0 | [playground notes](https://repl.it/@abrahamjuliot/Intermediate-Swift-2)
 - HTML Video & Audio | [project](https://repl.it/@abrahamjuliot/HTML-Video-and-Audio)
 - Java: Advanced Objects | [project](https://repl.it/@abrahamjuliot/Least-Squares) | [project 2](https://repl.it/@abrahamjuliot/Tokenizing-Telephone-Numbers)
@@ -161,11 +153,11 @@ CEO, Apple
 
 ## 2018
 - [Async JS Crash Course - Callbacks, Promises, Async Await](https://www.youtube.com/watch?v=PoRJizFvM7s)| [playground notes](https://repl.it/@abrahamjuliot/Callbacks-Promises-Async-Await)
-- Markdown
+- Markdown: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/markdown)
 - CSS Grid | [playground notes 1](https://repl.it/@abrahamjuliot/CSS-Grid) | [playground notes 2](https://repl.it/@abrahamjuliot/CSS-Grid-2)
-- Regex | notes | [project](https://repl.it/@abrahamjuliot/regex-project)
+- Regular Expressions in JavaScript: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/regex), [project](https://repl.it/@abrahamjuliot/regex-project)
 
-# Reading Favorites
+# Reading
 - [High-level advice and guidelines for writing sane, manageable, scalable CSS](https://cssguidelin.es/)
 - [An introduction to functional programming in JavaScript](https://opensource.com/article/17/6/functional-javascript)
 - [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/)
@@ -180,8 +172,7 @@ CEO, Apple
 - [coder.com](https://coder.com/)
 - [AWS Cloud9](https://aws.amazon.com/cloud9)
 
-
-# Best Educational Channels
+# Channels I follow
 - [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
 - [Ana Tudor](https://www.youtube.com/user/anaix3l)
 - [Kevin Powell](https://www.youtube.com/user/KepowOb)
@@ -201,8 +192,7 @@ CEO, Apple
 - [Techquickie](https://www.youtube.com/user/Techquickie)
 - [Computerphile](https://www.youtube.com/user/Computerphile)
 
-
-# Essentials for every web developer
+# My Essential Resources
 - [developer.mozilla.org/en-US/docs/We](https://developer.mozilla.org/en-US/docs/Web) 
 - [developers.google.com/web](https://developers.google.com/web)
 - [developer.chrome.com/devtools](https://developer.chrome.com/devtools) 
