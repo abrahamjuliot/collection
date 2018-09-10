@@ -61,7 +61,6 @@
 - Introduction to Programming: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/intro_to_programming)
 - Javascript Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/javascript_foundations)
 - PHP Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/php_basics)
-- Node.js Basics
 
 ## 2015
 > "We believe that coding should be a required language in all schools." -Tim Cook
