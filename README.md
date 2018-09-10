@@ -2,7 +2,7 @@
 > "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create." -Why The Lucky Stiff
 - codewar solutions: https://www.codewars.com/users/abrahamjuliot/completed_solutions
 - [Ethereum Claymore Miner Monitor](https://repl.it/@abrahamjuliot/claymore-ETH-monitor)
-- [Animated collection of Treehouse badges](https://codepen.io/abrahamjuliot/pen/POrzaB)
+- [Animated collection of Treehouse badges written in TypeScript](https://codepen.io/abrahamjuliot/pen/POrzaB)
 - UCR eBuy extension: [JS](https://gist.github.com/abrahamjuliot/4d6af7900ab18ad931c31f64f5840013) | [CSS](https://gist.github.com/abrahamjuliot/e0edcc22c717f7ae45a3c5a727b93a7b)
 - [Spotify MP3 AD Blocker Concept](https://gist.github.com/abrahamjuliot/008254f178ae23caf5ecfd62c879614b)
 - [Wage Earnings Ticker](https://codepen.io/abrahamjuliot/pen/JNEWqp)
