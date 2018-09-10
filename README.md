@@ -60,10 +60,6 @@
 - CSS Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/css_foundation_notes)
 - Introduction to Programming: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/intro_to_programming)
 - Javascript Foundations: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/javascript_foundations)
-- How to Make a Website
-- Sass Basics
-- HTML Forms
-- HTML Tables
 - PHP Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/php_basics)
 - Node.js Basics
 
@@ -75,7 +71,7 @@ CEO, Apple
 - HTML Email Design: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/html_design)
 - Swift Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/swift_basics)
 - AJAX Basics: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/ajax_basics)
-- Object Oriented JavaScript: [notes]([notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_javascript)), [playground notes](https://repl.it/@abrahamjuliot/JavaScript-Objects), [dice project](https://repl.it/@abrahamjuliot/FrontAthleticOctopus), [quiz project](https://codepen.io/abrahamjuliot/pen/aOgZxE], [playlist project](https://codepen.io/abrahamjuliot/pen/OVYGBb)
+- Object Oriented JavaScript: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/object_oriented_javascript), [playground notes](https://repl.it/@abrahamjuliot/JavaScript-Objects), [dice project](https://repl.it/@abrahamjuliot/FrontAthleticOctopus), [quiz project](https://codepen.io/abrahamjuliot/pen/aOgZxE), [playlist project](https://codepen.io/abrahamjuliot/pen/OVYGBb)
 - Responsive Images: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/responsive_images)
 - CSS Basics: [https://github.com/abrahamjuliot/course-notes/blob/master/css_basics]()
 - Modular CSS with Sass: [notes](https://github.com/abrahamjuliot/course-notes/blob/master/modular_css)
