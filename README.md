@@ -51,6 +51,7 @@
 - [Pure CSS Accordion](https://codepen.io/abrahamjuliot/pen/pyYMXX)
 - [Pure CSS Model Window](https://codepen.io/abrahamjuliot/pen/dNWNgN)
 - [Cloud9 custom styles](https://gist.github.com/abrahamjuliot/ca066a51e836783cc72d7aaf6f7d51c6)
+- [Tagged template literal string minifier](https://twitter.com/abrahamjuliot/status/1059139626789523457)
 
 # course notes
 
