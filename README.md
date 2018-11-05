@@ -24,7 +24,7 @@
 - [Tagged Template Literals Experemint](https://twitter.com/abrahamjuliot/status/944790373129269248)
 - [CSS Variable Tricks](https://twitter.com/abrahamjuliot/status/939695923357130752)
 - [6 line functional alternative to JSX](https://twitter.com/abrahamjuliot/status/1004089789107220480)
-- [6 line functional alternative to JSX - w/ IE11 Template Fix](https://twitter.com/abrahamjuliot/status/1059564096301883392)
+- [6 line functional alternative to JSX - w/ IE11 Template Fix](https://twitter.com/abrahamjuliot/status/1059565568787804161)
 - [Dynamic CSS Content](https://twitter.com/abrahamjuliot/status/946990622518292482)
 - [Vanilla JS Animate on scroll](https://repl.it/@abrahamjuliot/vanilla-animate-on-scroll-in-view)
 - [Functional switch](https://twitter.com/abrahamjuliot/status/946664249501163521)
