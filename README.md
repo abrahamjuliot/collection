@@ -159,7 +159,16 @@ CEO, Apple
 - [An introduction to functional programming in JavaScript](https://opensource.com/article/17/6/functional-javascript)
 - [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/)
 
-# Tech I'm using
+# Extensions I'm using
+- [Auto Text Expander for Google Chrome](https://chrome.google.com/webstore/detail/auto-text-expander-for-go/iibninhmiggehlcdolcilmhacighjamp)
+- [Text Blaze](https://chrome.google.com/webstore/detail/text-blaze/idgadaccgipmpannjkmfddolnnhmeklj)
+- [User JavaScript and CSS](https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld)
+- [User CSS](https://chrome.google.com/webstore/detail/user-css/okpjlejfhacmgjkmknjhadmkdbcldfcb)
+- [Checkbot: SEO, Web Speed & Security Tester](https://chrome.google.com/webstore/detail/checkbot-seo-web-speed-se/dagohlmlhagincbfilmkadjgmdnkjinl)
+- [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall)
+- [Checker Plus for Google Drive](https://chrome.google.com/webstore/detail/checker-plus-for-google-d/pppfmbnpgflleackdcojndfgpiboghga)
+
+# Apps I'm using
 - [helm.io](https://heml.io/)
 - [https://dillinger.io/](https://dillinger.io/)
 - [es6console](https://es6console.com/)
